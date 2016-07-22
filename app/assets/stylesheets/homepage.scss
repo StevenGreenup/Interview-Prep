@@ -1,0 +1,34 @@
+// Place all the styles related to the homepage controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.modal-sm{
+  width: 400px;
+  .sign-up{
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+  }
+  .sign-in{
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.profile{
+
+  margin: 15px;
+  display:flex;
+flex-direction: row;
+flex-wrap: nowrap;
+justify-content: center;
+align-content: center;
+align-items: center;
+}
+
+.logo{
+  width: 45px;
+  height: auto;
+}

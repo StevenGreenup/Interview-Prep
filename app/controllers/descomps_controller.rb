@@ -1,0 +1,2 @@
+class DescompsController < ApplicationController
+end
