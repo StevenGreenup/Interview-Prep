@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160721135657) do
+ActiveRecord::Schema.define(version: 20160722195851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,16 +19,66 @@ ActiveRecord::Schema.define(version: 20160721135657) do
     t.string   "email"
     t.string   "twitter"
     t.string   "linked"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "twitter_bio"
+    t.string   "twitter_followers"
+    t.string   "twitter_following"
+    t.string   "twitter_site"
+    t.string   "twitter_avatar"
+    t.string   "company"
+    t.string   "gender"
+    t.string   "location"
+    t.string   "facebook"
+    t.string   "github_handle"
+    t.string   "github_avatar"
+    t.string   "github_company"
+    t.string   "github_blog"
+    t.string   "github_followers"
+    t.string   "github_following"
+    t.string   "google"
+    t.string   "angellist"
+    t.string   "angel_bio"
+    t.string   "angel_blog"
+    t.string   "angel_avatar"
+    t.string   "about_handle"
+    t.string   "about_bio"
+    t.string   "about_avatar"
+    t.string   "gravatar"
+    t.string   "valve"
+    t.string   "gravatar_avatar"
   end
 
   create_table "descomps", force: :cascade do |t|
     t.string   "company"
     t.string   "twitter"
     t.string   "linked"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "user_id"
+    t.string   "tag"
+    t.string   "desc"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "sector"
+    t.string   "industrygroup"
+    t.string   "industry"
+    t.string   "subindustry"
+    t.string   "tags"
+    t.string   "description"
+    t.string   "founded"
+    t.string   "address"
+    t.string   "logo"
+    t.string   "facebook"
+    t.string   "twitbio"
+    t.string   "followers"
+    t.string   "following"
+    t.string   "twitlocate"
+    t.string   "twitsite"
+    t.string   "avatar"
+    t.string   "url"
   end
 
   create_table "resumes", force: :cascade do |t|
@@ -66,6 +116,10 @@ ActiveRecord::Schema.define(version: 20160721135657) do
     t.string   "cert3"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "intend1"
+    t.string   "intend2"
+    t.string   "intend3"
+    t.integer  "user_id"
   end
 
   create_table "users", force: :cascade do |t|

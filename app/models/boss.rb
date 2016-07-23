@@ -1,3 +1,4 @@
 class Boss < ApplicationRecord
-  belongs_to :descomp 
+belongs_to :user
+
 end

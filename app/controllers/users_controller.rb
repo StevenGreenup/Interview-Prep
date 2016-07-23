@@ -15,4 +15,10 @@ class UsersController < ApplicationController
             render :new
       end
   end
+  def show
+    @resume = Resume.new
+    @resumes = Resume.where(user_id: @current_user.id)
+    @boss = Boss.new
+    @descomp = Descomp.new
+  end
 end
