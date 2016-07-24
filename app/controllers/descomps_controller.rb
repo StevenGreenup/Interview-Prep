@@ -54,6 +54,14 @@ def twitter
    @twitter = client.user_timeline("BurnsMcDonnell")
 end
 
+def glassdoor
+  http://api.glassdoor.com/api/api.htm?v=1&format=json&t.p=81085&t.k=bh25srPSqNc&action=employers&q=Burns-and-McDonnell&userip=192.168.43.42&useragent=Mozilla/%2F4.0
+  Partner ID:	81085
+  Key:	bh25srPSqNc
+end
+
+
+
  def show
    @descomp = Descomp.find_by id: params[:id]
  end
