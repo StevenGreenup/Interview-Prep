@@ -1,6 +1,6 @@
 class DescompsController < ApplicationController
   require 'clearbit'
-
+  require 'twitter'
   def new
     @boss = Boss.new
   end
@@ -41,19 +41,21 @@ class DescompsController < ApplicationController
   else
     render :new
   end
-
-
  end
 
- def twitter
- client = Twitter::REST::Client.new do |config|
-  config.consumer_key        = "bj1mCgHVtRNBdl3O8PQZSaEm4"
-  config.consumer_secret     = "bM0KvFA2LmAuGYQoKvLEJmjGWhXcSZXOzMrECT5NtegPfPYbV1"
-  config.access_token        = "3140458521-khcyswB6LhghdoikJtjRdD3JW4kYxJvhm50S2Yy"
-  config.access_token_secret = "qQHHo02X5K5YcJLC0hFmIrAaduiAJxRsHZtnzDrnqE3CD"
+def twitter
+     client = Twitter::REST::Client.new do |config|
+       config.consumer_key = 'bj1mCgHVtRNBdl3O8PQZSaEm4'
+       config.consumer_secret = 'bM0KvFA2LmAuGYQoKvLEJmjGWhXcSZXOzMrECT5NtegPfPYbV1'
+       config.access_token = '3140458521-khcyswB6LhghdoikJtjRdD3JW4kYxJvhm50S2Yy'
+       config.access_token_secret = 'qQHHo02X5K5YcJLC0hFmIrAaduiAJxRsHZtnzDrnqE3CD'
+     end
+
+   @twitter = client.user_timeline("BurnsMcDonnell")
 end
 
-client.user("#{@descomp.twitter}")
+ def show
+   @descomp = Descomp.find_by id: params[:id]
  end
 
 

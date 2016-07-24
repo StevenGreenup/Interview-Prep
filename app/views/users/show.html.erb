@@ -11,69 +11,69 @@
             </div>
             <div class="modal-body">
                 <%= form_for @resume, url: new_resume_path do |f| %>
-                <%= f.label :address %>
+                <%= f.label :address, "Home Address" %>
                 <%= f.text_field :address, class:"form-control" %>
-                <%= f.label :phone %>
+                <%= f.label :phone, "Telephone Number" %>
                 <%= f.text_field :phone, class:"form-control" %>
-                <%= f.label :school1 %>
-                <%= f.text_field :school1, class:"form-control" %>
-                <%= f.label :school2 %>
+                <%= f.label :school1, "High Shool or University" %>
+                <%= f.text_field :school1, class:"form-control", placeholder: "Texas Tech University" %>
+                <%= f.label :school2, "University" %>
                 <%= f.text_field :school2, class:"form-control" %>
-                <%= f.label :school3 %>
+                <%= f.label :school3, "University" %>
                 <%= f.text_field :school3, class:"form-control" %>
-                <%= f.label :cdd1 %>
-                <%= f.text_field :cdd1, class:"form-control" %>
-                <%= f.label :cdd2 %>
+                <%= f.label :cdd1, "Diploma/Degree" %>
+                <%= f.text_field :cdd1, class:"form-control", placeholder: "High School Diploma or Bachelors of Science in Civil Engineering" %>
+                <%= f.label :cdd2, "Diploma/Degree" %>
                 <%= f.text_field :cdd2, class:"form-control" %>
-                <%= f.label :cdd3 %>
+                <%= f.label :cdd3, "Diploma/Degree" %>
                 <%= f.text_field :cdd3, class:"form-control" %>
-                <%= f.label :excomp1 %>
+                <%= f.label :excomp1, "Company (1)" %>
                 <%= f.text_field :excomp1, class:"form-control" %>
-                <%= f.label :excomp2 %>
+                <%= f.label :excomp2, "Company (2)" %>
                 <%= f.text_field :excomp2, class:"form-control" %>
-                <%= f.label :excomp3 %>
+                <%= f.label :excomp3, "Company (3)" %>
                 <%= f.text_field :excomp3, class:"form-control" %>
-                <%= f.label :expos1 %>
+                <%= f.label :expos1, "Position (1)" %>
                 <%= f.text_field :expos1, class:"form-control" %>
-                <%= f.label :expos2 %>
+                <%= f.label :expos2, "Position (2)" %>
                 <%= f.text_field :expos2, class:"form-control" %>
-                <%= f.label :expos3 %>
+                <%= f.label :expos3, "Position (3)" %>
                 <%= f.text_field :expos3, class:"form-control" %>
-                <%= f.label :exstart1 %>
-                <%= f.text_field :exstart1, class:"form-control" %>
-                <%= f.label :exstart2 %>
+                <%= f.label :exstart1, "Company (1) Start Date" %>
+                <%= f.text_field :exstart1, class:"form-control", placeholder: "May 2013" %>
+                <%= f.label :exstart2, "Company (2) Start Date" %>
                 <%= f.text_field :exstart2, class:"form-control" %>
-                <%= f.label :exstart3 %>
+                <%= f.label :exstart3, "Company (3) Start Date" %>
                 <%= f.text_field :exstart3, class:"form-control" %>
-                <%= f.label :exend1 %>
-                <%= f.text_field :exend1, class:"form-control" %>
-                <%= f.label :exend2 %>
+                <%= f.label :exend1, "Company (1) End Date" %>
+                <%= f.text_field :exend1, class:"form-control", placeholder: "May 2016 or Present" %>
+                <%= f.label :exend2, "Company (2) End Date" %>
                 <%= f.text_field :exend2, class:"form-control" %>
-                <%= f.label :exend3 %>
+                <%= f.label :exend3, "Company (3) End Date" %>
                 <%= f.text_field :exend3, class:"form-control" %>
-                <%= f.label :intcom1 %>
+                <%= f.label :intcom1, "Internship Company (1)" %>
                 <%= f.text_field :intcom1, class:"form-control" %>
-                <%= f.label :intcomp2 %>
+                <%= f.label :intcomp2, "Internship Company (2)" %>
                 <%= f.text_field :intcomp2, class:"form-control" %>
-                <%= f.label :intcomp3 %>
+                <%= f.label :intcomp3, "Internship Company (3)" %>
                 <%= f.text_field :intcomp3, class:"form-control" %>
-                <%= f.label :intstart1 %>
+                <%= f.label :intstart1, "Internship Company (1) Start Date" %>
                 <%= f.text_field :intstart1, class:"form-control" %>
-                <%= f.label :intstart2 %>
+                <%= f.label :intstart2, "Internship Company (2) Start Date" %>
                 <%= f.text_field :intstart2, class:"form-control" %>
-                <%= f.label :intstart3 %>
+                <%= f.label :intstart3, "Internship Company (3) Start Date" %>
                 <%= f.text_field :intstart3, class:"form-control" %>
-                <%= f.label :intend1 %>
+                <%= f.label :intend1, "Internship Company (3) End Date" %>
                 <%= f.text_field :intend1, class:"form-control" %>
-                <%= f.label :intend2 %>
+                <%= f.label :intend2, "Internship Company (3) End Date" %>
                 <%= f.text_field :intend2, class:"form-control" %>
-                <%= f.label :intend3 %>
+                <%= f.label :intend3, "Internship Company (3) End Date" %>
                 <%= f.text_field :intend3, class:"form-control" %>
-                <%= f.label :cert1 %>
+                <%= f.label :cert1, "Certification (1)" %>
                 <%= f.text_field :cert1, class:"form-control" %>
-                <%= f.label :cert2 %>
+                <%= f.label :cert2, "Certification (2)" %>
                 <%= f.text_field :cert2, class:"form-control" %>
-                <%= f.label :cert3 %>
+                <%= f.label :cert3, "Certification (3)" %>
                 <%= f.text_field :cert3, class:"form-control" %>
                 <%= f.submit %>
                 <% end %>
@@ -147,9 +147,71 @@
 
   <button type="button" class="btn btn-primary mt10" data-toggle="modal" data-target="#newboss">New Boss</button>
 
-  <button type="button" class="btn btn-primary mt10" data-toggle="modal" data-target="#newcomp">New Company</button>
+  <button type="button" class="btn btn-primary mt10" data-toggle="modal" data-target="#newcomp">New Company</button><br>
   <% @resumes.each do |resume| %>
-  <%= link_to resume.id, resume_path(id: resume.id) %>
+  <%= link_to resume.id, resume_path(id: resume.id) %><br>
   <% end %>
+
+<% @descomps.each do |descomp| %>
+<%= link_to descomp.company, company_path(id: descomp.id) %><br>
+
+<%= descomp.twitter %><br>
+<%= descomp.linked %><br>
+<%= descomp.tag %><br>
+<%= descomp.desc %><br>
+<%= descomp.phone %><br>
+<%= descomp.email %><br>
+<%= descomp.sector %><br>
+<%= descomp.industrygroup %><br>
+<%= descomp.industry %><br>
+<%= descomp.subindustry %><br>
+<%= descomp.tags %><br>
+<%= descomp.description %><br>
+<%= descomp.founded %><br>
+<%= descomp.address %><br>
+<%= image_tag descomp.logo %><br>
+<%= descomp.facebook %><br>
+<%= descomp.twitbio %><br>
+<%= descomp.followers %><br>
+<%= descomp.following %><br>
+<%= descomp.twitlocate %><br>
+<%= descomp.twitsite %><br>
+<%= image_tag descomp.avatar %><br>
+<%= link_to descomp.url, descomp.url %><br>
+<% end %>
+
+
+<% @bosses.each do |boss| %>
+<%= boss.email %><br>
+<%= boss.twitter %><br>
+<%= boss.linked %><br>
+<%= boss.name %><br>
+<%= boss.twitter_bio %><br>
+<%= boss.twitter_followers %><br>
+<%= boss.twitter_following %><br>
+<%= boss.twitter_site %><br>
+<%= boss.twitter_avatar %><br>
+<%= boss.company %><br>
+<%= boss.gender %><br>
+<%= boss.location %><br>
+<%= boss.facebook %><br>
+<%= boss.github_handle %><br>
+<%= boss.github_avatar %><br>
+<%= boss.github_company %><br>
+<%= boss.github_blog %><br>
+<%= boss.github_followers %><br>
+<%= boss.github_following %><br>
+<%= boss.google %><br>
+<%= boss.angellist %><br>
+<%= boss.angel_bio %><br>
+<%= boss.angel_blog %><br>
+<%= boss.angel_avatar %><br>
+<%= boss.about_handle %><br>
+<%= boss.about_bio %><br>
+<%= boss.about_avatar %><br>
+<%= boss.gravatar %><br>
+<%= boss.valve %><br>
+<%= image_tag boss.gravatar_avatar %><br>
+<% end %>
   </div>
 </div>

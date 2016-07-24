@@ -18,8 +18,11 @@ class UsersController < ApplicationController
   end
   def show
     @resume = Resume.new
-    @resumes = Resume.where(user_id: @current_user.id)
     @boss = Boss.new
     @descomp = Descomp.new
+    @resumes = Resume.where(user_id: @current_user.id)
+    @descomps = Descomp.where(user_id: @current_user.id)
+    @bosses = Boss.where(user_id: @current_user.id)
+
   end
 end
