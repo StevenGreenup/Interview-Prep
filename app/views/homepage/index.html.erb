@@ -1,0 +1,51 @@
+<%= image_tag "bg2", class:"main-image" %>
+
+
+
+      <div class="sign-up-div">
+        <div class="sign-up" >
+          <% if @user.errors.any? %>
+          <div class="alert alert-danger" role="alert">
+              <% @user.errors.full_messages.each do |msg| %>
+              <%= msg %><br>
+              <% end %>
+          </div>
+          <% end %>
+          <h2>Sign up</h2>
+          <%= form_for @user, url: create_user_path do |f| %>
+          <div class="form-label-text">
+          <%= f.label :name %>
+          <%= f.text_field :name, class:"form-control", placeholder:"Full Name" %>
+          </div>
+            <div class="form-label-text">
+          <%= f.label :email %>
+          <%= f.text_field :email, class:"form-control", placeholder:"example@email.com" %>
+            </div>
+            <div class="form-label-text">
+          <%= f.label :password %>
+          <%= f.password_field :password, class:"form-control" %>
+            </div>
+            <div class="form-label-text">
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation, class:"form-control" %>
+        </div><br>
+          <%= f.submit "Sign up", class:"btn btn-primary"%>
+          <% end %>
+
+          </div>
+      </div>
+
+
+<div class="ticker-div">
+			<div class="center-vertically">
+				<div id="scaleReveal" class="text-center">
+					<div class="ticker">
+						<h1>Interview Preperation</h1>
+						<h1>Resume Builder</h1>
+						<h1>Expert Advice</h1>
+					</div>
+					<hr>
+					<h4>Bring your "A" game when going into an interview. With our system you will be prepared.</h4>
+				</div><!-- /.column -->
+			</div><!-- /.vertical center -->
+		</div><!-- /.container -->

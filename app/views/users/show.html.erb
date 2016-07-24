@@ -1,4 +1,3 @@
-<button type="button" class="btn btn-default mt10" data-toggle="modal" data-target="#item1-services">New Resume</button>
 
 <div class="modal fade" id="item1-services" tabindex="-1" role="dialog">
     <div class="modal-dialog">
@@ -86,7 +85,6 @@
 </div>
 <!-- /.modal -->
 
-<button type="button" class="btn btn-default mt10" data-toggle="modal" data-target="#newboss">New Boss</button>
 
 <div class="modal fade" id="newboss" tabindex="-1" role="dialog">
     <div class="modal-dialog">
@@ -112,7 +110,7 @@
 </div>
 <!-- /.modal -->
 
-<button type="button" class="btn btn-default mt10" data-toggle="modal" data-target="#newcomp">New Company</button>
+
 
 <div class="modal fade" id="newcomp" tabindex="-1" role="dialog">
     <div class="modal-dialog">
@@ -140,6 +138,18 @@
 </div>
 <!-- /.modal -->
 <br>
-<% @resumes.each do |resume| %>
-<%= link_to resume.id, resume_path(id: resume.id) %>
-<% end %>
+
+<div class="container">
+  <div class="panel">
+
+
+  <button type="button" class="btn btn-primary mt10" data-toggle="modal" data-target="#item1-services">New Resume</button>
+
+  <button type="button" class="btn btn-primary mt10" data-toggle="modal" data-target="#newboss">New Boss</button>
+
+  <button type="button" class="btn btn-primary mt10" data-toggle="modal" data-target="#newcomp">New Company</button>
+  <% @resumes.each do |resume| %>
+  <%= link_to resume.id, resume_path(id: resume.id) %>
+  <% end %>
+  </div>
+</div>

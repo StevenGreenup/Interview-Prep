@@ -49,6 +49,13 @@ class ResumesController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "file_name"   # Excluding ".pdf" extension.
+      end
+    end
+
     @resume = Resume.find_by id: params[:id]
   end
 
