@@ -582,16 +582,15 @@ ul.social-buttons li a:active {
 /* =Tabs
 -------------------------------------------------------------- */
 .nav-tabs {
-    border-bottom: 1px solid #313131;
 }
 
 .nav-tabs>li>a {
     font-size: 16px;
-    color: #ccc;
+    color: #1d1d1d;
 }
 
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
-    color: #fff;
+    color: #333333;
     background-color: #8980fe;
     border: 1px solid #8980fe;
     border-bottom: 2px solid #615fde;
@@ -820,13 +819,13 @@ ul.social-buttons li a:active {
 }
 
 .navbar-default .navbar-nav > li > a {
-	color: #fff;
+	color: #333333;
 	line-height: 2;
     font-weight: 400;
 }
 
 .navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
-    color: rgba(255, 255, 255, 0.60);
+    color: rgba(255, 59, 48, 0.60);
     background-color: transparent;
 	-webkit-transition: color 0.5s ease 0s;
     -moz-transition: color 0.5s ease 0s;

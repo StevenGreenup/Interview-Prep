@@ -9,6 +9,7 @@ def create
   Clearbit.key = 'sk_19ca8cb6727bdb3fa80e104abbe497c9'
   @boss = Boss.new
   @boss.email = params[:boss][:email]
+   @boss.descomp_id = params[:boss][:descomp_id]
   response = Clearbit::Enrichment.find(email: @boss.email)
   @boss.user_id = @current_user.id
   @boss.name = response.person.name.fullName

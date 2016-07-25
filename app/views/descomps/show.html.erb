@@ -1,24 +1,173 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <div class="container">
+            <div>
 
-<%= @descomp.twitter %><br>
-<%= @descomp.linked %><br>
-<%= @descomp.tag %><br>
-<%= @descomp.desc %><br>
-<%= @descomp.phone %><br>
-<%= @descomp.email %><br>
-<%= @descomp.sector %><br>
-<%= @descomp.industrygroup %><br>
-<%= @descomp.industry %><br>
-<%= @descomp.subindustry %><br>
-<%= @descomp.tags %><br>
-<%= @descomp.description %><br>
-<%= @descomp.founded %><br>
-<%= @descomp.address %><br>
-<%= image_tag @descomp.logo %><br>
-<%= @descomp.facebook %><br>
-<%= @descomp.twitbio %><br>
-<%= @descomp.followers %><br>
-<%= @descomp.following %><br>
-<%= @descomp.twitlocate %><br>
-<%= @descomp.twitsite %><br>
-<%= image_tag @descomp.avatar %><br>
-<%= link_to @descomp.url, @descomp.url %><br>
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Company Information</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Company GlassDoor</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Company Twitter</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Boss Information</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#settings2" aria-controls="settings" role="tab" data-toggle="tab">Boss Twitter</a>
+                    </li>
+
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="home">
+                        <h2>Company Information</h2>
+                        <%= image_tag @descomp.logo %><br>
+                        <h2>Twitter Handle</h2>
+                        <%= @descomp.twitter %><br>
+                        <h2>LinkedIn Profile</h2>
+                        <%= @descomp.linked %><br>
+                        <%= @descomp.tag %><br>
+                        <%= @descomp.desc %><br>
+                        <%= @descomp.phone %><br>
+                        <% @descomp.email %><br>
+                        <%= @descomp.sector %><br>
+                        <%= @descomp.industrygroup %><br>
+                        <%= @descomp.industry %><br>
+                        <%= @descomp.subindustry %><br>
+                        <%= @descomp.tags %><br>
+                        <%= @descomp.description %><br>
+                        <%= @descomp.founded %><br>
+                        <%= @descomp.address %><br>
+
+                        <%= @descomp.facebook %><br>
+                        <%= @descomp.twitbio %><br>
+                        <%= @descomp.followers %><br>
+                        <%= @descomp.following %><br>
+                        <%= @descomp.twitlocate %><br>
+                        <%= @descomp.twitsite %><br>
+                        <%= image_tag @descomp.avatar %><br>
+                        <%= link_to @descomp.url, @descomp.url %><br>
+
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="profile">
+                        <h2>Glass Door Review</h2>
+                        id :
+                        <%= @reviews["id"] %><br>
+                        name :
+                        <%= @reviews["name"] %><br>
+                        website :
+                        <%= @reviews["website"] %><br>
+                        isEEP :
+                        <%= @reviews["isEEP"] %><br>
+                        exactMatch :
+                        <%= @reviews["exactMatch"] %><br>
+                        industry :
+                        <%= @reviews["industry"] %><br>
+                        numberOfRatings :
+                        <%= @reviews["numberOfRatings"] %><br>
+                        squareLogo :
+                        <%= @reviews["squareLogo"] %><br>
+                        overallRating :
+                        <%= @reviews["overallRating"] %><br>
+                        ratingDescription :
+                        <%= @reviews["ratingDescription"] %><br>
+                        cultureAndValuesRating :
+                        <%= @reviews["cultureAndValuesRating"] %><br>
+                        seniorLeadershipRating :
+                        <%= @reviews["seniorLeadershipRating"] %><br>
+                        compensationAndBenefitsRating :
+                        <%= @reviews["compensationAndBenefitsRating"] %><br>
+                        careerOpportunitiesRating :
+                        <%= @reviews["careerOpportunitiesRating"] %><br>
+                        workLifeBalanceRating :
+                        <%= @reviews["workLifeBalanceRating"] %><br>
+                        recommendToFriendRating :
+                        <%= @reviews["recommendToFriendRating"] %><br>
+                        sectorId :
+                        <%= @reviews["sectorId"] %><br>
+                        sectorName :
+                        <%= @reviews["sectorName"] %><br>
+                        industryId :
+                        <%= @reviews["industryId"] %><br>
+                        industryName :
+                        <%= @reviews["industryName"] %><br>
+
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="messages">
+
+                        <h2>Company Twitter</h2>
+                        <% @client.user_timeline(@descomp.twitter).each do |t| %>
+                        <%= t.text %><br><br>
+                        <% end %>
+
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="settings">
+                        <h2>Boss' Information</h2>
+                        <% @descomp.bosses.each do |boss| %>
+                        <%= image_tag boss.gravatar_avatar %><br>
+                        <%= boss.email %><br>
+                        <%= boss.twitter %><br>
+                        <%= boss.linked %><br>
+                        <%= boss.name %><br>
+                        <%= boss.twitter_bio %><br>
+                        <%= boss.twitter_followers %><br>
+                        <%= boss.twitter_following %><br>
+                        <%= boss.twitter_site %><br>
+                        <%= boss.twitter_avatar %><br>
+                        <%= boss.company %><br>
+                        <%= boss.gender %><br>
+                        <%= boss.location %><br>
+                        <%= boss.facebook %><br>
+                        <%= boss.github_handle %><br>
+                        <%= boss.github_avatar %><br>
+                        <%= boss.github_company %><br>
+                        <%= boss.github_blog %><br>
+                        <%= boss.github_followers %><br>
+                        <%= boss.github_following %><br>
+                        <%= boss.google %><br>
+                        <%= boss.angellist %><br>
+                        <%= boss.angel_bio %><br>
+                        <%= boss.angel_blog %><br>
+                        <%= boss.angel_avatar %><br>
+                        <%= boss.about_handle %><br>
+                        <%= boss.about_bio %><br>
+                        <%= boss.about_avatar %><br>
+                        <%= boss.gravatar %><br>
+                        <%= boss.valve %><br>
+                        <% end %>
+
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="settings2">
+                        <h2>Boss' Twitter</h2>
+                        <% @descomp.bosses.each do |boss| %>
+                        <% @client.user_timeline( boss.twitter ).each do |t| %>
+                        <%= t.text %><br><br>
+                        <% end %>
+                        <% end %>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <hr><br>
+
+            <hr><br>
+
+            <hr>
+
+        </div>
+    </body>
+</html>

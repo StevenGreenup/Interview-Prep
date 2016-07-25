@@ -207,6 +207,7 @@ DEPENDENCIES
   byebug
   clearbit
   coffee-rails (~> 4.2)
+  http
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)

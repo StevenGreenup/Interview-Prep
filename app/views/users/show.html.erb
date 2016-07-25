@@ -100,6 +100,9 @@
               <%= form_for @boss, url: new_boss_path do |f| %>
               <%= f.label :email %>
               <%= f.text_field :email, class:"form-control" %>
+              <%= f.label :company %>
+              <%= f.collection_select :descomp_id, Descomp.all, :id, :company, {prompt: true}, class:"form-control" %><br>
+
               <%= f.submit "New Boss", class:"btn btn-primary" %>
               <% end %>
             </div>
@@ -128,8 +131,6 @@
               <%= f.text_field :company, class:"form-control" %>
               <%= f.label :url %>
               <%= f.text_field :url, class:"form-control" %>
-              <%= f.label :boss_id, "Select Boss" %>
-              <%= f.collection_select :boss_id, Boss.all, :id, :email, {prompt: true}, class:"form-control" %><br>
               <%= f.submit "New Company", class:"btn btn-primary" %>
 
 
@@ -146,76 +147,32 @@
 <div class="container">
   <div class="panel">
 
+<h2>Instructions</h2>
+<p>
+  To create a new company profile:
+  <ol>
+    <li>Click "New Company" and fill out the fields.</li>
+    <li>Click "New Boss" if you know who is going to be interviewing you, and fill out all of the fields.</li>
+  </ol>
+</p>
+<hr>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#item1-services">New Resume</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newcomp">New Company</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newboss">New Boss</button><br>
 
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newboss">New Boss</button>
 
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newcomp">New Company</button><br>
-
+<h2>My Resume<small>(s)</small></h2>
   <% @resumes.each do |resume| %>
-  <%= link_to resume.id, resume_path(id: resume.id) %><br>
+  <%= link_to "#{@current_user.name} Resume", resume_path(id: resume.id) %><br>
   <% end %>
-
+<h2>My Companie<small>(s)</small></h2>
 <% @descomps.each do |descomp| %>
 <%= link_to descomp.company, company_path(id: descomp.id) %><br>
 
-<%= descomp.twitter %><br>
-<%= descomp.linked %><br>
-<%= descomp.tag %><br>
-<%= descomp.desc %><br>
-<%= descomp.phone %><br>
-<%= descomp.email %><br>
-<%= descomp.sector %><br>
-<%= descomp.industrygroup %><br>
-<%= descomp.industry %><br>
-<%= descomp.subindustry %><br>
-<%= descomp.tags %><br>
-<%= descomp.description %><br>
-<%= descomp.founded %><br>
-<%= descomp.address %><br>
-<%= image_tag descomp.logo %><br>
-<%= descomp.facebook %><br>
-<%= descomp.twitbio %><br>
-<%= descomp.followers %><br>
-<%= descomp.following %><br>
-<%= descomp.twitlocate %><br>
-<%= descomp.twitsite %><br>
-<%= image_tag descomp.avatar %><br>
-<%= link_to descomp.url, descomp.url %><br>
+
 <% end %>
 
 
-<% @bosses.each do |boss| %>
-<%= boss.email %><br>
-<%= boss.twitter %><br>
-<%= boss.linked %><br>
-<%= boss.name %><br>
-<%= boss.twitter_bio %><br>
-<%= boss.twitter_followers %><br>
-<%= boss.twitter_following %><br>
-<%= boss.twitter_site %><br>
-<%= boss.twitter_avatar %><br>
-<%= boss.company %><br>
-<%= boss.gender %><br>
-<%= boss.location %><br>
-<%= boss.facebook %><br>
-<%= boss.github_handle %><br>
-<%= boss.github_avatar %><br>
-<%= boss.github_company %><br>
-<%= boss.github_blog %><br>
-<%= boss.github_followers %><br>
-<%= boss.github_following %><br>
-<%= boss.google %><br>
-<%= boss.angellist %><br>
-<%= boss.angel_bio %><br>
-<%= boss.angel_blog %><br>
-<%= boss.angel_avatar %><br>
-<%= boss.about_handle %><br>
-<%= boss.about_bio %><br>
-<%= boss.about_avatar %><br>
-<%= boss.gravatar %><br>
-<%= boss.valve %><br>
-<%= image_tag boss.gravatar_avatar %><br>
-<% end %>
+
   </div>
 </div>

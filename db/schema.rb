@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160725141412) do
+ActiveRecord::Schema.define(version: 20160725152538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20160725141412) do
     t.string   "gravatar"
     t.string   "valve"
     t.string   "gravatar_avatar"
+    t.integer  "descomp_id"
   end
 
   create_table "descomps", force: :cascade do |t|

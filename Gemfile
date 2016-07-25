@@ -31,6 +31,7 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'clearbit'
 gem 'twitter'
+gem 'http'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

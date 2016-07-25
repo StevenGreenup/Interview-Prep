@@ -11,7 +11,6 @@ class DescompsController < ApplicationController
    @descomp = Descomp.new
    @descomp.company = params[:descomp][:company]
    @descomp.url = params[:descomp][:url]
-   @descomp.boss_id = params[:descomp][:boss_id]
    @descomp.user_id = @current_user.id
 
   company = Clearbit::Enrichment::Company.find(domain: @descomp.url, company_name: @descomp.company)
@@ -45,18 +44,10 @@ class DescompsController < ApplicationController
  end
 
 def twitter
-     client = Twitter::REST::Client.new do |config|
-       config.consumer_key = 'bj1mCgHVtRNBdl3O8PQZSaEm4'
-       config.consumer_secret = 'bM0KvFA2LmAuGYQoKvLEJmjGWhXcSZXOzMrECT5NtegPfPYbV1'
-       config.access_token = '3140458521-khcyswB6LhghdoikJtjRdD3JW4kYxJvhm50S2Yy'
-       config.access_token_secret = 'qQHHo02X5K5YcJLC0hFmIrAaduiAJxRsHZtnzDrnqE3CD'
-     end
 
-   @twitter = client.user_timeline("BurnsMcDonnell")
 end
 
 def glassdoor
-  # http://api.glassdoor.com/api/api.htm?v=1&format=json&t.p=81085&t.k=bh25srPSqNc&action=employers&q=Burns-and-McDonnell&userip=192.168.43.42&useragent=Mozilla/%2F4.0
   # Partner ID:	81085
   # Key:	bh25srPSqNc
 end
@@ -65,6 +56,20 @@ end
 
  def show
    @descomp = Descomp.find_by id: params[:id]
+
+   @client = Twitter::REST::Client.new do |config|
+     config.consumer_key = 'bj1mCgHVtRNBdl3O8PQZSaEm4'
+     config.consumer_secret = 'bM0KvFA2LmAuGYQoKvLEJmjGWhXcSZXOzMrECT5NtegPfPYbV1'
+     config.access_token = '3140458521-khcyswB6LhghdoikJtjRdD3JW4kYxJvhm50S2Yy'
+     config.access_token_secret = 'qQHHo02X5K5YcJLC0hFmIrAaduiAJxRsHZtnzDrnqE3CD'
+   end
+
+    company = @descomp.company.downcase.tr(" ", "-")
+   url = "http://api.glassdoor.com/api/api.htm?v=1&format=json&t.p=81085&t.k=bh25srPSqNc&action=employers&q=#{company}&userip=192.168.43.42&useragent=Mozilla/%2F4.0"
+   json = JSON.parse(Http.get(url).body)
+
+   @reviews = (json["response"]["employers"]).first
+
  end
 
 
