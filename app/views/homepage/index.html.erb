@@ -27,19 +27,19 @@
           <h1>Sign up</h1>
           <%= form_for @user, url: create_user_path do |f| %>
           <div class="form-label-text">
-          <%= f.label :name %>
-          <%= f.text_field :name, class:"form-control", placeholder:"Full Name" %>
+          <h4>Name</h4>
+          <%= f.text_field :name, class:"form-control", placeholder:"Full Name" %><br>
           </div>
             <div class="form-label-text">
-          <%= f.label :email %>
-          <%= f.text_field :email, class:"form-control", placeholder:"example@email.com" %>
+          <h4>Email</h4>
+          <%= f.text_field :email, class:"form-control", placeholder:"example@email.com" %><br>
             </div>
             <div class="form-label-text">
-          <%= f.label :password %>
-          <%= f.password_field :password, class:"form-control" %>
+          <h4>Password</h4>
+          <%= f.password_field :password, class:"form-control" %><br>
             </div>
             <div class="form-label-text">
-          <%= f.label :password_confirmation %>
+          <h4>Password Confirmation</h4>
           <%= f.password_field :password_confirmation, class:"form-control" %>
         </div><br>
           <%= f.submit "Sign up", class:"btn btn-primary"%>
