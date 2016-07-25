@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160722195851) do
+ActiveRecord::Schema.define(version: 20160725141412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20160722195851) do
     t.string   "twitsite"
     t.string   "avatar"
     t.string   "url"
+    t.string   "boss_id"
   end
 
   create_table "resumes", force: :cascade do |t|

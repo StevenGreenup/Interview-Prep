@@ -11,6 +11,7 @@ class DescompsController < ApplicationController
    @descomp = Descomp.new
    @descomp.company = params[:descomp][:company]
    @descomp.url = params[:descomp][:url]
+   @descomp.boss_id = params[:descomp][:boss_id]
    @descomp.user_id = @current_user.id
 
   company = Clearbit::Enrichment::Company.find(domain: @descomp.url, company_name: @descomp.company)
@@ -55,9 +56,9 @@ def twitter
 end
 
 def glassdoor
-  http://api.glassdoor.com/api/api.htm?v=1&format=json&t.p=81085&t.k=bh25srPSqNc&action=employers&q=Burns-and-McDonnell&userip=192.168.43.42&useragent=Mozilla/%2F4.0
-  Partner ID:	81085
-  Key:	bh25srPSqNc
+  # http://api.glassdoor.com/api/api.htm?v=1&format=json&t.p=81085&t.k=bh25srPSqNc&action=employers&q=Burns-and-McDonnell&userip=192.168.43.42&useragent=Mozilla/%2F4.0
+  # Partner ID:	81085
+  # Key:	bh25srPSqNc
 end
 
 

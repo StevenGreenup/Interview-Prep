@@ -75,7 +75,7 @@
                 <%= f.text_field :cert2, class:"form-control" %>
                 <%= f.label :cert3, "Certification (3)" %>
                 <%= f.text_field :cert3, class:"form-control" %>
-                <%= f.submit %>
+                <%= f.submit "Create Resume", class:"btn btn-primary" %>
                 <% end %>
             </div>
         </div>
@@ -100,7 +100,7 @@
               <%= form_for @boss, url: new_boss_path do |f| %>
               <%= f.label :email %>
               <%= f.text_field :email, class:"form-control" %>
-              <%= f.submit %>
+              <%= f.submit "New Boss", class:"btn btn-primary" %>
               <% end %>
             </div>
         </div>
@@ -128,7 +128,11 @@
               <%= f.text_field :company, class:"form-control" %>
               <%= f.label :url %>
               <%= f.text_field :url, class:"form-control" %>
-              <%= f.submit %>
+              <%= f.label :boss_id, "Select Boss" %>
+              <%= f.collection_select :boss_id, Boss.all, :id, :email, {prompt: true}, class:"form-control" %><br>
+              <%= f.submit "New Company", class:"btn btn-primary" %>
+
+
               <% end %>
             </div>
         </div>
@@ -142,12 +146,12 @@
 <div class="container">
   <div class="panel">
 
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#item1-services">New Resume</button>
 
-  <button type="button" class="btn btn-primary mt10" data-toggle="modal" data-target="#item1-services">New Resume</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newboss">New Boss</button>
 
-  <button type="button" class="btn btn-primary mt10" data-toggle="modal" data-target="#newboss">New Boss</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newcomp">New Company</button><br>
 
-  <button type="button" class="btn btn-primary mt10" data-toggle="modal" data-target="#newcomp">New Company</button><br>
   <% @resumes.each do |resume| %>
   <%= link_to resume.id, resume_path(id: resume.id) %><br>
   <% end %>
