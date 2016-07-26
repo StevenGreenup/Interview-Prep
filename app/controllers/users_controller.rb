@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action except: [] do
+  before_action except: [:create] do
   if session[:user_id].nil?
     redirect_to sign_in_path, notice: "You must sign in!"
   end
