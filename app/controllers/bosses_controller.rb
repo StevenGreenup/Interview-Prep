@@ -56,4 +56,17 @@ end
     render :new
   end
   end
+
+
+
+def update
+  @boss = Boss.find_by id: params[:id]
+  @boss.twitter = params[:boss][:twitter]
+   @boss.save
+    redirect_to user_path(id: @current_user.id)
+
+  end
+
+
+
 end

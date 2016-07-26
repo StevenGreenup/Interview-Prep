@@ -5,11 +5,14 @@ Rails.application.routes.draw do
   get 'resumes/:id' => 'resumes#show'
   get 'resumes/new' => 'resumes#new'
 
+  patch 'company/:id' => 'descomps#update', as: :edit_company
+  patch 'bosses/:id' => 'bosses#update', as: :edit_boss
   post 'companies' => 'descomps#create', as: :new_company
   post 'bosses' => 'bosses#create', as: :new_boss
   get 'bosses/new' => 'bosses#new'
   get 'companies/new' => 'descomps#new'
   get 'company/:id' => 'descomps#show', as: :company
+
 
   get 'twitter' => 'descomps#twitter'
 

@@ -86,7 +86,15 @@ align-items: center;
 
 .container{
   padding-top: 100px;
-  padding-left: 100px;
+}
+
+.container2{
+  margin-top: 100px;
+  margin-left: 100px;
+  margin-right: 100px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: white;
 }
 
 
@@ -96,4 +104,12 @@ align-items: center;
   position: absolute;
   top: 550px;
   right: 30px;
+}
+
+.tab-content{
+  background-color: white;
+.tab-pane{
+  background-color: white;
+  padding: 0px;
+}
 }

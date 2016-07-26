@@ -1,4 +1,3 @@
-
 <div class="modal fade" id="item1-services" tabindex="-1" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -85,7 +84,6 @@
 </div>
 <!-- /.modal -->
 
-
 <div class="modal fade" id="newboss" tabindex="-1" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -97,14 +95,14 @@
                 <h4 class="service-title">New Boss</h4>
             </div>
             <div class="modal-body">
-              <%= form_for @boss, url: new_boss_path do |f| %>
-              <%= f.label :email %>
-              <%= f.text_field :email, class:"form-control" %>
-              <%= f.label :company %>
-              <%= f.collection_select :descomp_id, Descomp.all, :id, :company, {prompt: true}, class:"form-control" %><br>
+                <%= form_for @boss, url: new_boss_path do |f| %>
+                <%= f.label :email %>
+                <%= f.text_field :email, class:"form-control" %>
+                <%= f.label :company %>
+                <%= f.collection_select :descomp_id, Descomp.all, :id, :company, {prompt: true}, class:"form-control" %><br>
 
-              <%= f.submit "New Boss", class:"btn btn-primary" %>
-              <% end %>
+                <%= f.submit "New Boss", class:"btn btn-primary" %>
+                <% end %>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -112,8 +110,6 @@
     <!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
-
-
 
 <div class="modal fade" id="newcomp" tabindex="-1" role="dialog">
     <div class="modal-dialog">
@@ -126,15 +122,14 @@
                 <h4 class="service-title">New Company</h4>
             </div>
             <div class="modal-body">
-              <%= form_for @descomp, url: new_company_path do |f| %>
-              <%= f.label :company %>
-              <%= f.text_field :company, class:"form-control" %>
-              <%= f.label :url %>
-              <%= f.text_field :url, class:"form-control" %>
-              <%= f.submit "New Company", class:"btn btn-primary" %>
+                <%= form_for @descomp, url: new_company_path do |f| %>
+                <%= f.label :company %>
+                <%= f.text_field :company, class:"form-control" %>
+                <%= f.label :url %>
+                <%= f.text_field :url, class:"form-control" %>
+                <%= f.submit "New Company", class:"btn btn-primary" %>
 
-
-              <% end %>
+                <% end %>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -144,35 +139,33 @@
 <!-- /.modal -->
 <br>
 
-<div class="container">
-  <div class="panel">
+<div class="container2">
+    <div class="panel">
 
-<h2>Instructions</h2>
-<p>
-  To create a new company profile:
-  <ol>
-    <li>Click "New Company" and fill out the fields.</li>
-    <li>Click "New Boss" if you know who is going to be interviewing you, and fill out all of the fields.</li>
-  </ol>
-</p>
-<hr>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#item1-services">New Resume</button>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newcomp">New Company</button>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newboss">New Boss</button><br>
+        <h2>Instructions</h2>
+        <p>
+            To create a new company profile:
+            <ol>
+                <li>Click "New Company" and fill out the fields.</li>
+                <li>Click "New Boss" if you know who is going to be interviewing you, and fill out all of the fields.</li>
+            </ol>
+        </p>
+        <hr>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#item1-services">New Resume</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newcomp">New Company</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newboss">New Boss</button><br>
 
+        <h2>My Resume<small>(s)</small>
+        </h2>
+        <% @resumes.each do |resume| %>
+        <%= link_to "#{@current_user.name} Resume", resume_path(id: resume.id) %><br>
+        <% end %>
+        <h2>My Companie<small>(s)</small>
+        </h2>
+        <% @descomps.each do |descomp| %>
+        <%= link_to descomp.company, company_path(id: descomp.id) %><br>
 
-<h2>My Resume<small>(s)</small></h2>
-  <% @resumes.each do |resume| %>
-  <%= link_to "#{@current_user.name} Resume", resume_path(id: resume.id) %><br>
-  <% end %>
-<h2>My Companie<small>(s)</small></h2>
-<% @descomps.each do |descomp| %>
-<%= link_to descomp.company, company_path(id: descomp.id) %><br>
+        <% end %>
 
-
-<% end %>
-
-
-
-  </div>
+    </div>
 </div>

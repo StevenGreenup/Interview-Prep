@@ -76,8 +76,8 @@
                         <%= @reviews["industry"] %><br>
                         numberOfRatings :
                         <%= @reviews["numberOfRatings"] %><br>
-                        squareLogo :
-                        <%= @reviews["squareLogo"] %><br>
+                        
+                        <%= image_tag @reviews["squareLogo"] %><br>
                         overallRating :
                         <%= @reviews["overallRating"] %><br>
                         ratingDescription :
@@ -102,20 +102,88 @@
                         <%= @reviews["industryId"] %><br>
                         industryName :
                         <%= @reviews["industryName"] %><br>
+                        ceo :
+                        <%= @reviews["ceo"]["name"] %><br>
+                        title :
+                        <%= @reviews["ceo"]["title"] %><br>
+                        numberOfRatings :
+                        <%= @reviews["ceo"]["numberOfRatings"] %><br>
+                        pctApprove :
+                        <%= @reviews["ceo"]["pctApprove"] %><br>
+                        pctDisapprove :
+                        <%= @reviews["ceo"]["pctDisapprove"] %><br>
+
+                        <%= image_tag @reviews["ceo"]["image"]["src"] %><br>
+
+                        featuredReview :
+                        <%= @reviews["featuredReview"]["attributionURL"] %><br>
+                        jobTitle :
+                        <%= @reviews["featuredReview"]["jobTitle"] %><br>
+                        location :
+                        <%= @reviews["featuredReview"]["location"] %><br>
+                        headline :
+                        <%= @reviews["featuredReview"]["location"] %><br>
+                        pros :
+                        <%= @reviews["featuredReview"]["pros"] %><br>
+                        cons :
+                        <%= @reviews["featuredReview"]["cons"] %><br>
+                        overall :
+                        <%= @reviews["featuredReview"]["overall"] %><br>
 
                     </div>
+
+                    <div class="modal fade" id="newcomp" tabindex="-1" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span class="ion-ios-close-empty"></span>
+                                    </button>
+                                    <span class="pe-7s-airplay services-icon-2"></span>
+                                    <h4 class="service-title">Edit Company Twitter</h4>
+                                </div>
+                                <div class="modal-body">
+                                  <%= form_for @descomp, url: edit_company_path(id: @descomp.id) do |f| %>
+                                  <%= f.label :twitter %>
+                                  <%= f.text_field :twitter, class:"form-control" %>
+
+                                  <%= f.submit "Edit Twitter Handle", class:"btn btn-primary" %>
+
+
+                                  <% end %>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+                    <!-- /.modal -->
+
                     <div role="tabpanel" class="tab-pane" id="messages">
 
                         <h2>Company Twitter</h2>
+                        <% if @descomp.twitter.nil? %>
+
+                        <%= form_for @descomp, url: edit_company_path(id: @descomp.id) do |f| %>
+                        <%= f.label :twitter %>
+                        <%= f.text_field :twitter, class:"form-control" %>
+                        <%= f.submit %>
+                        <% end %>
+
+                        <% else %>
                         <% @client.user_timeline(@descomp.twitter).each do |t| %>
                         <%= t.text %><br><br>
                         <% end %>
-
+                        <% end %>
+                          <% if @descomp.twitter.nil? %>
+                          <% else %>
+                        <h2>Not the correct twitter?</h2> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newcomp">Edit Twitter Handle</button>
+                          <% end %>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="settings">
                         <h2>Boss' Information</h2>
                         <% @descomp.bosses.each do |boss| %>
-                        <%= image_tag boss.gravatar_avatar %><br>
+                        <%= boss.gravatar_avatar %><br>
                         <%= boss.email %><br>
                         <%= boss.twitter %><br>
                         <%= boss.linked %><br>
@@ -148,25 +216,67 @@
                         <% end %>
 
                     </div>
+
+                    <div class="modal fade" id="newboss" tabindex="-1" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span class="ion-ios-close-empty"></span>
+                                    </button>
+                                    <span class="pe-7s-airplay services-icon-2"></span>
+                                    <h4 class="service-title">Edit Boss' Twitter</h4>
+                                </div>
+                                <div class="modal-body">
+                                  <% @descomp.bosses.each do |boss| %>
+                                  <%= form_for @boss, url: edit_boss_path(id: boss.id) do |f| %>
+                                  <%= f.label :twitter %>
+                                  <%= f.text_field :twitter, class:"form-control" %>
+
+                                  <%= f.submit "Edit Twitter Handle", class:"btn btn-primary" %>
+                                  <% end %>
+                                  <% end %>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+                    <!-- /.modal -->
+
+
+
                     <div role="tabpanel" class="tab-pane" id="settings2">
                         <h2>Boss' Twitter</h2>
                         <% @descomp.bosses.each do |boss| %>
-                        <% @client.user_timeline( boss.twitter ).each do |t| %>
-                        <%= t.text %><br><br>
-                        <% end %>
+                        <% if boss.twitter.nil? %>
+
+                        <%= form_for @boss, url: edit_boss_path(id: boss.id) do |f| %>
+                        <%= f.label :twitter %>
+                        <%= f.text_field :twitter, class:"form-control" %>
+                        <%= f.submit %>
                         <% end %>
 
+                        <% else %>
+                        <% @client.user_timeline( boss.twitter ).each do |t| %>
+                        <%= t.text %><br><br>
+
+                        <% end %>
+
+
+                        <% end %>
+                        <% end %>
+                        <% @descomp.bosses.each do |boss| %>
+                        <% if boss.twitter.nil? %>
+                        <% else %>
+                        <h2>Not the correct twitter?</h2> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newboss">Edit Twitter Handle</button><br>
+                        <% end %>
+                        <% end %>
                     </div>
 
                 </div>
 
             </div>
-
-            <hr><br>
-
-            <hr><br>
-
-            <hr>
 
         </div>
     </body>

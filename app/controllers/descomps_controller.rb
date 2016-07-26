@@ -56,7 +56,7 @@ end
 
  def show
    @descomp = Descomp.find_by id: params[:id]
-
+   @boss = Boss.find_by descomp_id: params[:id]
    @client = Twitter::REST::Client.new do |config|
      config.consumer_key = 'bj1mCgHVtRNBdl3O8PQZSaEm4'
      config.consumer_secret = 'bM0KvFA2LmAuGYQoKvLEJmjGWhXcSZXOzMrECT5NtegPfPYbV1'
@@ -71,6 +71,16 @@ end
    @reviews = (json["response"]["employers"]).first
 
  end
+
+
+
+ def update
+   @descomp = Descomp.find_by id: params[:id]
+   @descomp.twitter = params[:descomp][:twitter]
+    @descomp.save
+     redirect_to user_path(id: @current_user.id)
+
+   end
 
 
 
