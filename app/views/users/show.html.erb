@@ -139,33 +139,124 @@
 <!-- /.modal -->
 <br>
 
-<div class="container2">
-    <div class="panel">
 
-        <h2>Instructions</h2>
-        <p>
-            To create a new company profile:
-            <ol>
-                <li>Click "New Company" and fill out the fields.</li>
-                <li>Click "New Boss" if you know who is going to be interviewing you, and fill out all of the fields.</li>
-            </ol>
-        </p>
-        <hr>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#item1-services">New Resume</button>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newcomp">New Company</button>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newboss">New Boss</button><br>
 
-        <h2>My Resume<small>(s)</small>
-        </h2>
-        <% @resumes.each do |resume| %>
-        <%= link_to "#{@current_user.name} Resume", resume_path(id: resume.id) %><br>
-        <% end %>
-        <h2>My Companie<small>(s)</small>
-        </h2>
-        <% @descomps.each do |descomp| %>
-        <%= link_to descomp.company, company_path(id: descomp.id) %><br>
 
-        <% end %>
+
+
+<div class="container">
+    <div>
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+                <a href="#home" aria-controls="home" role="tab" data-toggle="tab"> <%= @current_user.name %>'s' Profile</a>
+            </li>
+            <li role="presentation">
+                <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Cleaners Near You</a>
+            </li>
+            <li role="presentation">
+                <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Something</a>
+            </li>
+            <li role="presentation">
+                <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Something</a>
+            </li>
+            <li role="presentation">
+                <a href="#settings2" aria-controls="settings" role="tab" data-toggle="tab">Something</a>
+            </li>
+
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="home">
+              <div class="container2">
+                  <div class="panel">
+
+                      <h2>Instructions</h2>
+                      <p>
+                          To create a new company profile:
+                          <ol>
+                              <li>Click "New Company" and fill out the fields.</li>
+                              <li>Click "New Boss" if you know who is going to be interviewing you, and fill out all of the fields.</li>
+                          </ol>
+                      </p>
+                      <hr>
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#item1-services">New Resume</button>
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newcomp">New Company</button>
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newboss">New Boss</button><br>
+
+                      <h2>My Resume<small>(s)</small>
+                      </h2>
+                      <% @resumes.each do |resume| %>
+                      <%= link_to "#{@current_user.name} Resume", resume_path(id: resume.id) %><br>
+                      <% end %>
+                      <h2>My Companie<small>(s)</small>
+                      </h2>
+                      <% @descomps.each do |descomp| %>
+                      <%= link_to descomp.company, company_path(id: descomp.id) %><br>
+
+                      <% end %>
+
+                  </div>
+              </div>
+
+
+            </div>
+            <% if @user_location["lat"].nil? && @user_location["long"].nil? %>
+            input address
+            <% else %>
+            <div role="tabpanel" class="tab-pane" id="profile">
+              <div class="map">
+                  <div id="main_map"></div>
+
+                  <script type="text/javascript">
+
+                      var mymap = L.map('main_map').setView([
+                          <%= @user_location["lat"] %>, <%= @user_location["lon"] %>
+                      ], 13);
+
+                      L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZ3JlZW51cCIsImEiOiJjaXFudW4wNjcwMWQ1Zm9ubjQ0eHB6ejU5In0.8U3wnPsvgv9fAV4VnC2apA', {
+                          attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+                          maxZoom: 18,
+                          id: 'greenup.0m0k3acb',
+                          accessToken: 'pk.eyJ1IjoiZ3JlZW51cCIsImEiOiJjaXFudW4wNjcwMWQ1Zm9ubjQ0eHB6ejU5In0.8U3wnPsvgv9fAV4VnC2apA'
+                      }).addTo(mymap);
+
+                      L.marker([<%= @user_location["lat"] %>, <%= @user_location["lon"] %>]).addTo(mymap).bindPopup("You Are Here");
+                      <% @cleaners.each do |venue| %>
+                      L.marker([<%= venue["location"]["lat"]%>, <%= venue["location"]["lng"]%>]).addTo(mymap).bindPopup("<%= venue[" name "] %>");
+                      <% end %>
+                  </script>
+              </div>
+              <% end %>
+
+            </div>
+
+
+
+            <div role="tabpanel" class="tab-pane" id="messages">
+
+              put shit here
+
+
+            </div>
+            <div role="tabpanel" class="tab-pane" id="settings">
+
+              put shit here
+
+            </div>
+
+
+
+
+
+            <div role="tabpanel" class="tab-pane" id="settings2">
+put shit here
+            </div>
+
+        </div>
 
     </div>
+
 </div>

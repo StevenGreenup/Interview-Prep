@@ -17,6 +17,6 @@
 //= require homepage
 //= require users
 //= require bosses
-
+//= require leaflet
 
 //= require_tree .

@@ -902,59 +902,9 @@ ul.social-buttons li a:active {
 
 
 
-/* =Services
--------------------------------------------------------------- */
-.services-icon {
-    font-size: 40px;
-    color: #8980fe;
-}
-
-.service-name {
-    margin-bottom: 15px;
-    margin-top: 15px;
-}
-
-.services-icon-2 {
-    color: #fff;
-    line-height: .8;
-    font-size: 70px;
-    float: left;
-    margin-right: 15px;
-}
-
-.service-title {
-    color: #fff;
-    font-family: "Montserrat",sans-serif;
-    font-size: 28px;
-    margin-top: 13px;
-}
-
-.services-box {
-    padding: 30px;
-    background-color: #212121;
-    border-left: 2px solid #292929;
-    -webkit-transition: 0.6s;
-    -moz-transition: 0.6s;
-    -o-transition: 0.6s;
-    transition: 0.6s;
-}
 
 
 
-/* =Footer
--------------------------------------------------------------- */
-.theme-title {
-    font-family: 'Montserrat', sans-serif;
-    color: #333333;
-    font-size: 24px;
-    text-transform: uppercase;
-    margin-bottom: 15px;
-    margin-top: 10px;
-}
-
-.theme-title-smaller {
-    font-size: 16px;
-}
 
 footer hr {
     margin-top: 45px;
@@ -963,45 +913,9 @@ footer hr {
     border-top: 1px solid #353535;
 }
 
-.btn-up-footer {
-    display: inline-block;
-    position: relative;
-    top:-21px;
-}
 
-.social-icons-dark-hover {
-    color: #fff;
-    -webkit-transition: color 500ms;
-    -moz-transition: color 500ms;
-    -o-transition: color 500ms;
-    transition: color 500ms;
-}
 
-.social-icons-dark-hover:hover {
-    color: rgba(255, 255, 255, 0.70);
-}
 
-#clock span {
-    display: block;
-    font-size: 12px;
-    color: #ccc;
-}
-
-#clock b {
-    font-family: 'Montserrat';
-    display: block;
-    font-size: 50px;
-    line-height: 46px;
-}
-
-#clock .clock-section {
-    display: inline-block;
-    padding: 0 20px;
-}
-
-#clock .clock-section:last-child {
-    border-right: none;
-}
 
 /* =Media Queries
 -------------------------------------------------------------- */
@@ -1037,12 +951,6 @@ footer hr {
 }
 
 @media (min-width: 768px) {
-	.timeline:before { left:50%; }
-	.timeline > li { margin-bottom:100px; min-height:100px; }
-	.timeline > li .timeline-panel { width:41%; float:left; padding:0 20px 20px 30px; text-align:right; }
-	.timeline > li .timeline-image { width:100px; height:100px; left:50%; margin-left:-50px; }
-	.timeline > li .timeline-image h4 { font-size:13px; margin-top:16px; line-height:18px; }
-	.timeline > li.timeline-inverted > .timeline-panel { float:right; text-align:left; padding:0 30px 20px 20px; }
 	.modal-dialog { margin:100px auto; }
     .navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand { margin-left:0; }
     .dropdown .dropdown-menu{ display:block; opacity:0; -webkit-transition:all 200ms ease-in; -moz-transition:all 200ms ease-in; -ms-transition:all 200ms ease-in; -o-transition:all 200ms ease-in; transition:all 200ms ease-in; }
@@ -1060,20 +968,4 @@ footer hr {
 	.mt30-sm { margin-top:30px; }
 	.mb30-sm { margin-bottom:30px; }
     .jumbotron.jumbotron-register h1 { font-size:45px; }
-}
-
-@media (min-width:992px) {
-	.timeline > li { min-height:150px; }
-	.timeline > li .timeline-panel { padding:0 20px 20px; }
-	.timeline > li .timeline-image { width:150px; height:150px; margin-left:-75px; }
-	.timeline > li .timeline-image h4 { font-size:18px; margin-top:30px; line-height:26px; }
-	.timeline > li.timeline-inverted > .timeline-panel { padding:0 20px 20px; }
-}
-
-@media (min-width:1200px) {
-	.timeline > li { min-height:170px; }
-	.timeline > li .timeline-panel { padding:0 20px 20px 30px; }
-	.timeline > li .timeline-image { width:170px; height:170px; margin-left:-85px; }
-	.timeline > li .timeline-image h4 { margin-top:40px; }
-	.timeline > li.timeline-inverted > .timeline-panel { padding:0 30px 20px 20px; }
 }
