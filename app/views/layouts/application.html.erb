@@ -75,13 +75,7 @@
                     <div class="modal-content">
 
                         <div class="sign-in" style="visibility: visible">
-                            <% if @user.errors.any? %>
-                            <div class="alert alert-danger" role="alert">
-                                <% @user.errors.full_messages.each do |msg| %>
-                                <%= msg %><br>
-                                <% end %>
-                            </div>
-                            <% end %>
+  
                             <h2>Sign in</h2>
                             <%= form_tag create_session_path do %>
                             <%= label_tag :email %>

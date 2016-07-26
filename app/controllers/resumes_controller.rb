@@ -1,4 +1,11 @@
 class ResumesController < ApplicationController
+
+  before_action except: [] do
+  if session[:user_id].nil?
+    redirect_to sign_in_path, notice: "You must sign in!"
+  end
+end
+
   def new
   end
 
