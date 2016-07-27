@@ -1,8 +1,14 @@
 $("window").ready(function(){
 
 
-//   $(".services").on("click",function(){
-//     $( ".navbar-fixed-top" ).animate({
+  $(".services").on("click",function(){
+    $( ".navbar-fixed-top" ).animate({
+
+      'height':"500px",
+
+
+    }, 100 );
+    });
 
   $( ".logo-top" ).on("mouseover",function() {
     $( this ).animate({
