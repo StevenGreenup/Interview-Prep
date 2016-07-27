@@ -32,6 +32,7 @@ gem 'wkhtmltopdf-binary'
 gem 'clearbit'
 gem 'twitter'
 gem 'http'
+gem 'leaflet-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

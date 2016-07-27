@@ -31,8 +31,8 @@ align-items: center;
 .logo-top{
   position: fixed;
   top: 5px;
-
-  left: 47%;
+  margin-left: -42px;
+  left: 50%;
   width: 80px;
   height: 80px;
   background-color: #FF3B30;
@@ -48,9 +48,17 @@ align-items: center;
 
 .logo{
     vertical-align: middle;
-  width: 70px;
+  width: 55px;
   height: auto;
+  opacity: 0.8;
+
 }
+
+}
+.logo-big{
+  width: 250px;
+  height: auto;
+  opacity: 0.3;
 }
 
 .main-image{
