@@ -3,6 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+
+
 .modal-sm{
   width: 400px;
   .sign-up{
@@ -128,4 +130,20 @@ align-items: center;
   background-color: white;
   width: 400px;
   height: 400px;
+}
+
+
+
+.nav-about{
+  width: 100%;
+  height: auto;
+}
+
+
+
+.col-sm-12{
+  margin-top: 20px;
+  .col-sm-6{
+    border: 1px solid #1d1d1d;
+  }
 }

@@ -7,6 +7,30 @@
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <style>
+        .navbar-fixed-top{
+
+        }
+        .navbar-show{
+          height: 100%;
+          background: rgba(179, 184, 185, 0.98) none repeat scroll 0% 0%;
+        }
+
+        #nav-about  {
+          display: none;
+        }
+
+        .navbar-show #nav-about {
+          display: block;
+        }
+
+
+        </style>
+
+      <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+
     </head>
 
     <body>
@@ -57,7 +81,7 @@
                                     <a href="#services" data-id="services" class="scroll-link services">Services</a>
                                 </li>
                                 <li>
-                                    <a href="#contact" data-id="contact" class="scroll-link">Contact</a>
+                                    <a href="#contact" data-id="contact" class="scroll-link contact">Contact</a>
                                 </li>
                                 <% if @current_user %>
                                 <li><%= link_to 'Sign Out', sign_in_path, method: :delete %></li>
@@ -66,6 +90,9 @@
                         </div>
                         <!-- /.navbar-collapse -->
                     </div>
+                </div>
+                <div id="nav-about">
+
                 </div>
                 <!-- /.container-fluid -->
             </nav>

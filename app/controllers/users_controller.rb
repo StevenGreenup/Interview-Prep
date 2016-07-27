@@ -25,6 +25,12 @@ end
             render :new
       end
   end
+
+  def me
+    show
+    render :show
+  end
+
   def show
     @resume = Resume.new
     @boss = Boss.new
