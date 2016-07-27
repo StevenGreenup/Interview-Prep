@@ -34,11 +34,11 @@ end
     @bosses = Boss.where(user_id: @current_user.id)
 
     @location = Resume.where(user_id: @current_user.id).first.address
+    if @location.nil?
 
+    else
     results = JSON.parse(Http.get("http://locationiq.org/v1/search.php?key=aadeb08b6efdd94689f7&format=json&q=#{CGI::escape(@location)}").body)
-
     puts "http://locationiq.org/v1/search.php?key=aadeb08b6efdd94689f7&format=json&q=#{CGI::escape(@location)}"
-
     @user_location = results.first
 
     lat = @user_location["lat"]
@@ -50,6 +50,6 @@ end
     json = JSON.parse(Http.get(url).body)
 
     @cleaners = json["response"]["venues"]
-
+    end
   end
 end

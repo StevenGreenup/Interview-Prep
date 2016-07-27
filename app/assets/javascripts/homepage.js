@@ -1,7 +1,13 @@
 $("window").ready(function(){
 
 
-
+//   $(".services").on("click",function(){
+//     $( ".navbar-fixed-top" ).animate({
+//     'top':'100vh',
+//
+//   }, 100 );
+// 
+// });
 
   $( ".logo-top" ).on("mouseover",function() {
     $( this ).animate({
