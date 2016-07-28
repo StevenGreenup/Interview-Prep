@@ -13,14 +13,14 @@
 
   <% else %>
       <div class="sign-up-div">
-        <div class="sign-up" >
-          <% if @user.errors.any? %>
+        <% if @user.errors.any? %>
           <div class="alert alert-danger" role="alert">
-              <% @user.errors.full_messages.each do |msg| %>
+            <% @user.errors.full_messages.each do |msg| %>
               <%= msg %><br>
-              <% end %>
+            <% end %>
           </div>
-          <% end %>
+        <% end %>
+        <div class="sign-up" >
           <h1>Sign up</h1>
           <%= form_for @user, url: create_user_path do |f| %>
           <div class="form-label-text">
@@ -29,7 +29,7 @@
           </div>
             <div class="form-label-text">
           <h4>Email</h4>
-          <%= f.text_field :email, class:"form-control", placeholder:"example@email.com" %><br>
+          <%= f.email_field :email, class:"form-control", placeholder:"example@email.com" %><br>
             </div>
             <div class="form-label-text">
           <h4>Password</h4>

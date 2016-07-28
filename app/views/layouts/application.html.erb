@@ -9,27 +9,25 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
         <style>
-        .navbar-fixed-top{
+            .navbar-fixed-top {
+                }
+            .navbar-show {
+                height: 100%;
+                background: rgba(179, 184, 185, 0.95) none repeat scroll 0 0;
+            }
 
-        }
-        .navbar-show{
-          height: 100%;
-          background: rgba(179, 184, 185, 0.98) none repeat scroll 0% 0%;
-        }
+            #nav-about {
+                display: none;
+            }
 
-        #nav-about  {
-          display: none;
-        }
-
-        .navbar-show #nav-about {
-          display: block;
-        }
-
+            .navbar-show #nav-about {
+                display: block;
+            }
 
         </style>
 
-      <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-      <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
 
     </head>
 
@@ -72,9 +70,9 @@
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                             <ul class="nav navbar-nav navbar-right">
-                              <% if @current_user %>
-                              <li><%= link_to "My Profile", user_path(id: @current_user.id) %></li>
-                              <% end %>
+                                <% if @current_user %>
+                                <li><%= link_to "My Profile", user_path(id: @current_user.id) %></li>
+                                <% end %>
 
                                 <li><%= link_to "Home", root_path %></li>
                                 <li>
@@ -88,21 +86,24 @@
                                 <% end %>
                             </ul>
                         </div>
-                        <!-- /.navbar-collapse -->
                     </div>
                 </div>
-                <div id="nav-about">
-
-                </div>
-                <!-- /.container-fluid -->
+                <div id="nav-about"></div>
             </nav>
-            <!-- End Navigation -->
+
 
             <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
                 <div class="modal-dialog modal-sm">
                     <div class="modal-content">
 
                         <div class="sign-in" style="visibility: visible">
+                            <% if notice %>
+                            <div class="alert alert-info" role="alert">
+                                <%= notice %>
+                            </div>
+                            <% end %>
+
+
 
                             <h2>Sign in</h2>
                             <%= form_tag create_session_path do %>
@@ -120,7 +121,6 @@
             </div>
 
         </header>
-
 
         <%= yield %>
         <!-- Begin Footer -->

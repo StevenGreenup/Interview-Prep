@@ -71,6 +71,10 @@ end
      config.access_token_secret = 'qQHHo02X5K5YcJLC0hFmIrAaduiAJxRsHZtnzDrnqE3CD'
    end
 
+   banner = @client.profile_banner(@descomp.twitter,options={}).to_hash
+   bossbanner = @client.profile_banner(@boss.twitter,options={}).to_hash
+  @banner_img  = banner[:sizes][:web][:url]
+  @boss_banner = bossbanner[:sizes][:web][:url]
     company = @descomp.company.downcase.tr(" ", "-")
 
    url = "http://api.glassdoor.com/api/api.htm?v=1&format=json&t.p=81085&t.k=bh25srPSqNc&action=employers&q=#{company}&userip=192.168.43.42&useragent=Mozilla/%2F4.0"

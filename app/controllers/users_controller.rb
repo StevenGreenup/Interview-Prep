@@ -22,6 +22,7 @@ end
             session[:user_id] = @user.id
             redirect_to user_path(id: @user.id)
         else
+          flash.now[:alert] = "Something went wrong. Try again."
             render :new
       end
   end
@@ -58,5 +59,11 @@ end
 
     @cleaners = json["response"]["venues"]
     end
+  end
+  def getstarted
+    @resume = Resume.new
+    @boss = Boss.new
+    @descomp = Descomp.new
+
   end
 end

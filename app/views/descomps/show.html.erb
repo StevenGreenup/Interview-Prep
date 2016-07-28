@@ -76,7 +76,7 @@
                         <%= @reviews["industry"] %><br>
                         numberOfRatings :
                         <%= @reviews["numberOfRatings"] %><br>
-                        
+
                         <%= image_tag @reviews["squareLogo"] %><br>
                         overallRating :
                         <%= @reviews["overallRating"] %><br>
@@ -143,14 +143,13 @@
                                     <h4 class="service-title">Edit Company Twitter</h4>
                                 </div>
                                 <div class="modal-body">
-                                  <%= form_for @descomp, url: edit_company_path(id: @descomp.id) do |f| %>
-                                  <%= f.label :twitter %>
-                                  <%= f.text_field :twitter, class:"form-control" %>
+                                    <%= form_for @descomp, url: edit_company_path(id: @descomp.id) do |f| %>
+                                    <%= f.label :twitter %>
+                                    <%= f.text_field :twitter, class:"form-control" %>
 
-                                  <%= f.submit "Edit Twitter Handle", class:"btn btn-primary" %>
+                                    <%= f.submit "Edit Twitter Handle", class:"btn btn-primary" %>
 
-
-                                  <% end %>
+                                    <% end %>
                                 </div>
                             </div>
                             <!-- /.modal-content -->
@@ -170,15 +169,23 @@
                         <%= f.submit %>
                         <% end %>
 
-                        <% else %>
+                    <% else %>
+
+                        <%=image_tag @banner_img %>
+
+                        <br>
                         <% @client.user_timeline(@descomp.twitter).each do |t| %>
-                        <%= t.text %><br><br>
+                        <div id="container">
+                            <%= raw(@client.oembed(t.id).html) %>
+                        </div>
+
                         <% end %>
                         <% end %>
-                          <% if @descomp.twitter.nil? %>
-                          <% else %>
-                        <h2>Not the correct twitter?</h2> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newcomp">Edit Twitter Handle</button>
-                          <% end %>
+                        <% if @descomp.twitter.nil? %>
+                    <% else %>
+                        <h2>Not the correct twitter?</h2>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newcomp">Edit Twitter Handle</button>
+                        <% end %>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="settings">
                         <h2>Boss' Information</h2>
@@ -228,14 +235,14 @@
                                     <h4 class="service-title">Edit Boss' Twitter</h4>
                                 </div>
                                 <div class="modal-body">
-                                  <% @descomp.bosses.each do |boss| %>
-                                  <%= form_for @boss, url: edit_boss_path(id: boss.id) do |f| %>
-                                  <%= f.label :twitter %>
-                                  <%= f.text_field :twitter, class:"form-control" %>
+                                    <% @descomp.bosses.each do |boss| %>
+                                    <%= form_for @boss, url: edit_boss_path(id: boss.id) do |f| %>
+                                    <%= f.label :twitter %>
+                                    <%= f.text_field :twitter, class:"form-control" %>
 
-                                  <%= f.submit "Edit Twitter Handle", class:"btn btn-primary" %>
-                                  <% end %>
-                                  <% end %>
+                                    <%= f.submit "Edit Twitter Handle", class:"btn btn-primary" %>
+                                    <% end %>
+                                    <% end %>
                                 </div>
                             </div>
                             <!-- /.modal-content -->
@@ -244,9 +251,8 @@
                     </div>
                     <!-- /.modal -->
 
-
-
                     <div role="tabpanel" class="tab-pane" id="settings2">
+                      <%= image_tag @boss_banner %>
                         <h2>Boss' Twitter</h2>
                         <% @descomp.bosses.each do |boss| %>
                         <% if boss.twitter.nil? %>
@@ -257,19 +263,20 @@
                         <%= f.submit %>
                         <% end %>
 
-                        <% else %>
+                    <% else %>
                         <% @client.user_timeline( boss.twitter ).each do |t| %>
-                        <%= t.text %><br><br>
+                        <%= raw(@client.oembed(t.id).html) %>
+
 
                         <% end %>
-
 
                         <% end %>
                         <% end %>
                         <% @descomp.bosses.each do |boss| %>
                         <% if boss.twitter.nil? %>
-                        <% else %>
-                        <h2>Not the correct twitter?</h2> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newboss">Edit Twitter Handle</button><br>
+                    <% else %>
+                        <h2>Not the correct twitter?</h2>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newboss">Edit Twitter Handle</button><br>
                         <% end %>
                         <% end %>
                     </div>

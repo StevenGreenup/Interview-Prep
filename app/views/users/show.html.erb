@@ -92,7 +92,7 @@
                     <span class="ion-ios-close-empty"></span>
                 </button>
                 <span class="pe-7s-airplay services-icon-2"></span>
-                <h4 class="service-title">New Boss</h4>
+                <h4 class="service-title">Research Hiring Manager</h4>
             </div>
             <div class="modal-body">
                 <%= form_for @boss, url: new_boss_path do |f| %>
@@ -101,7 +101,7 @@
                 <%= f.label :company %>
                 <%= f.collection_select :descomp_id, Descomp.all, :id, :company, {prompt: true}, class:"form-control" %><br>
 
-                <%= f.submit "New Boss", class:"btn btn-primary" %>
+                <%= f.submit "Research Hiring Manager", class:"btn btn-primary" %>
                 <% end %>
             </div>
         </div>
@@ -119,7 +119,7 @@
                     <span class="ion-ios-close-empty"></span>
                 </button>
                 <span class="pe-7s-airplay services-icon-2"></span>
-                <h4 class="service-title">New Company</h4>
+                <h4 class="service-title">Research Company</h4>
             </div>
             <div class="modal-body">
                 <%= form_for @descomp, url: new_company_path do |f| %>
@@ -127,7 +127,7 @@
                 <%= f.text_field :company, class:"form-control" %>
                 <%= f.label :url %>
                 <%= f.text_field :url, class:"form-control" %>
-                <%= f.submit "New Company", class:"btn btn-primary" %>
+                <%= f.submit "Research Company", class:"btn btn-primary" %>
 
                 <% end %>
             </div>
@@ -145,13 +145,13 @@
     <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" class="active">
             <a href="#home" aria-controls="home" role="tab" data-toggle="tab">
-                <%= @current_user.name %>'s' Profile</a>
+                Research Company and Hiring Manager</a>
         </li>
         <li role="presentation">
-            <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">51 Questions to ask</a>
+            <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Generate and View My Resume</a>
         </li>
         <li role="presentation">
-            <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Cleaners Near You</a>
+            <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Polish up for your interview</a>
         </li>
         <li role="presentation">
             <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Something</a>
@@ -168,30 +168,18 @@
             <div class="container2">
                 <div class="panel">
 
-                    <h2>Instructions</h2>
-                    <p>
-                        To create a new company profile:
-                        <ol>
-                            <li>Click "New Company" and fill out the fields.</li>
-                            <li>Click "New Boss" if you know who is going to be interviewing you, and fill out all of the fields.</li>
-                        </ol>
-                    </p>
-                    <hr>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#item1-services">New Resume</button>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newcomp">New Company</button>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newboss">New Boss</button><br>
 
-                    <h2>My Resume<small>(s)</small>
-                    </h2>
-                    <% @resumes.each do |resume| %>
-                    <%= link_to "#{@current_user.name} Resume", resume_path(id: resume.id) %><br>
-                    <% end %>
-                    <h2>My Companie<small>(s)</small>
-                    </h2>
+
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newcomp">1. Research Company</button><br>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newboss">2. Research Hiring Manager</button><br>
+                    <h2>Companies</h2>
                     <% @descomps.each do |descomp| %>
                     <%= link_to descomp.company, company_path(id: descomp.id) %><br>
 
                     <% end %>
+
+
+
 
                 </div>
             </div>
@@ -200,227 +188,244 @@
 
         <div role="tabpanel" class="tab-pane" id="profile">
 
-            <p>You probably already know that an interview isn't just a chance for a hiring manager to grill you with interview questions</a>
-            —it's your opportunity to sniff out whether a job is the right fit for you.&nbsp;Which means: It's important to go in with some questions. What do you want to know about the position? The company? The department? The team?</p>
-        <p>To get you thinking, we've put together a list of key questions to ask in your interview. We definitely don't suggest asking all of them rapid-fire—some of this stuff will certainly be covered during the course of your discussion, and you can
-            weave in other questions as you go.</p>
-        <p>But when the inevitable, "So, do you have any questions for us?" part of the interview comes? Use this list to make sure you've covered all your bases.</p>
-        <p></p>
-        <h2>
-            <strong>The Job</strong>
-        </h2>
-        <p></p>
-        <p>
-            <em>First, make sure you have a handle on exactly what the day-to-day responsibilities of the job will be—both now and in the future.</em>
-        </p>
-        <p></p>
-        <p>1. What does a typical day look like?</p>
-        <p></p>
-        <p></p>
-        <p>2. What are the most immediate projects that need to be addressed?</p>
-        <p></p>
-        <p></p>
-        <p>3. Can you show me examples of projects I'd be working on?</p>
-        <p></p>
-        <p></p>
-        <p>4. What are the skills and experiences you’re looking for in an ideal candidate?</p>
-        <p></p>
-        <p></p>
-        <p>5. What attributes does someone need to have in order to be really successful in this position?</p>
-        <p></p>
-        <p></p>
-        <p>6. What types of skills is the team missing that you’re looking to fill with a new hire?</p>
-        <p></p>
-        <p></p>
-        <p>7. What are the biggest challenges that someone in this position would face?</p>
-        <p></p>
-        <p></p>
-        <p>8. What sort of budget would I be working with?</p>
-        <p></p>
-        <p></p>
-        <p>9. Is this a new role that has been created?</p>
-        <p></p>
-        <p></p>
-        <p>10. Do you expect the main responsibilities for this position to change in the next six months to a year?</p>
-        <p></p>
-        <p></p>
-        <h2>Training and Professional Development</h2>
-        <p></p>
-        <p>
-            <em>Think of each new job not just as a job, but as the next step on your path to career success. Will this position help you get there?</em>
-        </p>
-        <p>11. How will I be trained?</p>
-        <p></p>
-        <p>12. What training programs are available to your employees?</p>
-        <p></p>
-        <p></p>
-        <p>13. Are there opportunities for advancement or professional development?</p>
-        <p></p>
-        <p></p>
-        <p>14. Would I be able to represent the company at industry conferences?</p>
-        <p></p>
-        <p></p>
-        <p>15. Where is the last person who held this job moving on to?</p>
-        <p></p>
-        <p></p>
-        <p>16. Where have successful employees previously in this position progressed to?</p>
-        <p></p>
-        <p></p>
-        <h2>Your Performance</h2>
-        <p></p>
-        <p>
-            <em>Make sure you're setting yourself up for success by learning up front the goals of the position and how your work will be evaluated.</em>
-        </p>
-        <p>
-            <i></i>17. What are the most important things you’d like to see someone accomplish in the first 30, 60, and 90 days on the job?</p>
-        <p>18. What are the performance expectations of this position over the first 12 months?</p>
-        <p></p>
-        <p>19. What is the performance review process like here? How often would I be formally reviewed?</p>
-        <p></p>
-        <p></p>
-        <p>20. What metrics or goals will my performance be evaluated against?</p>
-        <p></p>
-        <p></p>
-        <h2>Interviewer</h2>
-        <p></p>
-        <p>
-            <em>Asking questions of the interviewer shows that you're interested in him or her as a person—and that's a great way to build rapport.</em>
-        </p>
-        <p>21. How long have you been with the company?</p>
-        <p>22. Has your role changed since you've been here?</p>
-        <p></p>
-        <p>23. What did you do before this?</p>
-        <p></p>
-        <p></p>
-        <p>24. Why did you come to this company?</p>
-        <p></p>
-        <p></p>
-        <p>25. What’s your favorite part about working here?</p>
-        <p></p>
-        <p></p>
-        <h2>The Company</h2>
-        <p></p>
-        <p>
-            <em>Because you're not just working for one boss or one department, you're working for the company as a whole.</em>
-        </p>
-        <p>
-            <i></i>26. I've read about the company's founding, but can you tell me more about ___?</p>
-        <p></p>
-        <p>27. Where do you see this company in the next few years?</p>
-        <p></p>
-        <p></p>
-        <p>28. What can you tell me about your new products or plans for growth?</p>
-        <p></p>
-        <p></p>
-        <p>29. What are the current goals that the company is focused on,&nbsp;and how does this team work to support hitting those goals?</p>
-        <p></p>
-        <p>30. What gets you most excited about the company's future?</p>
-        <p></p>
-        <h2>The Team</h2>
-        <p></p>
-        <p>
-            <em>The people you work with day in and day out can really make or break your work life. Ask some questions to uncover whether it's the right team for you.</em>
-        </p>
-        <p>31. Can you tell me about the team I’ll be working with?</p>
-        <p></p>
-        <p>32. Who will I work with most closely?</p>
-        <p></p>
-        <p></p>
-        <p>33. Who will I report to directly?</p>
-        <p></p>
-        <p></p>
-        <p>34. Can you tell me about my direct reports? What are their strengths and the team's biggest challenges?</p>
-        <p></p>
-        <p></p>
-        <p>35. Do you expect to hire more people in this department in the next&nbsp;six&nbsp;months?</p>
-        <p></p>
-        <p></p>
-        <p>36. Which other departments work most closely with this one?</p>
-        <p></p>
-        <p></p>
-        <p>37. What are the common career paths in this department?</p>
-        <p></p>
-        <p></p>
-        <h2>The Culture</h2>
-        <p></p>
-        <p>
-            <em>Is the office buttoned-up conservative or a fly-by-the-seat-of-your-pants kind of place? Learn the subtle, but oh-so-important, aspects of company culture.</em>
-        </p>
-        <p>38. What is the company and team culture like?</p>
-        <p>39. How would you describe the work environment&nbsp;here—is the work typically&nbsp;collaborative&nbsp;or&nbsp;more independent?</p>
-        <p></p>
-        <p>40. Can you tell me about the last team event you did together?</p>
-        <p></p>
-        <p></p>
-        <p>41. Is there a formal mission statement or company values? (Note: Make sure this isn't Google-able!)</p>
-        <p></p>
-        <p></p>
-        <p>42. What's your favorite office tradition?</p>
-        <p></p>
-        <p></p>
-        <p>43. What do you and the team usually do for lunch?</p>
-        <p></p>
-        <p></p>
-        <p>44. Does anyone on the team hang out outside the office?</p>
-        <p></p>
-        <p></p>
-        <p>45. Do you ever do joint events with other companies or departments?</p>
-        <p></p>
-        <p></p>
-        <p>46. What's different about working here than anywhere else you've worked?</p>
-        <p></p>
-        <p></p>
-        <p>47. How has the company changed since you joined?</p>
-        <p></p>
-        <p></p>
-        <h2>Next Steps</h2>
-        <p></p>
-        <p>
-            <em>Before you leave, make sure the interviewer has all of the information he or she needs and that you're clear on the next steps by asking these questions.</em>
-        </p>
-        <p>48. Is there anything that concerns you about my background being a fit for this role?</p>
-        <p></p>
-        <p>49. What are the next steps in the interview process?</p>
-        <p></p>
-        <p></p>
-        <p>50. Is there anything else I can provide you with that would be helpful?</p>
-        <p></p>
-        <p>51. Can I answer any final questions for you?</p>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#item1-services">Generate Resume</button>
+
+
+          <h2>My Resume<small>(s)</small>
+          </h2>
+          <% @resumes.each do |resume| %>
+          <%= link_to "#{@current_user.name} Resume", resume_path(id: resume.id) %><br>
+          <iframe src=<%= resume_path(id: resume.id) %> width="600" height="800" style="border: none;"></iframe>
+          <% end %>
 
     </div>
 
     <div role="tabpanel" class="tab-pane" id="messages">
+      <h2>Your suit might need to be cleaned... <small>Here are some dry cleaners near you</small> </h2>
 
-        <div class="map">
-            <div id="main_map"></div>
-            <% if @cleaners.nil? %>
-            input address
-        <% else %>
-            <script type="text/javascript">
+      <div class="map">
+          <div id="main_map"></div>
+          <% if @cleaners.nil? %>
+          Input address
+          <% else %>
 
-                var mymap = L.map('main_map').setView([
-                    <%= @user_location["lat"] %>, <%= @user_location["lon"] %>
-                ], 13);
+          <script type="text/javascript">
 
-                L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZ3JlZW51cCIsImEiOiJjaXFudW4wNjcwMWQ1Zm9ubjQ0eHB6ejU5In0.8U3wnPsvgv9fAV4VnC2apA', {
-                    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-                    maxZoom: 18,
-                    id: 'greenup.0m0k3acb',
-                    accessToken: 'pk.eyJ1IjoiZ3JlZW51cCIsImEiOiJjaXFudW4wNjcwMWQ1Zm9ubjQ0eHB6ejU5In0.8U3wnPsvgv9fAV4VnC2apA'
-                }).addTo(mymap);
+              var mymap = L.map('main_map').setView([
+                  <%= @user_location["lat"] %>, <%= @user_location["lon"] %>
+              ], 13);
 
-                L.marker([<%= @user_location["lat"] %>, <%= @user_location["lon"] %>]).addTo(mymap).bindPopup("You Are Here");
-                <% @cleaners.each do |venue| %>
-                L.marker([<%= venue["location"]["lat"]%>, <%= venue["location"]["lng"]%>]).addTo(mymap).bindPopup("<%= venue[" name "] %>");
-                <% end %>
-            </script>
-            <% end %>
-        </div>
+              L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZ3JlZW51cCIsImEiOiJjaXFudW4wNjcwMWQ1Zm9ubjQ0eHB6ejU5In0.8U3wnPsvgv9fAV4VnC2apA', {
+                  attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+                  maxZoom: 18,
+                  id: 'greenup.0m0k3acb',
+                  accessToken: 'pk.eyJ1IjoiZ3JlZW51cCIsImEiOiJjaXFudW4wNjcwMWQ1Zm9ubjQ0eHB6ejU5In0.8U3wnPsvgv9fAV4VnC2apA'
+              }).addTo(mymap);
+
+              L.marker([<%= @user_location["lat"] %>, <%= @user_location["lon"] %>]).addTo(mymap).bindPopup("You Are Here");
+              <% @cleaners.each do |venue| %>
+              L.marker([<%= venue["location"]["lat"]%>, <%= venue["location"]["lng"]%>]).addTo(mymap).bindPopup("<%= venue[" name "] %>");
+              <% end %>
+          </script>
+          <% end %>
+      </div><br><br>
+  <u><h2><strong>51 Questions you should ask during an interview</strong></h2></u>
+
+
+      <p>You probably already know that an interview isn't just a chance for a hiring manager to grill you with interview questions</a>
+      —it's your opportunity to sniff out whether a job is the right fit for you.&nbsp;Which means: It's important to go in with some questions. What do you want to know about the position? The company? The department? The team?</p>
+  <p>To get you thinking, we've put together a list of key questions to ask in your interview. We definitely don't suggest asking all of them rapid-fire—some of this stuff will certainly be covered during the course of your discussion, and you can
+      weave in other questions as you go.</p>
+  <p>But when the inevitable, "So, do you have any questions for us?" part of the interview comes? Use this list to make sure you've covered all your bases.</p>
+  <p></p>
+  <h2>
+      <strong>The Job</strong>
+  </h2>
+  <p></p>
+  <p>
+      <em>First, make sure you have a handle on exactly what the day-to-day responsibilities of the job will be—both now and in the future.</em>
+  </p>
+  <p></p>
+  <p>1. What does a typical day look like?</p>
+  <p></p>
+  <p></p>
+  <p>2. What are the most immediate projects that need to be addressed?</p>
+  <p></p>
+  <p></p>
+  <p>3. Can you show me examples of projects I'd be working on?</p>
+  <p></p>
+  <p></p>
+  <p>4. What are the skills and experiences you’re looking for in an ideal candidate?</p>
+  <p></p>
+  <p></p>
+  <p>5. What attributes does someone need to have in order to be really successful in this position?</p>
+  <p></p>
+  <p></p>
+  <p>6. What types of skills is the team missing that you’re looking to fill with a new hire?</p>
+  <p></p>
+  <p></p>
+  <p>7. What are the biggest challenges that someone in this position would face?</p>
+  <p></p>
+  <p></p>
+  <p>8. What sort of budget would I be working with?</p>
+  <p></p>
+  <p></p>
+  <p>9. Is this a new role that has been created?</p>
+  <p></p>
+  <p></p>
+  <p>10. Do you expect the main responsibilities for this position to change in the next six months to a year?</p>
+  <p></p>
+  <p></p>
+  <h2><strong>Training and Professional Development</strong></h2>
+  <p></p>
+  <p>
+      <em>Think of each new job not just as a job, but as the next step on your path to career success. Will this position help you get there?</em>
+  </p>
+  <p>11. How will I be trained?</p>
+  <p></p>
+  <p>12. What training programs are available to your employees?</p>
+  <p></p>
+  <p></p>
+  <p>13. Are there opportunities for advancement or professional development?</p>
+  <p></p>
+  <p></p>
+  <p>14. Would I be able to represent the company at industry conferences?</p>
+  <p></p>
+  <p></p>
+  <p>15. Where is the last person who held this job moving on to?</p>
+  <p></p>
+  <p></p>
+  <p>16. Where have successful employees previously in this position progressed to?</p>
+  <p></p>
+  <p></p>
+  <h2><strong>Your Performance</strong></h2>
+  <p></p>
+  <p>
+      <em>Make sure you're setting yourself up for success by learning up front the goals of the position and how your work will be evaluated.</em>
+  </p>
+  <p>
+      <i></i>17. What are the most important things you’d like to see someone accomplish in the first 30, 60, and 90 days on the job?</p>
+  <p>18. What are the performance expectations of this position over the first 12 months?</p>
+  <p></p>
+  <p>19. What is the performance review process like here? How often would I be formally reviewed?</p>
+  <p></p>
+  <p></p>
+  <p>20. What metrics or goals will my performance be evaluated against?</p>
+  <p></p>
+  <p></p>
+  <h2><strong>Interviewer</strong></h2>
+  <p></p>
+  <p>
+      <em>Asking questions of the interviewer shows that you're interested in him or her as a person—and that's a great way to build rapport.</em>
+  </p>
+  <p>21. How long have you been with the company?</p>
+  <p>22. Has your role changed since you've been here?</p>
+  <p></p>
+  <p>23. What did you do before this?</p>
+  <p></p>
+  <p></p>
+  <p>24. Why did you come to this company?</p>
+  <p></p>
+  <p></p>
+  <p>25. What’s your favorite part about working here?</p>
+  <p></p>
+  <p></p>
+  <h2><strong>The Company</strong></h2>
+  <p></p>
+  <p>
+      <em>Because you're not just working for one boss or one department, you're working for the company as a whole.</em>
+  </p>
+  <p>
+      <i></i>26. I've read about the company's founding, but can you tell me more about ___?</p>
+  <p></p>
+  <p>27. Where do you see this company in the next few years?</p>
+  <p></p>
+  <p></p>
+  <p>28. What can you tell me about your new products or plans for growth?</p>
+  <p></p>
+  <p></p>
+  <p>29. What are the current goals that the company is focused on,&nbsp;and how does this team work to support hitting those goals?</p>
+  <p></p>
+  <p>30. What gets you most excited about the company's future?</p>
+  <p></p>
+  <h2>The Team</h2>
+  <p></p>
+  <p>
+      <em>The people you work with day in and day out can really make or break your work life. Ask some questions to uncover whether it's the right team for you.</em>
+  </p>
+  <p>31. Can you tell me about the team I’ll be working with?</p>
+  <p></p>
+  <p>32. Who will I work with most closely?</p>
+  <p></p>
+  <p></p>
+  <p>33. Who will I report to directly?</p>
+  <p></p>
+  <p></p>
+  <p>34. Can you tell me about my direct reports? What are their strengths and the team's biggest challenges?</p>
+  <p></p>
+  <p></p>
+  <p>35. Do you expect to hire more people in this department in the next&nbsp;six&nbsp;months?</p>
+  <p></p>
+  <p></p>
+  <p>36. Which other departments work most closely with this one?</p>
+  <p></p>
+  <p></p>
+  <p>37. What are the common career paths in this department?</p>
+  <p></p>
+  <p></p>
+  <h2><strong>The Culture</strong></h2>
+  <p></p>
+  <p>
+      <em>Is the office buttoned-up conservative or a fly-by-the-seat-of-your-pants kind of place? Learn the subtle, but oh-so-important, aspects of company culture.</em>
+  </p>
+  <p>38. What is the company and team culture like?</p>
+  <p>39. How would you describe the work environment&nbsp;here—is the work typically&nbsp;collaborative&nbsp;or&nbsp;more independent?</p>
+  <p></p>
+  <p>40. Can you tell me about the last team event you did together?</p>
+  <p></p>
+  <p></p>
+  <p>41. Is there a formal mission statement or company values? (Note: Make sure this isn't Google-able!)</p>
+  <p></p>
+  <p></p>
+  <p>42. What's your favorite office tradition?</p>
+  <p></p>
+  <p></p>
+  <p>43. What do you and the team usually do for lunch?</p>
+  <p></p>
+  <p></p>
+  <p>44. Does anyone on the team hang out outside the office?</p>
+  <p></p>
+  <p></p>
+  <p>45. Do you ever do joint events with other companies or departments?</p>
+  <p></p>
+  <p></p>
+  <p>46. What's different about working here than anywhere else you've worked?</p>
+  <p></p>
+  <p></p>
+  <p>47. How has the company changed since you joined?</p>
+  <p></p>
+  <p></p>
+  <h2><strong>Next Steps</strong></h2>
+  <p></p>
+  <p>
+      <em>Before you leave, make sure the interviewer has all of the information he or she needs and that you're clear on the next steps by asking these questions.</em>
+  </p>
+  <p>48. Is there anything that concerns you about my background being a fit for this role?</p>
+  <p></p>
+  <p>49. What are the next steps in the interview process?</p>
+  <p></p>
+  <p></p>
+  <p>50. Is there anything else I can provide you with that would be helpful?</p>
+  <p></p>
+  <p>51. Can I answer any final questions for you?</p>
+
+
+
 
     </div>
     <div role="tabpanel" class="tab-pane" id="settings">
 
-        put shit here
+
 
     </div>
 
