@@ -75,8 +75,8 @@ end
    bossbanner = @client.profile_banner(@boss.twitter,options={}).to_hash
   @banner_img  = banner[:sizes][:web][:url]
   @boss_banner = bossbanner[:sizes][:web][:url]
-    company = @descomp.company.downcase.tr(" ", "-")
 
+    company = @descomp.company.downcase.tr(" ", "-")
    url = "http://api.glassdoor.com/api/api.htm?v=1&format=json&t.p=81085&t.k=bh25srPSqNc&action=employers&q=#{company}&userip=192.168.43.42&useragent=Mozilla/%2F4.0"
    json = JSON.parse(Http.get(url).body)
 

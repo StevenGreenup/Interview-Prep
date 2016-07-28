@@ -158,3 +158,28 @@ align-items: center;
   margin-top: 100px;
 
 }
+
+textarea{
+  width: 100%;
+  height: 100px;
+}
+.form-group{
+  width: 100%;
+  .controls{
+    width: 100%;
+    #contact_subject{
+      width: 100%;
+    }
+
+    #contact_yourname{
+      width: 100%;
+    }
+    #contact_email{
+      width: 100%;
+    }
+  }
+}
+
+#contact_phone{
+  width: 100%;
+}

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160725152538) do
+ActiveRecord::Schema.define(version: 20160728185617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,16 @@ ActiveRecord::Schema.define(version: 20160725152538) do
     t.integer  "descomp_id"
   end
 
+  create_table "contacts", force: :cascade do |t|
+    t.string   "subject"
+    t.string   "phone"
+    t.string   "yourname"
+    t.string   "email"
+    t.string   "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "descomps", force: :cascade do |t|
     t.string   "company"
     t.string   "twitter"
@@ -81,6 +91,14 @@ ActiveRecord::Schema.define(version: 20160725152538) do
     t.string   "avatar"
     t.string   "url"
     t.string   "boss_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "start_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "resumes", force: :cascade do |t|

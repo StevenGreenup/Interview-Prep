@@ -28,4 +28,9 @@ Rails.application.routes.draw do
   get "sign_in" => "sessions#new", as: :sign_in
   post "sign_in" => "sessions#create", as: :create_session
   delete "sign_in" => "sessions#delete"
+
+  get 'contact' => 'contact#new', as: :contact
+  post 'contact' => 'contact#create', as: :contact_me
+
+
 end

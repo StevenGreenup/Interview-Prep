@@ -6,10 +6,10 @@ class SessionsController < ApplicationController
     user = User.find_by email: params[:email]
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to root_path
+      redirect_to user_path(id: user.id)
     else
       flash.now[:notice] = "Username and/or Password does not match."
-      render root_path
+      render :new
     end
   end
 

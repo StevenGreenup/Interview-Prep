@@ -252,7 +252,7 @@
                     <!-- /.modal -->
 
                     <div role="tabpanel" class="tab-pane" id="settings2">
-                      <%= image_tag @boss_banner %>
+                        <%= image_tag @boss_banner %>
                         <h2>Boss' Twitter</h2>
                         <% @descomp.bosses.each do |boss| %>
                         <% if boss.twitter.nil? %>
@@ -266,8 +266,6 @@
                     <% else %>
                         <% @client.user_timeline( boss.twitter ).each do |t| %>
                         <%= raw(@client.oembed(t.id).html) %>
-
-
                         <% end %>
 
                         <% end %>
