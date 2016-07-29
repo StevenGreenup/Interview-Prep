@@ -1,33 +1,75 @@
 <%= wicked_pdf_stylesheet_link_tag "resumes" -%>
+
+
+
 <div class="contact-resume">
-  <%= @current_user.name %><br>
-  <%= @resume.address %><br>
-  <%= @resume.phone %><br>
+  <h2><%= @current_user.name %></h2>
+
+  <%= @resume.address %> - <%= @current_user.email %> - <%= @resume.phone %><br>
+</div>
+
+<div class="education">
+  <h4><strong><u>Education</u></strong></h4>
+  <div class="school">
+  <strong><%= @resume.school1 %></strong><br>
+    <%= @resume.cdd1 %><br>
+    <% if @resume.school2.present? %>
+      <strong><%= @resume.school2 %></strong> <br>
+    <%= @resume.cdd2 %><br>
+    <% else %>
+    <% end %>
+
+    <% if @resume.school3.present? %>
+      <strong><%= @resume.school3 %></strong> <br>
+    <%= @resume.cdd3 %><br>
+    <% else %>
+    <% end %>
+  </div>
 </div>
 
 
 
-<u>Education</u> <br><br>
-<%= @resume.school1 %><br>
-<%= @resume.school2.nil? %><br>
-<%= @resume.school3 %><br>
-<%= @resume.cdd1 %><br>
-<%= @resume.cdd2 %><br>
-<%= @resume.cdd3 %><br>
-<u>Professional Experience</u>
- <br><br>
-<%= @resume.excomp1 %><br>
-<%= @resume.excomp2 %><br>
-<%= @resume.excomp3 %><br>
-<%= @resume.expos1 %><br>
-<%= @resume.expos2 %><br>
-<%= @resume.expos3 %><br>
-<%= @resume.exstart1 %><br>
-<%= @resume.exstart2 %><br>
-<%= @resume.exstart3 %><br>
-<%= @resume.exend1 %><br>
-<%= @resume.exend2 %><br>
-<%= @resume.exend3 %><br>
+<h4><strong><u>Professional Experience</u></strong></h4>
+
+<div class="company">
+  <div class="Position">
+    <%= @resume.excomp1 %><br>
+    <%= @resume.expos1 %><br>
+  </div>
+  <div class="startend">
+    <%= @resume.exstart1 %> - <%= @resume.exend1 %><br>
+  </div>
+</div><br>
+
+<div class="company">
+  <div class="Position">
+    <%= @resume.excomp2 %><br>
+    <%= @resume.expos2 %><br>
+  </div>
+  <div class="startend">
+    <%= @resume.exstart2 %> - <%= @resume.exend2 %><br>
+  </div>
+</div><br>
+
+
+<div class="company">
+  <div class="Position">
+    <%= @resume.excomp3 %><br>
+    <%= @resume.expos3 %><br>
+  </div>
+  <div class="startend">
+    <%= @resume.exstart3 %> - <%= @resume.exend3 %><br>
+  </div>
+</div><br>
+
+
+
+
+
+
+
+
+
 <u>Internships</u>
  <br><br>
 <%= @resume.intcom1 %><br>

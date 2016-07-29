@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-
+  
+  patch 'resumes/edit/:id' => "resumes#edit", as: :edit_resume
   post 'resumes' => 'resumes#create', as: :new_resume
   get 'resumes/:id.pdf' => 'resumes#show', as: :resume
   get 'resumes/:id' => 'resumes#show'
   get 'resumes/new' => 'resumes#new'
+
 
   patch 'company/:id' => 'descomps#update', as: :edit_company
   patch 'bosses/:id' => 'bosses#update', as: :edit_boss
@@ -16,7 +18,7 @@ Rails.application.routes.draw do
 
   get 'twitter' => 'descomps#twitter'
 
-  get 'resumes/edit'
+
   get 'resumes/update'
   get 'resumes/delete'
 

@@ -5,3 +5,22 @@
   border-bottom: 1px solid black;
   text-align: center;
 }
+
+.company{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+
+.position{
+  text-align: left;
+  display: inline-block;
+}
+.startend{
+  display: inline-block;
+  text-align: right;
+  width: 100%;
+}
+}

@@ -118,6 +118,7 @@ align-items: center;
 
 .tab-content{
   background-color: white;
+  padding: 0px;
 .tab-pane{
   background-color: white;
   padding: 0px;
@@ -146,6 +147,18 @@ align-items: center;
   .col-sm-6{
     border: 1px solid #1d1d1d;
   }
+}
+.pdfcontainer{
+  padding: 20px;
+}
+.col-sm-6{
+  padding: 2px;
+}
+.col-sm-4{
+  padding: 2px;
+}
+.col-sm-2{
+  padding: 2px;
 }
 
 .signup-container{
