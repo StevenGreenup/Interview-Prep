@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160729231802) do
+ActiveRecord::Schema.define(version: 20160730194823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -175,6 +175,49 @@ ActiveRecord::Schema.define(version: 20160729231802) do
     t.string   "intcomp33about"
     t.string   "intcomp34about"
     t.string   "intcomp35about"
+    t.string   "excomp4"
+    t.string   "excomp5"
+    t.string   "excomp6"
+    t.string   "expos4"
+    t.string   "expos5"
+    t.string   "expos6"
+    t.string   "exstart4"
+    t.string   "exstart5"
+    t.string   "exstart6"
+    t.string   "exend4"
+    t.string   "exend5"
+    t.string   "exend6"
+    t.string   "expos41about"
+    t.string   "expos42about"
+    t.string   "expos43about"
+    t.string   "expos44about"
+    t.string   "expos45about"
+    t.string   "expos51about"
+    t.string   "expos52about"
+    t.string   "expos53about"
+    t.string   "expos54about"
+    t.string   "expos55about"
+    t.string   "expos61about"
+    t.string   "expos62about"
+    t.string   "expos63about"
+    t.string   "expos64about"
+    t.string   "expos65about"
+    t.string   "excomploc1"
+    t.string   "excomploc2"
+    t.string   "excomploc3"
+    t.string   "excomploc4"
+    t.string   "excomploc5"
+    t.string   "excomploc6"
+    t.string   "intcomploc1"
+    t.string   "intcomploc2"
+    t.string   "intcomploc3"
+    t.string   "value"
+    t.string   "objective"
+    t.string   "skills1"
+    t.string   "skills2"
+    t.string   "skills3"
+    t.string   "skills4"
+    t.string   "skills5"
   end
 
   create_table "users", force: :cascade do |t|

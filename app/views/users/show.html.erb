@@ -107,7 +107,7 @@
                             <div class="panel-heading" role="tab" id="headingOne">
                                 <h4 class="panel-title">
                                     <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        Contact Information
+                                        Contact Information - <strong><%= @current_user.name %></strong>
                                     </a>
                                 </h4>
                             </div>
@@ -141,11 +141,34 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="heading14">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse14" aria-expanded="false" aria-controls="collapse14">
+                                        Statements
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse14" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading14">
+                                <div class="panel-body">
+
+                                    <%= f.label :value %>
+                                    <%= f.text_area :value, class:"form-control" %>
+                                    <%= f.label :objective %>
+                                    <%= f.text_area :objective, class:"form-control" %>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="headingTwo">
                                 <h4 class="panel-title">
                                     <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        Education
+                                        Education - <% if @editresume.school1.present? %> <strong><%= @editresume.school1 %></strong>  <% else %> <% end %>
                                     </a>
                                 </h4>
                             </div>
@@ -228,6 +251,8 @@
                                         <%= f.text_field :expos14about, class:"form-control" %>
                                         <%= f.label :expos15about %>
                                         <%= f.text_field :expos15about, class:"form-control" %>
+                                        <%= f.label :excomploc1 %>
+                                        <%= f.text_field :excomploc1, class:"form-control" %>
 
                                     </div>
                                 </div>
@@ -272,6 +297,8 @@
                                         <%= f.text_field :expos24about, class:"form-control" %>
                                         <%= f.label :expos25about %>
                                         <%= f.text_field :expos25about, class:"form-control" %>
+                                        <%= f.label :excomploc2 %>
+                                        <%= f.text_field :excomploc2, class:"form-control" %>
 
                                     </div>
                                 </div>
@@ -316,12 +343,151 @@
                                         <%= f.text_field :expos34about, class:"form-control" %>
                                         <%= f.label :expos35about %>
                                         <%= f.text_field :expos35about, class:"form-control" %>
+                                        <%= f.label :excomploc3 %>
+                                        <%= f.text_field :excomploc3, class:"form-control" %>
 
                                     </div>
                                 </div>
                             </div>
                         </div>
 
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="heading10">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse10" aria-expanded="false" aria-controls="collapse10">
+                                        Experience - <% if @editresume.excomp4.present? %> <strong><%= @editresume.excomp4 %></strong>  <% else %> <% end %>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse10" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading10">
+                                <div class="panel-body">
+
+                                    <div class="comp">
+                                        <div class="col-sm-4">
+                                            <%= f.label :excomp4, "Company (1)" %>
+                                            <%= f.text_field :excomp4, class:"form-control" %>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <%= f.label :expos4, "Position (1)" %>
+                                            <%= f.text_field :expos4, class:"form-control" %>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <%= f.label :exstart4, "Start" %>
+                                            <%= f.text_field :exstart4, class:"form-control" %>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <%= f.label :exend4, "End" %>
+                                            <%= f.text_field :exend4, class:"form-control" %>
+                                        </div>
+                                        <%= f.label :expos41about %>
+                                        <%= f.text_field :expos41about, class:"form-control" %>
+                                        <%= f.label :expos42about %>
+                                        <%= f.text_field :expos42about, class:"form-control" %>
+                                        <%= f.label :expos43about %>
+                                        <%= f.text_field :expos43about, class:"form-control" %>
+                                        <%= f.label :expos44about %>
+                                        <%= f.text_field :expos44about, class:"form-control" %>
+                                        <%= f.label :expos45about %>
+                                        <%= f.text_field :expos45about, class:"form-control" %>
+                                        <%= f.label :excomploc4 %>
+                                        <%= f.text_field :excomploc4, class:"form-control" %>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="heading11">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse11" aria-expanded="false" aria-controls="collapse11">
+                                        Experience - <% if @editresume.excomp5.present? %><strong><%= @editresume.excomp5 %></strong> <% else %> <% end %>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse11" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading11">
+                                <div class="panel-body">
+
+                                    <div class="comp">
+                                        <div class="col-sm-4">
+                                            <%= f.label :excomp5, "Company (2)" %>
+                                            <%= f.text_field :excomp5, class:"form-control" %>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <%= f.label :expos5, "Position (2)" %>
+                                            <%= f.text_field :expos5, class:"form-control" %>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <%= f.label :exstart5, "Start" %>
+                                            <%= f.text_field :exstart5, class:"form-control" %>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <%= f.label :exend5, "End" %>
+                                            <%= f.text_field :exend5, class:"form-control" %>
+                                        </div>
+                                        <%= f.label :expos51about %>
+                                        <%= f.text_field :expos51about, class:"form-control" %>
+                                        <%= f.label :expos52about %>
+                                        <%= f.text_field :expos52about, class:"form-control" %>
+                                        <%= f.label :expos53about %>
+                                        <%= f.text_field :expos53about, class:"form-control" %>
+                                        <%= f.label :expos54about %>
+                                        <%= f.text_field :expos54about, class:"form-control" %>
+                                        <%= f.label :expos55about %>
+                                        <%= f.text_field :expos55about, class:"form-control" %>
+                                        <%= f.label :excomploc5 %>
+                                        <%= f.text_field :excomploc5, class:"form-control" %>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="heading12">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse12" aria-expanded="false" aria-controls="collapse12">
+                                        Experience<% if @editresume.excomp6.present? %> - <strong><%= @editresume.excomp6 %></strong> <% else %> <% end %>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse12" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading12">
+                                <div class="panel-body">
+
+                                    <div class="comp">
+                                        <div class="col-sm-4">
+                                            <%= f.label :excomp6, "Company (3)" %>
+                                            <%= f.text_field :excomp6, class:"form-control" %>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <%= f.label :expos6, "Position (3)" %>
+                                            <%= f.text_field :expos6, class:"form-control" %>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <%= f.label :exstart6, "Start" %>
+                                            <%= f.text_field :exstart6, class:"form-control" %>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <%= f.label :exend6, "End" %>
+                                            <%= f.text_field :exend6, class:"form-control" %>
+                                        </div>
+                                        <%= f.label :expos61about %>
+                                        <%= f.text_field :expos61about, class:"form-control" %>
+                                        <%= f.label :expos62about %>
+                                        <%= f.text_field :expos62about, class:"form-control" %>
+                                        <%= f.label :expos63about %>
+                                        <%= f.text_field :expos63about, class:"form-control" %>
+                                        <%= f.label :expos64about %>
+                                        <%= f.text_field :expos64about, class:"form-control" %>
+                                        <%= f.label :expos65about %>
+                                        <%= f.text_field :expos65about, class:"form-control" %>
+                                        <%= f.label :excomploc6 %>
+                                        <%= f.text_field :excomploc6, class:"form-control" %>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="heading6">
                                 <h4 class="panel-title">
@@ -360,6 +526,8 @@
                                         <%= f.text_field :intcomp14about, class:"form-control" %>
                                         <%= f.label :intcomp15about %>
                                         <%= f.text_field :intcomp15about, class:"form-control" %>
+                                        <%= f.label :intcomploc1 %>
+                                        <%= f.text_field :intcomploc1, class:"form-control" %>
 
                                     </div>
                                 </div>
@@ -404,6 +572,8 @@
                                         <%= f.text_field :intcomp24about, class:"form-control" %>
                                         <%= f.label :intcomp25about %>
                                         <%= f.text_field :intcomp25about, class:"form-control" %>
+                                        <%= f.label :intcomploc2 %>
+                                        <%= f.text_field :intcomploc2, class:"form-control" %>
 
                                     </div>
                                 </div>
@@ -448,6 +618,8 @@
                                         <%= f.text_field :intcomp34about, class:"form-control" %>
                                         <%= f.label :intcomp35about %>
                                         <%= f.text_field :intcomp35about, class:"form-control" %>
+                                        <%= f.label :intcomploc3 %>
+                                        <%= f.text_field :intcomploc3, class:"form-control" %>
                                     </div>
                                 </div>
                             </div>
@@ -457,7 +629,7 @@
                             <div class="panel-heading" role="tab" id="heading9">
                                 <h4 class="panel-title">
                                     <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse9" aria-expanded="false" aria-controls="collapse9">
-                                        Certifications
+                                        Certifications<% if @editresume.cert1.present? %> - <strong><%= @editresume.cert1 %></strong>  <% else %> <% end %>
                                     </a>
                                 </h4>
                             </div>
@@ -470,6 +642,32 @@
                                     <%= f.text_field :cert2, class:"form-control" %>
                                     <%= f.label :cert3, "Certification (3)" %>
                                     <%= f.text_field :cert3, class:"form-control" %>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="heading13">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse13" aria-expanded="false" aria-controls="collapse13">
+                                        Skills<% if @editresume.skills1.present? %> - <strong><%= @editresume.skills1 %></strong>  <% else %> <% end %>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse13" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading13">
+                                <div class="panel-body">
+
+                                    <%= f.label :skills1, "Certification (1)" %>
+                                    <%= f.text_field :skills1, class:"form-control" %>
+                                    <%= f.label :skills2, "Certification (2)" %>
+                                    <%= f.text_field :skills2, class:"form-control" %>
+                                    <%= f.label :skills3, "Certification (3)" %>
+                                    <%= f.text_field :skills3, class:"form-control" %>
+                                    <%= f.label :skills4, "Certification (1)" %>
+                                    <%= f.text_field :skills4, class:"form-control" %>
+                                    <%= f.label :skills5, "Certification (2)" %>
+                                    <%= f.text_field :skills5, class:"form-control" %>
+
 
                                 </div>
                             </div>
@@ -487,7 +685,7 @@
                             <div class="panel-heading" role="tab" id="headingOne">
                                 <h4 class="panel-title">
                                     <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        Contact Information
+                                        Contact Information - <strong><%= @current_user.name %></strong>
                                     </a>
                                 </h4>
                             </div>
@@ -521,6 +719,28 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="heading14">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse14" aria-expanded="false" aria-controls="collapse14">
+                                        Statements
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse14" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading14">
+                                <div class="panel-body">
+
+                                    <%= f.label :value %>
+                                    <%= f.text_area :value, class:"form-control" %>
+                                    <%= f.label :objective %>
+                                    <%= f.text_area :objective, class:"form-control" %>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="headingTwo">
                                 <h4 class="panel-title">
@@ -608,6 +828,8 @@
                                         <%= f.text_field :expos14about, class:"form-control" %>
                                         <%= f.label :expos15about %>
                                         <%= f.text_field :expos15about, class:"form-control" %>
+                                        <%= f.label :excomploc1 %>
+                                        <%= f.text_field :excomploc1, class:"form-control" %>
 
                                     </div>
                                 </div>
@@ -652,6 +874,8 @@
                                         <%= f.text_field :expos24about, class:"form-control" %>
                                         <%= f.label :expos25about %>
                                         <%= f.text_field :expos25about, class:"form-control" %>
+                                        <%= f.label :excomploc2 %>
+                                        <%= f.text_field :excomploc2, class:"form-control" %>
 
                                     </div>
                                 </div>
@@ -696,12 +920,151 @@
                                         <%= f.text_field :expos34about, class:"form-control" %>
                                         <%= f.label :expos35about %>
                                         <%= f.text_field :expos35about, class:"form-control" %>
+                                        <%= f.label :excomploc3 %>
+                                        <%= f.text_field :excomploc3, class:"form-control" %>
 
                                     </div>
                                 </div>
                             </div>
                         </div>
 
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="heading10">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse10" aria-expanded="false" aria-controls="collapse10">
+                                        Experience
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse10" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading10">
+                                <div class="panel-body">
+
+                                    <div class="comp">
+                                        <div class="col-sm-4">
+                                            <%= f.label :excomp4, "Company (1)" %>
+                                            <%= f.text_field :excomp4, class:"form-control" %>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <%= f.label :expos4, "Position (1)" %>
+                                            <%= f.text_field :expos4, class:"form-control" %>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <%= f.label :exstart4, "Start" %>
+                                            <%= f.text_field :exstart4, class:"form-control" %>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <%= f.label :exend4, "End" %>
+                                            <%= f.text_field :exend4, class:"form-control" %>
+                                        </div>
+                                        <%= f.label :expos41about %>
+                                        <%= f.text_field :expos41about, class:"form-control" %>
+                                        <%= f.label :expos42about %>
+                                        <%= f.text_field :expos42about, class:"form-control" %>
+                                        <%= f.label :expos43about %>
+                                        <%= f.text_field :expos43about, class:"form-control" %>
+                                        <%= f.label :expos44about %>
+                                        <%= f.text_field :expos44about, class:"form-control" %>
+                                        <%= f.label :expos45about %>
+                                        <%= f.text_field :expos45about, class:"form-control" %>
+                                        <%= f.label :excomploc4 %>
+                                        <%= f.text_field :excomploc4, class:"form-control" %>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="heading11">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse11" aria-expanded="false" aria-controls="collapse11">
+                                        Experience
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse11" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading11">
+                                <div class="panel-body">
+
+                                    <div class="comp">
+                                        <div class="col-sm-4">
+                                            <%= f.label :excomp5, "Company (2)" %>
+                                            <%= f.text_field :excomp5, class:"form-control" %>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <%= f.label :expos5, "Position (2)" %>
+                                            <%= f.text_field :expos5, class:"form-control" %>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <%= f.label :exstart5, "Start" %>
+                                            <%= f.text_field :exstart5, class:"form-control" %>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <%= f.label :exend5, "End" %>
+                                            <%= f.text_field :exend5, class:"form-control" %>
+                                        </div>
+                                        <%= f.label :expos51about %>
+                                        <%= f.text_field :expos51about, class:"form-control" %>
+                                        <%= f.label :expos52about %>
+                                        <%= f.text_field :expos52about, class:"form-control" %>
+                                        <%= f.label :expos53about %>
+                                        <%= f.text_field :expos53about, class:"form-control" %>
+                                        <%= f.label :expos54about %>
+                                        <%= f.text_field :expos54about, class:"form-control" %>
+                                        <%= f.label :expos55about %>
+                                        <%= f.text_field :expos55about, class:"form-control" %>
+                                        <%= f.label :excomploc5 %>
+                                        <%= f.text_field :excomploc5, class:"form-control" %>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="heading12">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse12" aria-expanded="false" aria-controls="collapse12">
+                                        Experience
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse12" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading12">
+                                <div class="panel-body">
+
+                                    <div class="comp">
+                                        <div class="col-sm-4">
+                                            <%= f.label :excomp6, "Company (3)" %>
+                                            <%= f.text_field :excomp6, class:"form-control" %>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <%= f.label :expos6, "Position (3)" %>
+                                            <%= f.text_field :expos6, class:"form-control" %>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <%= f.label :exstart6, "Start" %>
+                                            <%= f.text_field :exstart6, class:"form-control" %>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <%= f.label :exend6, "End" %>
+                                            <%= f.text_field :exend6, class:"form-control" %>
+                                        </div>
+                                        <%= f.label :expos61about %>
+                                        <%= f.text_field :expos61about, class:"form-control" %>
+                                        <%= f.label :expos62about %>
+                                        <%= f.text_field :expos62about, class:"form-control" %>
+                                        <%= f.label :expos63about %>
+                                        <%= f.text_field :expos63about, class:"form-control" %>
+                                        <%= f.label :expos64about %>
+                                        <%= f.text_field :expos64about, class:"form-control" %>
+                                        <%= f.label :expos65about %>
+                                        <%= f.text_field :expos65about, class:"form-control" %>
+                                        <%= f.label :excomploc6 %>
+                                        <%= f.text_field :excomploc6, class:"form-control" %>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="heading6">
                                 <h4 class="panel-title">
@@ -740,6 +1103,8 @@
                                         <%= f.text_field :intcomp14about, class:"form-control" %>
                                         <%= f.label :intcomp15about %>
                                         <%= f.text_field :intcomp15about, class:"form-control" %>
+                                        <%= f.label :intcomploc1 %>
+                                        <%= f.text_field :intcomploc1, class:"form-control" %>
 
                                     </div>
                                 </div>
@@ -784,6 +1149,8 @@
                                         <%= f.text_field :intcomp24about, class:"form-control" %>
                                         <%= f.label :intcomp25about %>
                                         <%= f.text_field :intcomp25about, class:"form-control" %>
+                                        <%= f.label :intcomploc2 %>
+                                        <%= f.text_field :intcomploc2, class:"form-control" %>
 
                                     </div>
                                 </div>
@@ -828,6 +1195,8 @@
                                         <%= f.text_field :intcomp34about, class:"form-control" %>
                                         <%= f.label :intcomp35about %>
                                         <%= f.text_field :intcomp35about, class:"form-control" %>
+                                        <%= f.label :intcomploc3 %>
+                                        <%= f.text_field :intcomploc3, class:"form-control" %>
                                     </div>
                                 </div>
                             </div>
@@ -850,6 +1219,32 @@
                                     <%= f.text_field :cert2, class:"form-control" %>
                                     <%= f.label :cert3, "Certification (3)" %>
                                     <%= f.text_field :cert3, class:"form-control" %>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="heading13">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse13" aria-expanded="false" aria-controls="collapse13">
+                                        Skills
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse13" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading13">
+                                <div class="panel-body">
+
+                                    <%= f.label :skills1, "Certification (1)" %>
+                                    <%= f.text_field :skills1, class:"form-control" %>
+                                    <%= f.label :skills2, "Certification (2)" %>
+                                    <%= f.text_field :skills2, class:"form-control" %>
+                                    <%= f.label :skills3, "Certification (3)" %>
+                                    <%= f.text_field :skills3, class:"form-control" %>
+                                    <%= f.label :skills4, "Certification (1)" %>
+                                    <%= f.text_field :skills4, class:"form-control" %>
+                                    <%= f.label :skills5, "Certification (2)" %>
+                                    <%= f.text_field :skills5, class:"form-control" %>
+
 
                                 </div>
                             </div>

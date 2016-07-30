@@ -90,6 +90,57 @@ end
     @resume.intcomp34about = params[:resume][:intcomp34about]
     @resume.intcomp35about = params[:resume][:intcomp35about]
 
+    @resume.excomp4 = params[:resume][:excomp4]
+    @resume.excomp5 = params[:resume][:excomp5]
+    @resume.excomp6 = params[:resume][:excomp6]
+    @resume.expos4 = params[:resume][:expos4]
+    @resume.expos5 = params[:resume][:expos5]
+    @resume.expos6 = params[:resume][:expos6]
+
+    @resume.exstart4 = params[:resume][:exstart4]
+    @resume.exstart5 = params[:resume][:exstart5]
+    @resume.exstart6 = params[:resume][:exstart6]
+    @resume.exend4 = params[:resume][:exend4]
+    @resume.exend5 = params[:resume][:exend5]
+    @resume.exend6 = params[:resume][:exend6]
+
+    @resume.expos41about = params[:resume][:expos41about]
+    @resume.expos42about = params[:resume][:expos42about]
+    @resume.expos43about = params[:resume][:expos43about]
+    @resume.expos44about = params[:resume][:expos44about]
+    @resume.expos45about = params[:resume][:expos45about]
+    @resume.expos51about = params[:resume][:expos51about]
+    @resume.expos52about = params[:resume][:expos52about]
+    @resume.expos53about = params[:resume][:expos53about]
+    @resume.expos54about = params[:resume][:expos54about]
+    @resume.expos55about = params[:resume][:expos55about]
+    @resume.expos61about = params[:resume][:expos61about]
+    @resume.expos62about = params[:resume][:expos62about]
+    @resume.expos63about = params[:resume][:expos63about]
+    @resume.expos64about = params[:resume][:expos64about]
+    @resume.expos65about = params[:resume][:expos65about]
+
+    @resume.excomploc1 = params[:resume][:excomploc1]
+    @resume.excomploc2 = params[:resume][:excomploc2]
+    @resume.excomploc3 = params[:resume][:excomploc3]
+    @resume.excomploc4 = params[:resume][:excomploc4]
+    @resume.excomploc5 = params[:resume][:excomploc5]
+    @resume.excomploc6 = params[:resume][:excomploc6]
+
+    @resume.intcomploc1 = params[:resume][:intcomploc1]
+    @resume.intcomploc2 = params[:resume][:intcomploc2]
+    @resume.intcomploc3 = params[:resume][:intcomploc3]
+
+    @resume.value = params[:resume][:value]
+    @resume.objective = params[:resume][:objective]
+
+    @resume.skills1 = params[:resume][:skills1]
+    @resume.skills2 = params[:resume][:skills2]
+    @resume.skills3 = params[:resume][:skills3]
+    @resume.skills4 = params[:resume][:skills4]
+    @resume.skills5 = params[:resume][:skills5]
+
+
     if @resume.save
       redirect_to user_path(id: @current_user.id)
     else
@@ -189,6 +240,57 @@ end
     @resume.intcomp33about = params[:resume][:intcomp33about]
     @resume.intcomp34about = params[:resume][:intcomp34about]
     @resume.intcomp35about = params[:resume][:intcomp35about]
+
+    @resume.excomp4 = params[:resume][:excomp4]
+    @resume.excomp5 = params[:resume][:excomp5]
+    @resume.excomp6 = params[:resume][:excomp6]
+    @resume.expos4 = params[:resume][:expos4]
+    @resume.expos5 = params[:resume][:expos5]
+    @resume.expos6 = params[:resume][:expos6]
+
+    @resume.exstart4 = params[:resume][:exstart4]
+    @resume.exstart5 = params[:resume][:exstart5]
+    @resume.exstart6 = params[:resume][:exstart6]
+    @resume.exend4 = params[:resume][:exend4]
+    @resume.exend5 = params[:resume][:exend5]
+    @resume.exend6 = params[:resume][:exend6]
+
+    @resume.expos41about = params[:resume][:expos41about]
+    @resume.expos42about = params[:resume][:expos42about]
+    @resume.expos43about = params[:resume][:expos43about]
+    @resume.expos44about = params[:resume][:expos44about]
+    @resume.expos45about = params[:resume][:expos45about]
+    @resume.expos51about = params[:resume][:expos51about]
+    @resume.expos52about = params[:resume][:expos52about]
+    @resume.expos53about = params[:resume][:expos53about]
+    @resume.expos54about = params[:resume][:expos54about]
+    @resume.expos55about = params[:resume][:expos55about]
+    @resume.expos61about = params[:resume][:expos61about]
+    @resume.expos62about = params[:resume][:expos62about]
+    @resume.expos63about = params[:resume][:expos63about]
+    @resume.expos64about = params[:resume][:expos64about]
+    @resume.expos65about = params[:resume][:expos65about]
+
+    @resume.excomploc1 = params[:resume][:excomploc1]
+    @resume.excomploc2 = params[:resume][:excomploc2]
+    @resume.excomploc3 = params[:resume][:excomploc3]
+    @resume.excomploc4 = params[:resume][:excomploc4]
+    @resume.excomploc5 = params[:resume][:excomploc5]
+    @resume.excomploc6 = params[:resume][:excomploc6]
+
+    @resume.intcomploc1 = params[:resume][:intcomploc1]
+    @resume.intcomploc2 = params[:resume][:intcomploc2]
+    @resume.intcomploc3 = params[:resume][:intcomploc3]
+
+    @resume.value = params[:resume][:value]
+    @resume.objective = params[:resume][:objective]
+
+    @resume.skills1 = params[:resume][:skills1]
+    @resume.skills2 = params[:resume][:skills2]
+    @resume.skills3 = params[:resume][:skills3]
+    @resume.skills4 = params[:resume][:skills4]
+    @resume.skills5 = params[:resume][:skills5]
+    
     if @resume.save
       redirect_to user_path(id: @current_user.id)
     else

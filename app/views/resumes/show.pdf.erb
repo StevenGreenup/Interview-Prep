@@ -7,37 +7,31 @@
   <%=@resume.website %> - <%=@resume.linked %><br>
   <%= @resume.address %> <%=@resume.addresscity %>, <%=@resume.addressstate %> <%=@resume.addresszip %>- <%= @current_user.email %> - <%= @resume.phone %><br>
 
-
-
-
 </div>
-
+<% if @resume.objective.present? %>
 <div class="education">
-  <h4><strong><u>Education</u></strong></h4>
+  <h4><strong><u>Objective</u></strong></h4>
   <br>
-  <div class="school">
-  &nbsp;<strong><%= @resume.school1 %></strong><br>
-    &nbsp;<%= @resume.cdd1 %><br>
-    <% if @resume.school2.present? %>
-    &nbsp;<strong><%= @resume.school2 %></strong> <br>
-    &nbsp;<%= @resume.cdd2 %><br>
-    <% else %>
-    <% end %>
+    &nbsp;<strong><%= @resume.objective %></strong> <br>
 
-    <% if @resume.school3.present? %>
-    &nbsp;<strong><%= @resume.school3 %></strong> <br>
-    &nbsp;&nbsp;<%= @resume.cdd3 %><br>
-    <% else %>
-    <% end %>
-  </div>
 </div>
+<% else %>
+<% end %>
+<% if @resume.value.present? %>
+<div class="education">
+  <h4><strong><u>Value</u></strong></h4>
+  <br>
+    &nbsp;<strong><%= @resume.value %></strong> <br>
 
+</div>
+<% else %>
+<% end %>
 <h4><strong><u>Relevant Experience</u></strong></h4>
 <br>
 <% if @resume.excomp1.present? %>
 <div class="company">
   <div class="Position">
-    &nbsp;<%= @resume.excomp1 %><br>
+    &nbsp;<%= @resume.excomp1 %> <%= @resume.excomploc1 %><br>
     &nbsp;&nbsp;<%= @resume.expos1 %><br>
     <ul>
       <% if @resume.expos11about.present? %><li><%=@resume.expos11about %></li><% else %><% end %>
@@ -58,7 +52,7 @@
 <% if @resume.excomp2.present? %>
 <div class="company">
   <div class="Position">
-    &nbsp;<%= @resume.excomp2 %><br>
+    &nbsp;<%= @resume.excomp2 %> <%= @resume.excomploc2 %><br>
     &nbsp;&nbsp;<%= @resume.expos2 %><br>
     <ul>
       <% if @resume.expos21about.present? %><li><%=@resume.expos21about %></li><% else %><% end %>
@@ -79,7 +73,7 @@
 <% if @resume.excomp3.present? %>
 <div class="company">
   <div class="Position">
-    &nbsp;<%= @resume.excomp3 %><br>
+    &nbsp;<%= @resume.excomp3 %> <%= @resume.excomploc3 %><br>
     &nbsp;&nbsp;<%= @resume.expos3 %><br>
     <ul>
       <% if @resume.expos31about.present? %><li><%=@resume.expos31about %></li><% else %><% end %>
@@ -96,11 +90,74 @@
 </div><br>
 <% else %>
 <% end %>
+
+<% if @resume.excomp4.present? %>
+<div class="company">
+  <div class="Position">
+    &nbsp;<%= @resume.excomp4 %> <%= @resume.excomploc4 %><br>
+    &nbsp;&nbsp;<%= @resume.expos4 %><br>
+    <ul>
+      <% if @resume.expos41about.present? %><li><%=@resume.expos41about %></li><% else %><% end %>
+      <% if @resume.expos42about.present? %><li><%=@resume.expos42about %></li><% else %><% end %>
+      <% if @resume.expos43about.present? %><li><%=@resume.expos43about %></li><% else %><% end %>
+      <% if @resume.expos44about.present? %><li><%=@resume.expos44about %></li><% else %><% end %>
+      <% if @resume.expos45about.present? %><li><%=@resume.expos45about %></li><% else %><% end %>
+    </ul>
+
+  </div>
+  <div class="startend">
+    <%= @resume.exstart4 %> - <%= @resume.exend4 %><br>
+  </div>
+</div><br>
+<% else %>
+<% end %>
+<br>
+<% if @resume.excomp5.present? %>
+<div class="company">
+  <div class="Position">
+    &nbsp;<%= @resume.excomp5 %> <%= @resume.excomploc5 %><br>
+    &nbsp;&nbsp;<%= @resume.expos5 %><br>
+    <ul>
+      <% if @resume.expos51about.present? %><li><%=@resume.expos51about %></li><% else %><% end %>
+      <% if @resume.expos52about.present? %><li><%=@resume.expos52about %></li><% else %><% end %>
+      <% if @resume.expos53about.present? %><li><%=@resume.expos53about %></li><% else %><% end %>
+      <% if @resume.expos54about.present? %><li><%=@resume.expos54about %></li><% else %><% end %>
+      <% if @resume.expos55about.present? %><li><%=@resume.expos55about %></li><% else %><% end %>
+    </ul>
+
+  </div>
+  <div class="startend">
+    <%= @resume.exstart5 %> - <%= @resume.exend5 %><br>
+  </div>
+</div><br>
+<% else %>
+<% end %>
+<br>
+<% if @resume.excomp6.present? %>
+<div class="company">
+  <div class="Position">
+    &nbsp;<%= @resume.excomp6 %> <%= @resume.excomploc6 %><br>
+    &nbsp;&nbsp;<%= @resume.expos6 %><br>
+    <ul>
+      <% if @resume.expos61about.present? %><li><%=@resume.expos61about %></li><% else %><% end %>
+      <% if @resume.expos62about.present? %><li><%=@resume.expos62about %></li><% else %><% end %>
+      <% if @resume.expos63about.present? %><li><%=@resume.expos63about %></li><% else %><% end %>
+      <% if @resume.expos64about.present? %><li><%=@resume.expos64about %></li><% else %><% end %>
+      <% if @resume.expos65about.present? %><li><%=@resume.expos65about %></li><% else %><% end %>
+    </ul>
+
+  </div>
+  <div class="startend">
+    <%= @resume.exstart6 %> - <%= @resume.exend6 %><br>
+  </div>
+</div><br>
+<% else %>
+<% end %>
 <% if @resume.intcom1.present? %>
 <h4><strong><u>Internships</u></strong></h4>
  <div class="company">
    <div class="Position">
-     &nbsp;<%= @resume.intcom1 %><br>
+     &nbsp;<%= @resume.intcom1 %> <%= @resume.intcomploc1 %><br>
      &nbsp;&nbsp;<%= @resume.intpos1 %><br>
      <ul>
        <% if @resume.intcomp11about.present? %><li><%=@resume.intcomp11about %></li><% else %><% end %>
@@ -121,7 +178,7 @@
 <% if @resume.intcomp2.present? %>
  <div class="company">
    <div class="Position">
-     &nbsp;<%= @resume.intcomp2 %><br>
+     &nbsp;<%= @resume.intcomp2 %> <%= @resume.intcomploc2 %><br>
      &nbsp;&nbsp;<%= @resume.intpos2 %><br>
      <ul>
        <% if @resume.intcomp21about.present? %><li><%=@resume.intcomp21about %></li><% else %><% end %>
@@ -141,7 +198,7 @@
 <% if @resume.intcomp3.present? %>
  <div class="company">
    <div class="Position">
-     &nbsp;<%= @resume.intcomp3 %><br>
+     &nbsp;<%= @resume.intcomp3 %> <%= @resume.intcomploc3 %><br>
      &nbsp;&nbsp;<%= @resume.intpos3 %><br>
      <ul>
        <% if @resume.intcomp31about.present? %><li><%=@resume.intcomp31about %></li><% else %><% end %>
@@ -162,8 +219,23 @@
 <% if @resume.cert1.present? || @resume.cert2.present? || @resume.cert3.present? %>
 <h4><strong><u>Certifications</u></strong></h4>
  <br>
-&nbsp;<%= @resume.cert1 %><br>
-&nbsp;<%= @resume.cert2 %><br>
-&nbsp;<%= @resume.cert3 %>
+ <ul>
+<% if @resume.cert1.present? %><li><%= @resume.cert1 %></li><% else %><% end %>
+<% if @resume.cert2.present? %><li><%= @resume.cert2 %></li><% else %><% end %>
+<% if @resume.cert3.present? %><li><%= @resume.cert3 %></li><% else %><% end %>
+</ul>
+<% else %>
+<% end %>
+
+<% if @resume.skills1.present? || @resume.skills2.present? || @resume.skills3.present? || @resume.skills4.present? || @resume.skills5.present?  %>
+<h4><strong><u>Skills</u></strong></h4>
+ <br>
+ <ul>
+<% if @resume.skills1.present? %><li><%= @resume.skills1 %></li><% else %><% end %>
+<% if @resume.skills2.present? %><li><%= @resume.skills2 %></li><% else %><% end %>
+<% if @resume.skills3.present? %><li><%= @resume.skills3 %></li><% else %><% end %>
+<% if @resume.skills4.present? %><li><%= @resume.skills4 %></li><% else %><% end %>
+<% if @resume.skills5.present? %><li><%= @resume.skills5 %></li><% else %><% end %>
+</ul>
 <% else %>
 <% end %>
