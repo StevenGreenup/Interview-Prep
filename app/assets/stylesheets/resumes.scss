@@ -7,20 +7,58 @@
 }
 
 .company{
-  display:flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
+  display: inline-block;
+width: 100%;
 
 .position{
   text-align: left;
-  display: inline-block;
+  float: left;
 }
 .startend{
-  display: inline-block;
   text-align: right;
-  width: 100%;
+  float: right;
 }
+}
+
+ul{
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+h1{
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+h2{
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+h3{
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+h4{
+ padding-top: 0px;
+ padding-bottom: 0px;
+ margin-top: 0px;
+ margin-bottom: 0px;
+}
+h5{
+ padding-top: 0px;
+ padding-bottom: 0px;
+ margin-top: 0px;
+ margin-bottom: 0px;
+}
+h6{
+ padding-top: 0px;
+ padding-bottom: 0px;
+ margin-top: 0px;
+ margin-bottom: 0px;
 }

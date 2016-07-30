@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160728185617) do
+ActiveRecord::Schema.define(version: 20160729231802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -134,12 +134,47 @@ ActiveRecord::Schema.define(version: 20160728185617) do
     t.string   "cert1"
     t.string   "cert2"
     t.string   "cert3"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.string   "intend1"
     t.string   "intend2"
     t.string   "intend3"
     t.integer  "user_id"
+    t.string   "addresscity"
+    t.string   "addressstate"
+    t.string   "addresszip"
+    t.string   "website"
+    t.string   "linked"
+    t.string   "expos11about"
+    t.string   "expos12about"
+    t.string   "expos13about"
+    t.string   "expos14about"
+    t.string   "expos15about"
+    t.string   "expos21about"
+    t.string   "expos22about"
+    t.string   "expos23about"
+    t.string   "expos24about"
+    t.string   "expos25about"
+    t.string   "expos31about"
+    t.string   "expos32about"
+    t.string   "expos33about"
+    t.string   "expos34about"
+    t.string   "expos35about"
+    t.string   "intcomp11about"
+    t.string   "intcomp12about"
+    t.string   "intcomp13about"
+    t.string   "intcomp14about"
+    t.string   "intcomp15about"
+    t.string   "intcomp21about"
+    t.string   "intcomp22about"
+    t.string   "intcomp23about"
+    t.string   "intcomp24about"
+    t.string   "intcomp25about"
+    t.string   "intcomp31about"
+    t.string   "intcomp32about"
+    t.string   "intcomp33about"
+    t.string   "intcomp34about"
+    t.string   "intcomp35about"
   end
 
   create_table "users", force: :cascade do |t|
