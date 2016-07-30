@@ -40,11 +40,11 @@
     &nbsp;<%= @resume.excomp1 %><br>
     &nbsp;&nbsp;<%= @resume.expos1 %><br>
     <ul>
-      <li><%=@resume.expos11about %></li>
-      <li><%=@resume.expos12about %></li>
-      <li><%=@resume.expos13about %></li>
-      <li><%=@resume.expos14about %></li>
-      <li><%=@resume.expos15about %></li>
+      <% if @resume.expos11about.present? %><li><%=@resume.expos11about %></li><% else %><% end %>
+      <% if @resume.expos12about.present? %><li><%=@resume.expos12about %></li><% else %><% end %>
+      <% if @resume.expos13about.present? %><li><%=@resume.expos13about %></li><% else %><% end %>
+      <% if @resume.expos14about.present? %><li><%=@resume.expos14about %></li><% else %><% end %>
+      <% if @resume.expos15about.present? %><li><%=@resume.expos15about %></li><% else %><% end %>
     </ul>
 
   </div>
@@ -61,11 +61,11 @@
     &nbsp;<%= @resume.excomp2 %><br>
     &nbsp;&nbsp;<%= @resume.expos2 %><br>
     <ul>
-      <li><%=@resume.expos21about %></li>
-      <li><%=@resume.expos22about %></li>
-      <li><%=@resume.expos23about %></li>
-      <li><%=@resume.expos24about %></li>
-      <li><%=@resume.expos25about %></li>
+      <% if @resume.expos21about.present? %><li><%=@resume.expos21about %></li><% else %><% end %>
+      <% if @resume.expos22about.present? %><li><%=@resume.expos22about %></li><% else %><% end %>
+      <% if @resume.expos23about.present? %><li><%=@resume.expos23about %></li><% else %><% end %>
+      <% if @resume.expos24about.present? %><li><%=@resume.expos24about %></li><% else %><% end %>
+      <% if @resume.expos25about.present? %><li><%=@resume.expos25about %></li><% else %><% end %>
     </ul>
 
   </div>
@@ -82,11 +82,11 @@
     &nbsp;<%= @resume.excomp3 %><br>
     &nbsp;&nbsp;<%= @resume.expos3 %><br>
     <ul>
-      <li><%=@resume.expos31about %></li>
-      <li><%=@resume.expos32about %></li>
-      <li><%=@resume.expos33about %></li>
-      <li><%=@resume.expos34about %></li>
-      <li><%=@resume.expos35about %></li>
+      <% if @resume.expos31about.present? %><li><%=@resume.expos31about %></li><% else %><% end %>
+      <% if @resume.expos32about.present? %><li><%=@resume.expos32about %></li><% else %><% end %>
+      <% if @resume.expos33about.present? %><li><%=@resume.expos33about %></li><% else %><% end %>
+      <% if @resume.expos34about.present? %><li><%=@resume.expos34about %></li><% else %><% end %>
+      <% if @resume.expos35about.present? %><li><%=@resume.expos35about %></li><% else %><% end %>
     </ul>
 
   </div>
@@ -103,11 +103,11 @@
      &nbsp;<%= @resume.intcom1 %><br>
      &nbsp;&nbsp;<%= @resume.intpos1 %><br>
      <ul>
-       <li><%=@resume.intcomp11about %></li>
-       <li><%=@resume.intcomp12about %></li>
-       <li><%=@resume.intcomp13about %></li>
-       <li><%=@resume.intcomp14about %></li>
-       <li><%=@resume.intcomp15about %></li>
+       <% if @resume.intcomp11about.present? %><li><%=@resume.intcomp11about %></li><% else %><% end %>
+       <% if @resume.intcomp12about.present? %><li><%=@resume.intcomp12about %></li><% else %><% end %>
+       <% if @resume.intcomp13about.present? %><li><%=@resume.intcomp13about %></li><% else %><% end %>
+       <% if @resume.intcomp14about.present? %><li><%=@resume.intcomp14about %></li><% else %><% end %>
+       <% if @resume.intcomp15about.present? %><li><%=@resume.intcomp15about %></li><% else %><% end %>
      </ul>
 
    </div>
@@ -124,11 +124,11 @@
      &nbsp;<%= @resume.intcomp2 %><br>
      &nbsp;&nbsp;<%= @resume.intpos2 %><br>
      <ul>
-       <li><%=@resume.intcomp21about %></li>
-       <li><%=@resume.intcomp22about %></li>
-       <li><%=@resume.intcomp23about %></li>
-       <li><%=@resume.intcomp24about %></li>
-       <li><%=@resume.intcomp25about %></li>
+       <% if @resume.intcomp21about.present? %><li><%=@resume.intcomp21about %></li><% else %><% end %>
+       <% if @resume.intcomp22about.present? %><li><%=@resume.intcomp22about %></li><% else %><% end %>
+       <% if @resume.intcomp23about.present? %><li><%=@resume.intcomp23about %></li><% else %><% end %>
+       <% if @resume.intcomp24about.present? %><li><%=@resume.intcomp24about %></li><% else %><% end %>
+       <% if @resume.intcomp25about.present? %><li><%=@resume.intcomp25about %></li><% else %><% end %>
      </ul>
 
    </div>
@@ -144,11 +144,11 @@
      &nbsp;<%= @resume.intcomp3 %><br>
      &nbsp;&nbsp;<%= @resume.intpos3 %><br>
      <ul>
-       <li><%=@resume.intcomp31about %></li>
-       <li><%=@resume.intcomp32about %></li>
-       <li><%=@resume.intcomp33about %></li>
-       <li><%=@resume.intcomp34about %></li>
-       <li><%=@resume.intcomp35about %></li>
+       <% if @resume.intcomp31about.present? %><li><%=@resume.intcomp31about %></li><% else %><% end %>
+       <% if @resume.intcomp32about.present? %><li><%=@resume.intcomp32about %></li><% else %><% end %>
+       <% if @resume.intcomp33about.present? %><li><%=@resume.intcomp33about %></li><% else %><% end %>
+       <% if @resume.intcomp34about.present? %><li><%=@resume.intcomp34about %></li><% else %><% end %>
+       <% if @resume.intcomp35about.present? %><li><%=@resume.intcomp35about %></li><% else %><% end %>
      </ul>
 
    </div>

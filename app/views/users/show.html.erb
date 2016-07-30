@@ -95,7 +95,7 @@
 
         </div>
 
-        <div role="tabpanel" class="tab-pane" id="profile">
+        <div  href="#resume" role="tabpanel" class="tab-pane" id="profile">
             <div class="container">
                 <div class="col-sm-6">
                     <% if @resumes.present? %>
@@ -194,7 +194,7 @@
                             <div class="panel-heading" role="tab" id="headingThree">
                                 <h4 class="panel-title">
                                     <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        Experience - <%= @resume.excomp1 %> -
+                                        Experience - <% if @editresume.excomp1.present? %> <strong><%= @editresume.excomp1 %></strong>  <% else %> <% end %>
                                     </a>
                                 </h4>
                             </div>
@@ -238,7 +238,7 @@
                             <div class="panel-heading" role="tab" id="heading4">
                                 <h4 class="panel-title">
                                     <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" aria-controls="collapse4">
-                                        Experience
+                                        Experience - <% if @editresume.excomp2.present? %><strong><%= @editresume.excomp2 %></strong> <% else %> <% end %>
                                     </a>
                                 </h4>
                             </div>
@@ -282,7 +282,7 @@
                             <div class="panel-heading" role="tab" id="heading5">
                                 <h4 class="panel-title">
                                     <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="false" aria-controls="collapse5">
-                                        Experience
+                                        Experience<% if @editresume.excomp3.present? %> - <strong><%= @editresume.excomp3 %></strong> <% else %> <% end %>
                                     </a>
                                 </h4>
                             </div>
@@ -326,7 +326,7 @@
                             <div class="panel-heading" role="tab" id="heading6">
                                 <h4 class="panel-title">
                                     <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse6" aria-expanded="false" aria-controls="collapse6">
-                                        Internship
+                                        Internship<% if @editresume.intcom1.present? %> - <strong><%= @editresume.intcom1 %></strong> <% else %> <% end %>
                                     </a>
                                 </h4>
                             </div>
@@ -370,7 +370,7 @@
                             <div class="panel-heading" role="tab" id="heading7">
                                 <h4 class="panel-title">
                                     <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse7" aria-expanded="false" aria-controls="collapse7">
-                                        Internship
+                                        Internship<% if @editresume.intcomp2.present? %> - <strong><%= @editresume.intcomp2 %></strong> <% else %> <% end %>
                                     </a>
                                 </h4>
                             </div>
@@ -414,7 +414,7 @@
                             <div class="panel-heading" role="tab" id="heading8">
                                 <h4 class="panel-title">
                                     <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse8" aria-expanded="false" aria-controls="collapse8">
-                                        Internship
+                                        Internship<% if @editresume.intcomp3.present? %> - <strong><%= @editresume.intcomp3 %></strong> <% else %> <% end %>
                                     </a>
                                 </h4>
                             </div>
