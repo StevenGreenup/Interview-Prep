@@ -41,7 +41,7 @@ end
     @descomps = Descomp.where(user_id: @current_user.id)
     @bosses = Boss.where(user_id: @current_user.id)
 
-    if @resumes.first.nil?
+    if @resumes.first.addresscity.nil? || @resumes.first.addressstate.nil?
 
     else
     getresume = Resume.where(user_id: @current_user.id).first
