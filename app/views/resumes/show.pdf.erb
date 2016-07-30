@@ -35,6 +35,7 @@
   <div class="Position">
     &nbsp;<%= @resume.excomp1 %> <%= @resume.excomploc1 %><br>
     &nbsp;&nbsp;<i><%= @resume.expos1 %></i>
+    </div>
     <ul>
       <% if @resume.expos11about.present? %><li><%=@resume.expos11about %></li><% else %><% end %>
       <% if @resume.expos12about.present? %><li><%=@resume.expos12about %></li><% else %><% end %>
@@ -43,7 +44,7 @@
       <% if @resume.expos15about.present? %><li><%=@resume.expos15about %></li><% else %><% end %>
     </ul>
 
-  </div>
+
 </div><br>
 <% else %>
 <% end %>
