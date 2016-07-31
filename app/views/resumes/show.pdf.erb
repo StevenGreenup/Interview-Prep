@@ -1,5 +1,5 @@
 <%= wicked_pdf_stylesheet_link_tag "resumes" -%>
-
+<body>
 <div class="contact-resume">
     <h2><%= @current_user.name %></h2>
     <%=@resume.website %>
@@ -430,3 +430,4 @@
 </div>
 <% else %>
 <% end %>
+</body>
