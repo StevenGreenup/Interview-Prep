@@ -14,6 +14,7 @@
     <%= @resume.phone %><br>
 
 </div>
+<br>
 <% if @resume.objective.present? %>
 <div class="education">
     <h4>
@@ -21,8 +22,8 @@
             <u>Objective</u>
         </strong>
     </h4>
-
-    &nbsp;<strong><%= @resume.objective %></strong>
+<br>
+    &nbsp;<%= @resume.objective %>
 
 </div>
 <% else %>
@@ -34,8 +35,8 @@
             <u>Value</u>
         </strong>
     </h4>
-    &nbsp;<strong><%= @resume.value %></strong>
-
+    &nbsp;<%= @resume.value %>
+<br>
 </div>
 <% else %>
 <% end %>
