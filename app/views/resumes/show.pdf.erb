@@ -375,6 +375,7 @@
 <% end %>
 <br>
 <% if @resume.cert1.present? || @resume.cert2.present? || @resume.cert3.present? %>
+<div class="content">
 <h4>
     <strong>
         <u>Certifications</u>
@@ -392,10 +393,12 @@
     <li><%= @resume.cert3 %></li>
 <% else %><% end %>
 </ul>
+</div>
 <% else %>
 <% end %>
 
 <% if @resume.skills1.present? || @resume.skills2.present? || @resume.skills3.present? || @resume.skills4.present? || @resume.skills5.present?  %>
+<div class="content">
 <h4>
     <strong>
         <u>Skills</u>
@@ -419,5 +422,6 @@
     <li><%= @resume.skills5 %></li>
 <% else %><% end %>
 </ul>
+</div>
 <% else %>
 <% end %>
