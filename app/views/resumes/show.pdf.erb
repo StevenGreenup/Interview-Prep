@@ -83,44 +83,53 @@
 <br>
 <% if @resume.excomp2.present? %>
 <div class="company">
+  <div class="startend">
+      <%= @resume.exstart2 %>
+      -
+      <%= @resume.exend2 %><br>
+  </div>
     <div class="Position">
-        &nbsp;<%= @resume.excomp2 %>
-        <%= @resume.excomploc2 %><br>
-        &nbsp;&nbsp;<i><%= @resume.expos2 %></i>
-        <ul>
-            <% if @resume.expos21about.present? %>
-            <li><%=@resume.expos21about %></li>
-        <% else %><% end %>
-            <% if @resume.expos22about.present? %>
-            <li><%=@resume.expos22about %></li>
-        <% else %><% end %>
-            <% if @resume.expos23about.present? %>
-            <li><%=@resume.expos23about %></li>
-        <% else %><% end %>
-            <% if @resume.expos24about.present? %>
-            <li><%=@resume.expos24about %></li>
-        <% else %><% end %>
-            <% if @resume.expos25about.present? %>
-            <li><%=@resume.expos25about %></li>
-        <% else %><% end %>
-        </ul>
-
-    </div>
-    <div class="startend">
-        <%= @resume.exstart2 %>
-        -
-        <%= @resume.exend2 %><br>
-    </div>
+        &nbsp;<%= @resume.excomp2 %>,<%= @resume.excomploc2 %>
+        <br>&nbsp;&nbsp;<i><%= @resume.expos2 %></i>
+        </div>
 </div><br>
+<div class="content">
+<ul>
+    <% if @resume.expos21about.present? %>
+    <li><%=@resume.expos21about %></li>
+<% else %><% end %>
+    <% if @resume.expos22about.present? %>
+    <li><%=@resume.expos22about %></li>
+<% else %><% end %>
+    <% if @resume.expos23about.present? %>
+    <li><%=@resume.expos23about %></li>
+<% else %><% end %>
+    <% if @resume.expos24about.present? %>
+    <li><%=@resume.expos24about %></li>
+<% else %><% end %>
+    <% if @resume.expos25about.present? %>
+    <li><%=@resume.expos25about %></li>
+<% else %><% end %>
+</ul>
+</div>
 <% else %>
 <% end %>
 <br>
+
+
 <% if @resume.excomp3.present? %>
 <div class="company">
+  <div class="startend">
+      <%= @resume.exstart3 %>
+      -
+      <%= @resume.exend3 %><br>
+  </div>
     <div class="Position">
-        &nbsp;<%= @resume.excomp3 %>
-        <%= @resume.excomploc3 %><br>
-        &nbsp;&nbsp;<i><%= @resume.expos3 %></i>
+        &nbsp;<%= @resume.excomp3 %>,<%= @resume.excomploc3 %>
+        <br>&nbsp;&nbsp;<i><%= @resume.expos3 %></i>
+        </div>
+        </div>
+        <div class="content">
         <ul>
             <% if @resume.expos31about.present? %>
             <li><%=@resume.expos31about %></li>
@@ -138,23 +147,24 @@
             <li><%=@resume.expos35about %></li>
         <% else %><% end %>
         </ul>
-
-    </div>
-    <div class="startend">
-        <%= @resume.exstart3 %>
-        -
-        <%= @resume.exend3 %><br>
-    </div>
-</div><br>
+</div>
 <% else %>
 <% end %>
+<br>
 
 <% if @resume.excomp4.present? %>
 <div class="company">
+  <div class="startend">
+      <%= @resume.exstart4 %>
+      -
+      <%= @resume.exend4 %><br>
+  </div>
     <div class="Position">
-        &nbsp;<%= @resume.excomp4 %>
-        <%= @resume.excomploc4 %><br>
-        &nbsp;&nbsp;<i><%= @resume.expos4 %></i>
+        &nbsp;<%= @resume.excomp4 %>,<%= @resume.excomploc4 %>
+        <br>&nbsp;&nbsp;<i><%= @resume.expos4 %></i>
+        </div>
+          </div>
+          <div class="content">
         <ul>
             <% if @resume.expos41about.present? %>
             <li><%=@resume.expos41about %></li>
@@ -172,23 +182,24 @@
             <li><%=@resume.expos45about %></li>
         <% else %><% end %>
         </ul>
+  </div>
 
-    </div>
-    <div class="startend">
-        <%= @resume.exstart4 %>
-        -
-        <%= @resume.exend4 %><br>
-    </div>
-</div><br>
 <% else %>
 <% end %>
 <br>
 <% if @resume.excomp5.present? %>
 <div class="company">
+  <div class="startend">
+      <%= @resume.exstart5 %>
+      -
+      <%= @resume.exend5 %><br>
+  </div>
     <div class="Position">
-        &nbsp;<%= @resume.excomp5 %>
-        <%= @resume.excomploc5 %><br>
-        &nbsp;&nbsp;<i><%= @resume.expos5 %></i>
+        &nbsp;<%= @resume.excomp5 %>,<%= @resume.excomploc5 %>
+        <br>&nbsp;&nbsp;<i><%= @resume.expos5 %></i>
+      </div>
+  </div>
+  <div class="content">
         <ul>
             <% if @resume.expos51about.present? %>
             <li><%=@resume.expos51about %></li>
@@ -206,23 +217,25 @@
             <li><%=@resume.expos55about %></li>
         <% else %><% end %>
         </ul>
-
-    </div>
-    <div class="startend">
-        <%= @resume.exstart5 %>
-        -
-        <%= @resume.exend5 %><br>
-    </div>
-</div><br>
+</div>
 <% else %>
 <% end %>
 <br>
+
 <% if @resume.excomp6.present? %>
 <div class="company">
+  <div class="startend">
+      <%= @resume.exstart6 %>
+      -
+      <%= @resume.exend6 %><br>
+  </div>
     <div class="Position">
-        &nbsp;<%= @resume.excomp6 %>
-        <%= @resume.excomploc6 %><br>
-        &nbsp;&nbsp;<i><%= @resume.expos6 %></i>
+        &nbsp;<%= @resume.excomp6 %>,<%= @resume.excomploc6 %>
+        <br>&nbsp;&nbsp;<i><%= @resume.expos6 %></i>
+
+            </div>
+        </div>
+        <div class="content">
         <ul>
             <% if @resume.expos61about.present? %>
             <li><%=@resume.expos61about %></li>
@@ -240,16 +253,12 @@
             <li><%=@resume.expos65about %></li>
         <% else %><% end %>
         </ul>
-
-    </div>
-    <div class="startend">
-        <%= @resume.exstart6 %>
-        -
-        <%= @resume.exend6 %><br>
-    </div>
-</div><br>
+</div>
 <% else %>
 <% end %>
+<br>
+
+
 <% if @resume.intcom1.present? %>
 <h4>
     <strong>
@@ -257,10 +266,19 @@
     </strong>
 </h4>
 <div class="company">
+  <div class="startend">
+      <%= @resume.intstart1 %>
+      -
+      <%= @resume.intend1 %><br>
+  </div>
     <div class="Position">
-        &nbsp;<%= @resume.intcom1 %>
-        <%= @resume.intcomploc1 %><br>
-        &nbsp;&nbsp;<i><%= @resume.intpos1 %></i>
+        &nbsp;<%= @resume.intcom1 %>,<%= @resume.intcomploc1 %>
+        <br>&nbsp;&nbsp;<i><%= @resume.intpos1 %></i>
+      </div>
+  </div>
+  <div class="content">
+
+
         <ul>
             <% if @resume.intcomp11about.present? %>
             <li><%=@resume.intcomp11about %></li>
@@ -278,23 +296,26 @@
             <li><%=@resume.intcomp15about %></li>
         <% else %><% end %>
         </ul>
+</div>
 
-    </div>
-    <div class="startend">
-        <%= @resume.intstart1 %>
-        -
-        <%= @resume.intend1 %><br>
-    </div>
-</div><br>
 <% else %>
 <% end %>
 <br>
 <% if @resume.intcomp2.present? %>
 <div class="company">
+  <div class="startend">
+      <%= @resume.intstart2 %>
+      -
+      <%= @resume.intend2 %><br>
+  </div>
     <div class="Position">
-        &nbsp;<%= @resume.intcomp2 %>
-        <%= @resume.intcomploc2 %><br>
-        &nbsp;&nbsp;<i><%= @resume.intpos2 %></i>
+        &nbsp;<%= @resume.intcomp2 %>,<%= @resume.intcomploc2 %>
+        <br>&nbsp;&nbsp;<i><%= @resume.intpos2 %></i>
+      </div>
+  </div>
+  <div class="content">
+
+
         <ul>
             <% if @resume.intcomp21about.present? %>
             <li><%=@resume.intcomp21about %></li>
@@ -312,22 +333,25 @@
             <li><%=@resume.intcomp25about %></li>
         <% else %><% end %>
         </ul>
+</div>
 
-    </div>
-    <div class="startend">
-        <%= @resume.intstart2 %>
-        -
-        <%= @resume.intend2 %><br>
-    </div>
-</div><br><br>
 <% else %>
 <% end %>
+<br>
+
 <% if @resume.intcomp3.present? %>
 <div class="company">
+  <div class="startend">
+      <%= @resume.intstart3 %>
+      -
+      <%= @resume.intend3 %><br>
+  </div>
     <div class="Position">
-        &nbsp;<%= @resume.intcomp3 %>
-        <%= @resume.intcomploc3 %><br>
-        &nbsp;&nbsp;<i><%= @resume.intpos3 %></i>
+        &nbsp;<%= @resume.intcomp3 %>,<%= @resume.intcomploc3 %>
+        <br>&nbsp;&nbsp;<i><%= @resume.intpos3 %></i>
+      </div>
+  </div>
+  <div class="content">
         <ul>
             <% if @resume.intcomp31about.present? %>
             <li><%=@resume.intcomp31about %></li>
@@ -345,17 +369,11 @@
             <li><%=@resume.intcomp35about %></li>
         <% else %><% end %>
         </ul>
+</div>
 
-    </div>
-    <div class="startend">
-        <%= @resume.intstart3 %>
-        -
-        <%= @resume.intend3 %><br>
-    </div>
-</div><br>
 <% else %>
 <% end %>
-
+<br>
 <% if @resume.cert1.present? || @resume.cert2.present? || @resume.cert3.present? %>
 <h4>
     <strong>
