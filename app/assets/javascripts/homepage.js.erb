@@ -1,0 +1,67 @@
+$("window").ready(function() {
+  // var navabout = document.getElementById("nav-about").innerHTML
+  // var $contactdiv = "don't contact me even though I say you can."
+
+// $(selector).toggleClass(classname,function(index,currentclass),switch)
+
+    $(".navbar-right").on("click", function(clickEvent) {
+
+
+        var linkEl = clickEvent.target
+        if (linkEl.getAttribute('data-id') === 'services') {
+          $('.navbar-fixed-top').toggleClass("navbar-show", 1000);
+          $("#nav-about").html("<section id='about' class=''><div class='container'><div class='row'><div class='col-xs-12 section-title text-center'><h2>About</h2><span class='section-divider'></span></div></div><div class='row mb15'><div class='col-sm-5 leftReveal'><h5 class='heading-1 mb20'>Our Trade</h5><h3 class='mb15 no-margin-top'>Designing, Developing, and <br>Innovating for people like you...</h3><p class='no-margin text-small'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec tristiq enim. Integer eu <strong>neque</strong> arcu. Aenean sed odio nibh. Cras imperdiet, arcu eget dictum vestibulum elit.</p></div><div class='col-sm-7 mt30-xs rightReveal'><h5 class='heading-1 mb20'>How we started it</h5><span class='icon-handle-streamline-vector logo-about'></span><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras est urna, imperdiet eget sem at, pellentesque cursus elit. Etiam id ante et elit interdum sollicitudin. Cras imperdiet, arcu eget dictum vestibulum elit.</p><p>Curabitur egestas interdum ex, sed commodo ipsum consectetur vitae. Nulla auctor ante erat. Class aptent taciti sociosqu nostra enean sed.</p></div></div></section>");
+
+
+
+        }
+        if (linkEl.getAttribute('data-id') === 'contact') {
+          $('.navbar-fixed-top').toggleClass("navbar-show", 1000);
+        }
+
+      });
+
+
+
+
+
+
+
+
+
+
+
+    $(".logo-top").on("mouseover", function() {
+        $(this).animate({
+            'top': '20px',
+
+        }, 100);
+    });
+
+
+
+    $(".logo-top").on("mouseleave", function() {
+        $(this).animate({
+            'top': '5',
+
+        }, 100);
+    });
+
+    var current = 1;
+    var height = $('.ticker').height();
+    var numberDivs = $('.ticker').children().length;
+    var first = $('.ticker h1:nth-child(1)');
+    setInterval(function() {
+        var number = current * -height;
+        first.css('margin-top', number + 'px');
+        if (current === numberDivs) {
+            first.css('margin-top', '0px');
+            current = 1;
+        } else current++;
+    }, 2500);
+
+
+
+
+
+});

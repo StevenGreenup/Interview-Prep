@@ -79,7 +79,8 @@
                                     <a href="#services" data-id="services" class="scroll-link services">Services</a>
                                 </li>
                                 <li>
-                                    <a href="#contact" data-id="contact" class="scroll-link contact">Contact</a>
+                                  <%= link_to "Contact", contact_path, :remote => true %>
+                                    <!-- <a href="#contact" data-id="contact" class="scroll-link contact" data-remote="true">Contact</a> -->
                                 </li>
                                 <% if @current_user %>
                                 <li><%= link_to 'Sign Out', sign_in_path, method: :delete %></li>
