@@ -40,13 +40,37 @@
 <br>
 <% else %>
 <% end %>
+
+<% if @resume.school1.present? %>
+<div class="education">
+    <h4>
+        <strong>
+            <u>Education</u>
+        </strong>
+    </h4>
+    <% if @resume.school1.present? %>
+    &nbsp;<%= @resume.school1 %><br>
+    &nbsp;&nbsp; <i><%= @resume.cdd1 %></i>
+    <br><br><% else %><% end %>
+    <% if @resume.school2.present? %>
+    &nbsp;<%= @resume.school2 %><br>
+    &nbsp;&nbsp;<i><%= @resume.cdd2 %></i>
+    <br><br><% else %><% end %>
+    <% if @resume.school3.present? %>
+    &nbsp;<%= @resume.school3 %><br>
+    &nbsp;&nbsp;<i><%= @resume.cdd3 %></i><% else %><% end %>
+</div>
+<br>
+<% else %>
+<% end %>
+<% if @resume.excomp1.present? %>
 <h4>
     <strong>
         <u>Relevant Experience</u>
     </strong>
 </h4>
 
-<% if @resume.excomp1.present? %>
+
 <div class="company">
     <div class="startend">
         <%= @resume.exstart1 %>
@@ -387,7 +411,6 @@
         <u>Certifications</u>
     </strong>
 </h4>
-<br>
 <ul>
     <% if @resume.cert1.present? %>
     <li><%= @resume.cert1 %></li>

@@ -142,11 +142,15 @@ end
 
 
     if @resume.save
+      # respond_to do |format|
+      #   format.js
+      # end
       redirect_to user_path(id: @current_user.id)
     else
       render :new
     end
   end
+
 
   def show
     respond_to do |format|
@@ -161,6 +165,8 @@ end
   end
 
   def edit
+    @editresume = Resume.find_by user_id: params[:id]
+
     @resume = Resume.find_by user_id: params[:id]
     @resume.user_id = @current_user.id
     @resume.address = params[:resume][:address]
@@ -290,9 +296,9 @@ end
     @resume.skills3 = params[:resume][:skills3]
     @resume.skills4 = params[:resume][:skills4]
     @resume.skills5 = params[:resume][:skills5]
-    
+
     if @resume.save
-      redirect_to user_path(id: @current_user.id)
+      @editresume = @resume
     else
       render :new
     end

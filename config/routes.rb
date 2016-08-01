@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   patch 'resumes/edit/:id' => "resumes#edit", as: :edit_resume
   post 'resumes' => 'resumes#create', as: :new_resume
   get 'resumes/:id.pdf' => 'resumes#show', as: :resume

@@ -100,7 +100,7 @@
                 <div class="col-sm-6">
                     <% if @resumes.present? %>
                     <h2>Edit Resume</h2>
-                    <%= form_for @editresume, url: edit_resume_path(id: @current_user.id) do |f| %>
+                    <%= form_for @editresume, url: edit_resume_path(id: @current_user.id), remote: true do |f| %>
 <br><br>
                     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                         <div class="panel panel-default">
@@ -167,8 +167,8 @@
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="headingTwo">
                                 <h4 class="panel-title">
-                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        Education - <% if @editresume.school1.present? %> <strong><%= @editresume.school1 %></strong>  <% else %> <% end %>
+                                    <a class="collapsed edu" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <%= render partial: 'resumes/edu' %>
                                     </a>
                                 </h4>
                             </div>
@@ -216,8 +216,8 @@
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="headingThree">
                                 <h4 class="panel-title">
-                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        Experience - <% if @editresume.excomp1.present? %> <strong><%= @editresume.excomp1 %></strong>  <% else %> <% end %>
+                                    <a class="collapsed exp1" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        <%= render partial: 'resumes/exp1' %>
                                     </a>
                                 </h4>
                             </div>
@@ -262,8 +262,8 @@
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="heading4">
                                 <h4 class="panel-title">
-                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" aria-controls="collapse4">
-                                        Experience - <% if @editresume.excomp2.present? %><strong><%= @editresume.excomp2 %></strong> <% else %> <% end %>
+                                    <a class="collapsed exp2" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                        <%= render partial: 'resumes/exp2' %>
                                     </a>
                                 </h4>
                             </div>
@@ -308,8 +308,8 @@
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="heading5">
                                 <h4 class="panel-title">
-                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="false" aria-controls="collapse5">
-                                        Experience<% if @editresume.excomp3.present? %> - <strong><%= @editresume.excomp3 %></strong> <% else %> <% end %>
+                                    <a class="collapsed exp3" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                                        <%= render partial: 'resumes/exp3' %>
                                     </a>
                                 </h4>
                             </div>
@@ -354,8 +354,8 @@
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="heading10">
                                 <h4 class="panel-title">
-                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse10" aria-expanded="false" aria-controls="collapse10">
-                                        Experience - <% if @editresume.excomp4.present? %> <strong><%= @editresume.excomp4 %></strong>  <% else %> <% end %>
+                                    <a class="collapsed exp4" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse10" aria-expanded="false" aria-controls="collapse10">
+                                        <%= render partial: 'resumes/exp4' %>
                                     </a>
                                 </h4>
                             </div>
@@ -400,8 +400,8 @@
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="heading11">
                                 <h4 class="panel-title">
-                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse11" aria-expanded="false" aria-controls="collapse11">
-                                        Experience - <% if @editresume.excomp5.present? %><strong><%= @editresume.excomp5 %></strong> <% else %> <% end %>
+                                    <a class="collapsed exp5" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse11" aria-expanded="false" aria-controls="collapse11">
+                                        <%= render partial: 'resumes/exp5' %>
                                     </a>
                                 </h4>
                             </div>
@@ -446,8 +446,8 @@
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="heading12">
                                 <h4 class="panel-title">
-                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse12" aria-expanded="false" aria-controls="collapse12">
-                                        Experience<% if @editresume.excomp6.present? %> - <strong><%= @editresume.excomp6 %></strong> <% else %> <% end %>
+                                    <a class="collapsed exp6" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse12" aria-expanded="false" aria-controls="collapse12">
+                                        <%= render partial: 'resumes/exp6' %>
                                     </a>
                                 </h4>
                             </div>
@@ -491,8 +491,8 @@
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="heading6">
                                 <h4 class="panel-title">
-                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse6" aria-expanded="false" aria-controls="collapse6">
-                                        Internship<% if @editresume.intcom1.present? %> - <strong><%= @editresume.intcom1 %></strong> <% else %> <% end %>
+                                    <a class="collapsed int1" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                                        <%= render partial: 'resumes/int1' %>
                                     </a>
                                 </h4>
                             </div>
@@ -537,8 +537,8 @@
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="heading7">
                                 <h4 class="panel-title">
-                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse7" aria-expanded="false" aria-controls="collapse7">
-                                        Internship<% if @editresume.intcomp2.present? %> - <strong><%= @editresume.intcomp2 %></strong> <% else %> <% end %>
+                                    <a class="collapsed int2" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse7" aria-expanded="false" aria-controls="collapse7">
+                                        <%= render partial: 'resumes/int2' %>
                                     </a>
                                 </h4>
                             </div>
@@ -583,8 +583,8 @@
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="heading8">
                                 <h4 class="panel-title">
-                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse8" aria-expanded="false" aria-controls="collapse8">
-                                        Internship<% if @editresume.intcomp3.present? %> - <strong><%= @editresume.intcomp3 %></strong> <% else %> <% end %>
+                                    <a class="collapsed int3" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse8" aria-expanded="false" aria-controls="collapse8">
+                                        <%= render partial: 'resumes/int3' %>
                                     </a>
                                 </h4>
                             </div>
@@ -628,8 +628,8 @@
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="heading9">
                                 <h4 class="panel-title">
-                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse9" aria-expanded="false" aria-controls="collapse9">
-                                        Certifications<% if @editresume.cert1.present? %> - <strong><%= @editresume.cert1 %></strong>  <% else %> <% end %>
+                                    <a class="collapsed cert" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse9" aria-expanded="false" aria-controls="collapse9">
+                                        <%= render partial: 'resumes/cert' %>
                                     </a>
                                 </h4>
                             </div>
@@ -649,8 +649,8 @@
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="heading13">
                                 <h4 class="panel-title">
-                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse13" aria-expanded="false" aria-controls="collapse13">
-                                        Skills<% if @editresume.skills1.present? %> - <strong><%= @editresume.skills1 %></strong>  <% else %> <% end %>
+                                    <a class="collapsed skill" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse13" aria-expanded="false" aria-controls="collapse13">
+                                        <%= render partial: 'resumes/skill' %>
                                     </a>
                                 </h4>
                             </div>
