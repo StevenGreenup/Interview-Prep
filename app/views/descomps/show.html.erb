@@ -56,9 +56,10 @@
                         <%= @descomp.following %><br>
                         <%= @descomp.twitlocate %><br>
                         <%= @descomp.twitsite %><br>
-                        <%= image_tag @descomp.avatar %><br>
+                        <%= @descomp.avatar %><br>
                         <%= link_to @descomp.url, @descomp.url %><br>
-
+                        <%= puts @pagetext %>
+                        <%= @page_text %>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="profile">
                         <h2>Glass Door Review</h2>
@@ -102,8 +103,10 @@
                         <%= @reviews["industryId"] %><br>
                         industryName :
                         <%= @reviews["industryName"] %><br>
+                        <% if @reviews["ceo"].present? %>
                         ceo :
                         <%= @reviews["ceo"]["name"] %><br>
+
                         title :
                         <%= @reviews["ceo"]["title"] %><br>
                         numberOfRatings :
@@ -114,7 +117,8 @@
                         <%= @reviews["ceo"]["pctDisapprove"] %><br>
 
                         <%= image_tag @reviews["ceo"]["image"]["src"] %><br>
-
+                    <% else %>
+                        <% end %>
                         featuredReview :
                         <%= @reviews["featuredReview"]["attributionURL"] %><br>
                         jobTitle :
@@ -160,7 +164,6 @@
 
                     <div role="tabpanel" class="tab-pane" id="messages">
 
-                        <h2>Company Twitter</h2>
                         <% if @descomp.twitter.nil? %>
 
                         <%= form_for @descomp, url: edit_company_path(id: @descomp.id) do |f| %>
@@ -168,25 +171,60 @@
                         <%= f.text_field :twitter, class:"form-control" %>
                         <%= f.submit %>
                         <% end %>
+                        <h2>The Twitter for the Company you're researching wasn't found, but here are some tweets mentioning
+                            <%= @descomp.company %>
+                        </h2>
+                        <% @client.search("#{@descomp.company}", result_type: "recent").take(10).collect do |t| %>
+
+
+                        <% if false %>
+                        <%= raw(@client.oembed(t.id).html) %>
+                        <% end %>
+
+
+                        <% end %>
 
                     <% else %>
+                    <div class="twitter-wrap">
 
-                        <%=image_tag @banner_img %>
 
-                        <br>
-                        <% @client.user_timeline(@descomp.twitter).each do |t| %>
-                        <div id="container">
+                        <div class="company-twitter">
+                            <%=image_tag @banner_img %><br>
+                            <h2>Company Twitter</h2>
+                            <br>
+                            <% @client.user_timeline(@descomp.twitter).each do |t| %>
+
+
+                            <% if false %>
                             <%= raw(@client.oembed(t.id).html) %>
+                            <% end %>
+
+
+                            <% end %>
+                            <% if @descomp.twitter.nil? %>
+                        <% else %>
+                            <h2>Not the correct twitter?</h2>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newcomp">Edit Twitter Handle</button>
+                            <% end %>
                         </div>
 
-                        <% end %>
-                        <% end %>
-                        <% if @descomp.twitter.nil? %>
-                    <% else %>
-                        <h2>Not the correct twitter?</h2>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newcomp">Edit Twitter Handle</button>
+                        <div class="company-mentions">
+                            Tweets mentioning
+                            <%= @descomp.company %>
+                            <% @client.search("#{@descomp.company}", result_type: "recent").take(5).collect do |t| %>
+
+                            <% if false %>
+                            <%= raw(@client.oembed(t.id).html) %>
+                            <% end %>
+
+
+                            <% end %>
+                        </div>
+
+                        </div>
                         <% end %>
                     </div>
+
                     <div role="tabpanel" class="tab-pane" id="settings">
                         <h2>Boss' Information</h2>
                         <% @descomp.bosses.each do |boss| %>
@@ -252,31 +290,60 @@
                     <!-- /.modal -->
 
                     <div role="tabpanel" class="tab-pane" id="settings2">
-                        <%= image_tag @boss_banner %>
-                        <h2>Boss' Twitter</h2>
-                        <% @descomp.bosses.each do |boss| %>
-                        <% if boss.twitter.nil? %>
 
+
+                      <% @descomp.bosses.each do |boss| %>
+                      <% if boss.twitter.nil? %>
+                      Twitter handle wasn't found. Please enter it here.
                         <%= form_for @boss, url: edit_boss_path(id: boss.id) do |f| %>
                         <%= f.label :twitter %>
                         <%= f.text_field :twitter, class:"form-control" %>
                         <%= f.submit %>
                         <% end %>
 
-                    <% else %>
-                        <% @client.user_timeline( boss.twitter ).each do |t| %>
-                        <%= raw(@client.oembed(t.id).html) %>
-                        <% end %>
 
-                        <% end %>
-                        <% end %>
-                        <% @descomp.bosses.each do |boss| %>
-                        <% if boss.twitter.nil? %>
-                    <% else %>
-                        <h2>Not the correct twitter?</h2>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newboss">Edit Twitter Handle</button><br>
-                        <% end %>
-                        <% end %>
+                  <% else %>
+
+                      <div class="twitter-wrap">
+
+
+                          <div class="boss-twitter">
+                            <%= image_tag @boss_banner %>
+                            <h2>Boss' Twitter</h2>
+                              <br>
+                              <% @client.user_timeline( boss.twitter ).each do |t| %>
+
+                              <% if false %>
+                              <%= raw(@client.oembed(t.id).html) %>
+                              <% end %>
+
+                              <% end %>
+
+                              <% if boss.twitter.nil? %>
+                          <% else %>
+                              <h2>Not the correct twitter?</h2>
+                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newboss">Edit Twitter Handle</button>
+                              <% end %>
+                          </div>
+
+                          <div class="boss-mentions">
+                              Tweets mentioning
+                              <%= boss.twitter %>
+                              <% @client.search("to: @#{ boss.twitter }", result_type: "recent").take(5).collect do |t| %>
+
+                              <% if false %>
+                              <%= raw(@client.oembed(t.id).html) %>
+                              <% end %>
+
+                              <% end %>
+                          </div>
+
+                          </div>
+                          <% end %>
+                          <% end %>
+                      </div>
+
+
                     </div>
 
                 </div>
@@ -284,5 +351,9 @@
             </div>
 
         </div>
+
+
+
+
     </body>
 </html>

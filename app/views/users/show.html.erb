@@ -85,29 +85,134 @@
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newcomp">1. Research Company</button><br>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newboss">2. Research Hiring Manager</button><br>
                     <h2>Companies</h2>
-                    <% @descomps.each do |descomp| %>
-                    <%= link_to descomp.company, company_path(id: descomp.id) %><br>
+                    Note: If the company or hiring manager you're researching does not have a strong internet presence, then results will be lacking.
 
+                    <div class="row">
+                      <% @descomps.each do |descomp| %>
+                      <div class="text-center">
+                    <div class="col-sm-6">
+                      <div class="thumbnail">
+
+                        <div class="wrapcompany">
+
+
+                      <div class="col-sm-6">
+                          <strong><u>Company</u></strong><br>
+                          <%= descomp.company %><br>
+                        <%= image_tag descomp.logo, class:"avatar" %><br>
+
+
+                        </div>
+                        <div class="col-sm-6">
+                          <% descomp.bosses.each do |boss| %>
+                          <strong><u>Hiring Manager</u></strong><br>
+                          <% if boss.name.present? %>
+                          <%= boss.name %><br>
+                          <% else %>
+                          <br>
+                          <% end %>
+                        <% if boss.twitter_avatar.present? %>
+                        <%= image_tag boss.twitter_avatar, class:"avatar" %>
+                        <% elsif %>
+
+                        <% boss.github_avatar.present? %>
+                        <%= image_tag boss.github_avatar, class:"avatar" %>
+                        <% elsif %>
+
+                        <% boss.angel_avatar.present? %>
+                        <%= image_tag boss.angel_avatar, class:"avatar" %>
+                        <% elsif %>
+
+                        <% boss.about_avatar.present? %>
+                        <%= image_tag boss.about_avatar, class:"avatar" %>
+                        <% elsif %>
+
+                        <% boss.gravatar_avatar.present? %>
+                        <%= image_tag boss.gravatar_avatar, class:"avatar" %>
+                        <% else %>
+                        <%= image_tag "default_large.png", class:"avatar"  %>
+                        <% end %><% end %>
+
+                        </div>
+                        </div>
+                        <div class="caption">
+                          <p><%= link_to "View Generated Profile", company_path(id: descomp.id), class:"btn btn-primary" %></p>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
                     <% end %>
+                  </div>
+<% if false %>
+                    <!-- <div class="listcompany">
+                        <div class="companypicture">
+                            <%= link_to company_path(id: descomp.id) do %>
+                            <%= image_tag descomp.logo, class:"avatar" %>
+
+                        </div>
+                        <div class="companyprofile">
+
+                            <%= descomp.company %>
+
+                            <% end %>
+                            <br>
+                        </div>
+                        <div class="bossprofile">
+                            <div class="bosspicture">
+
+                                <% descomp.bosses.each do |boss| %>
+
+                                <% if boss.twitter_avatar.present? %>
+                                <%= image_tag boss.twitter_avatar, class:"avatar" %>
+                                <% elsif %>
+
+                                <% boss.github_avatar.present? %>
+                                <%= image_tag boss.github_avatar, class:"avatar" %>
+                                <% elsif %>
+
+                                <% boss.angel_avatar.present? %>
+                                <%= image_tag boss.angel_avatar, class:"avatar" %>
+                                <% elsif %>
+
+                                <% boss.about_avatar.present? %>
+                                <%= image_tag boss.about_avatar, class:"avatar" %>
+                                <% elsif %>
+
+                                <% boss.gravatar_avatar.present? %>
+                                <%= image_tag boss.gravatar_avatar, class:"avatar" %>
+                            <% else %>
+                                <%= image_tag "default_large.png", class:"avatar"  %>
+                                <% end %>
+                            </div>
+                            <div class="bossinfo">
+                                <%= boss.email %>
+                            </div>
+
+                            <% end %>
+                        </div>
+                    </div> -->
+
+<% end %>
 
                 </div>
             </div>
 
         </div>
 
-        <div  href="#resume" role="tabpanel" class="tab-pane" id="profile">
+        <div href="#resume" role="tabpanel" class="tab-pane" id="profile">
             <div class="container">
                 <div class="col-sm-6">
                     <% if @resumes.present? %>
                     <h2>Edit Resume</h2>
                     <%= form_for @editresume, url: edit_resume_path(id: @current_user.id), remote: true do |f| %>
-<br><br>
+                    <br><br>
                     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="headingOne">
                                 <h4 class="panel-title">
                                     <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        Contact Information - <strong><%= @current_user.name %></strong>
+                                        Contact Information -
+                                        <strong><%= @current_user.name %></strong>
                                     </a>
                                 </h4>
                             </div>
@@ -157,8 +262,6 @@
                                     <%= f.text_area :value, class:"form-control" %>
                                     <%= f.label :objective %>
                                     <%= f.text_area :objective, class:"form-control" %>
-
-
 
                                 </div>
                             </div>
@@ -668,7 +771,6 @@
                                     <%= f.label :skills5, "Certification (2)" %>
                                     <%= f.text_field :skills5, class:"form-control" %>
 
-
                                 </div>
                             </div>
                         </div>
@@ -685,7 +787,8 @@
                             <div class="panel-heading" role="tab" id="headingOne">
                                 <h4 class="panel-title">
                                     <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        Contact Information - <strong><%= @current_user.name %></strong>
+                                        Contact Information -
+                                        <strong><%= @current_user.name %></strong>
                                     </a>
                                 </h4>
                             </div>
@@ -734,8 +837,6 @@
                                     <%= f.text_area :value, class:"form-control" %>
                                     <%= f.label :objective %>
                                     <%= f.text_area :objective, class:"form-control" %>
-
-
 
                                 </div>
                             </div>
@@ -1244,7 +1345,6 @@
                                     <%= f.text_field :skills4, class:"form-control" %>
                                     <%= f.label :skills5, "Certification (2)" %>
                                     <%= f.text_field :skills5, class:"form-control" %>
-
 
                                 </div>
                             </div>

@@ -33,6 +33,7 @@ gem 'clearbit'
 gem 'twitter'
 gem 'http'
 gem 'leaflet-rails'
+gem 'mechanize'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

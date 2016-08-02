@@ -93,10 +93,14 @@ align-items: center;
     }
   }
 }
-
 .container{
   padding-top: 100px;
 }
+
+.container1{
+  padding-top: 20px;
+}
+
 
 .container2{
   margin-top: 100px;
@@ -195,4 +199,45 @@ textarea{
 
 #contact_phone{
   width: 100%;
+}
+
+.listcompany{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.itemspresent{
+  width: 25px;
+  height: auto;
+}
+
+.avatar{
+  width: 100px;
+  height: auto;
+  border: 1px solid gray;
+}
+
+.wrapcompany{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+
+}
+
+
+.twitter-wrap{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-content: flex-start;
+  align-items: flex-start;
+  padding: 15px;
 }

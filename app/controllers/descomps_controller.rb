@@ -50,14 +50,7 @@ end
   end
  end
 
-def twitter
 
-end
-
-def glassdoor
-  # Partner ID:	81085
-  # Key:	bh25srPSqNc
-end
 
 
 
@@ -81,6 +74,9 @@ end
    json = JSON.parse(Http.get(url).body)
 
    @reviews = (json["response"]["employers"]).first
+
+
+
 
 
 
