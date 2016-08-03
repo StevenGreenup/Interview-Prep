@@ -332,9 +332,9 @@
                         </h2>
                         <% @client.search("#{@descomp.company}", result_type: "recent").take(10).collect do |t| %>
 
-                        <% if false %>
+                        
                         <%= raw(@client.oembed(t.id).html) %>
-                        <% end %>
+                        
 
                         <% end %>
 
