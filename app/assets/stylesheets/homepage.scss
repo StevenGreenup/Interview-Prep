@@ -241,3 +241,37 @@ textarea{
   align-items: flex-start;
   padding: 15px;
 }
+
+.contentcontainer{
+  padding: 20px;
+}
+.reviewwrap{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content:flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
+  padding: 15px;
+}
+
+.aboutreview{
+  padding: 20px;
+
+}
+.reviewwrap{
+  padding: 20px;
+}
+.ceoabout{
+  padding: 20px;
+}
+.featuredReview{
+  padding: 20px;
+}
+.social-profiles{
+  padding: 10px;
+.social-profile{
+  padding: 20px;
+  border: 1px solid gray;
+}
+}

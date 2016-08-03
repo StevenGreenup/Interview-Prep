@@ -34,6 +34,8 @@ gem 'twitter'
 gem 'http'
 gem 'leaflet-rails'
 gem 'mechanize'
+gem 'fullcontact'
+gem 'hashie'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

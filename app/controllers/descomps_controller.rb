@@ -1,6 +1,8 @@
 class DescompsController < ApplicationController
   require 'clearbit'
   require 'twitter'
+  require 'fullcontact'
+  require 'pp'
 
   before_action except: [] do
   if session[:user_id].nil?
@@ -75,8 +77,12 @@ end
 
    @reviews = (json["response"]["employers"]).first
 
+   FullContact.configure do |config|
+       config.api_key = '8eb2222cc289d129'
+   end
 
-
+   @company1 = FullContact.company(domain: @descomp.url)
+   @company2 = @company1.to_hash
 
 
 

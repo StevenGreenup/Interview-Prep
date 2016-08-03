@@ -20,10 +20,7 @@
                         <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Company Twitter</a>
                     </li>
                     <li role="presentation">
-                        <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Boss Information</a>
-                    </li>
-                    <li role="presentation">
-                        <a href="#settings2" aria-controls="settings" role="tab" data-toggle="tab">Boss Twitter</a>
+                        <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Hiring Manager Information and Twitter</a>
                     </li>
 
                 </ul>
@@ -31,108 +28,267 @@
                 <!-- Tab panes -->
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="home">
-                        <h2>Company Information</h2>
-                        <%= image_tag @descomp.logo %><br>
-                        <h2>Twitter Handle</h2>
-                        <%= @descomp.twitter %><br>
-                        <h2>LinkedIn Profile</h2>
-                        <%= @descomp.linked %><br>
-                        <%= @descomp.tag %><br>
-                        <%= @descomp.desc %><br>
-                        <%= @descomp.phone %><br>
-                        <% @descomp.email %><br>
-                        <%= @descomp.sector %><br>
-                        <%= @descomp.industrygroup %><br>
-                        <%= @descomp.industry %><br>
-                        <%= @descomp.subindustry %><br>
-                        <%= @descomp.tags %><br>
-                        <%= @descomp.description %><br>
-                        <%= @descomp.founded %><br>
-                        <%= @descomp.address %><br>
+                        <div class="contentcontainer">
 
-                        <%= @descomp.facebook %><br>
-                        <%= @descomp.twitbio %><br>
-                        <%= @descomp.followers %><br>
-                        <%= @descomp.following %><br>
-                        <%= @descomp.twitlocate %><br>
-                        <%= @descomp.twitsite %><br>
-                        <%= @descomp.avatar %><br>
-                        <%= link_to @descomp.url, @descomp.url %><br>
-                        <%= puts @pagetext %>
-                        <%= @page_text %>
+                            <div class="text-center">
+                                <h2>Company Information</h2>
+                                <%= image_tag @descomp.logo %><br>
+
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h2 class="panel-title">About</h2>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="about">
+                                        <strong>Approximate employees:
+                                        </strong><%= @company2["organization"]["approx_employees"] %><br>
+                                        <strong>Founded:
+                                        </strong><%= @company2["organization"]["founded"] %><br>
+                                        <strong>Sector:
+                                        </strong><%= @descomp.sector %><br>
+                                        <strong>Industry group:
+                                        </strong><%= @descomp.industrygroup %><br>
+                                        <strong>Industry:
+                                        </strong><%= @descomp.industry %><br>
+                                        <strong>Subindustry:
+                                        </strong><%= @descomp.subindustry %><br>
+                                        <strong>Description:
+                                        </strong><%= @descomp.description %><br>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h2 class="panel-title">Contact</h2>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="contact">
+                                        <% @company2["organization"]["contact_info"]["phone_numbers"].map do |phone_hash| %>
+                                        <strong>Phone Number(s):
+                                        </strong><%= phone_hash["number"] %>,
+                                        <% end %>
+                                        <br>
+                                        <%= @descomp.phone %>
+                                        <br>
+                                        <% if @descomp.email.present? %>
+                                        <strong>Useful Email addresses:</strong>
+                                        <%= @descomp.email %><br>
+                                    <% else %>
+                                        <% end %>
+                                        <br>
+                                        <strong>Headquarter address:</strong>
+                                        <% if @descomp.address.present? %>
+                                        <%= @descomp.address %><br>
+                                    <% else %>
+                                        <% @company2["organization"]["contact_info"]["addresses"].map do |address_hash|  %>
+                                        <%= address_hash["address_line1"] %>,
+                                        <%= address_hash["locality"] %>
+                                        <%= address_hash["region"]["code"] %>,
+                                        <%= address_hash["postal_code"] %>
+                                        <% end %>
+                                        <% end %>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h2 class="panel-title">Links</h2>
+                                </div>
+                                <div class="panel-body">
+
+                                    <%= link_to @company2["website"], @company2["website"] %><br>
+                                    <% @company2["organization"]["links"].map do |links_hash|  %>
+                                    <%= link_to links_hash["url"], links_hash["url"] %><br>
+                                    <% end %>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h2 class="panel-title">
+                                        <%= @descomp.company %>
+                                        Social Profiles</h2>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="social-profiles">
+
+                                        <% @company2["social_profiles"].each do |t| %>
+
+                                        <strong>
+                                            <u><%= t["type_name"] %></u>
+                                        </strong>
+                                        <br>
+                                        <% if t["bio"].present? %>
+                                        <strong>Bio:</strong><br>
+                                        <%= t["bio"] %><br>
+                                    <% else %>
+                                        <br>
+                                        <% end %>
+                                        <strong>Link to Profile:</strong><br>
+                                        <%= link_to t["url"], t["url"] %><br>
+
+                                        <hr>
+
+                                        <% end %>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
                     </div>
                     <div role="tabpanel" class="tab-pane" id="profile">
-                        <h2>Glass Door Review</h2>
-                        id :
-                        <%= @reviews["id"] %><br>
-                        name :
-                        <%= @reviews["name"] %><br>
-                        website :
-                        <%= @reviews["website"] %><br>
-                        isEEP :
-                        <%= @reviews["isEEP"] %><br>
-                        exactMatch :
-                        <%= @reviews["exactMatch"] %><br>
-                        industry :
-                        <%= @reviews["industry"] %><br>
-                        numberOfRatings :
-                        <%= @reviews["numberOfRatings"] %><br>
 
-                        <%= image_tag @reviews["squareLogo"] %><br>
-                        overallRating :
-                        <%= @reviews["overallRating"] %><br>
-                        ratingDescription :
-                        <%= @reviews["ratingDescription"] %><br>
-                        cultureAndValuesRating :
-                        <%= @reviews["cultureAndValuesRating"] %><br>
-                        seniorLeadershipRating :
-                        <%= @reviews["seniorLeadershipRating"] %><br>
-                        compensationAndBenefitsRating :
-                        <%= @reviews["compensationAndBenefitsRating"] %><br>
-                        careerOpportunitiesRating :
-                        <%= @reviews["careerOpportunitiesRating"] %><br>
-                        workLifeBalanceRating :
-                        <%= @reviews["workLifeBalanceRating"] %><br>
-                        recommendToFriendRating :
-                        <%= @reviews["recommendToFriendRating"] %><br>
-                        sectorId :
-                        <%= @reviews["sectorId"] %><br>
-                        sectorName :
-                        <%= @reviews["sectorName"] %><br>
-                        industryId :
-                        <%= @reviews["industryId"] %><br>
-                        industryName :
-                        <%= @reviews["industryName"] %><br>
-                        <% if @reviews["ceo"].present? %>
-                        ceo :
-                        <%= @reviews["ceo"]["name"] %><br>
+                        <div class="text-center">
+                            <%= image_tag @reviews["squareLogo"] %>
 
-                        title :
-                        <%= @reviews["ceo"]["title"] %><br>
-                        numberOfRatings :
-                        <%= @reviews["ceo"]["numberOfRatings"] %><br>
-                        pctApprove :
-                        <%= @reviews["ceo"]["pctApprove"] %><br>
-                        pctDisapprove :
-                        <%= @reviews["ceo"]["pctDisapprove"] %><br>
+                        </div>
 
-                        <%= image_tag @reviews["ceo"]["image"]["src"] %><br>
-                    <% else %>
-                        <% end %>
-                        featuredReview :
-                        <%= @reviews["featuredReview"]["attributionURL"] %><br>
-                        jobTitle :
-                        <%= @reviews["featuredReview"]["jobTitle"] %><br>
-                        location :
-                        <%= @reviews["featuredReview"]["location"] %><br>
-                        headline :
-                        <%= @reviews["featuredReview"]["location"] %><br>
-                        pros :
-                        <%= @reviews["featuredReview"]["pros"] %><br>
-                        cons :
-                        <%= @reviews["featuredReview"]["cons"] %><br>
-                        overall :
-                        <%= @reviews["featuredReview"]["overall"] %><br>
+                        <div class="contentcontainer">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h2 class="panel-title">
+                                        Review</h2>
+                                </div>
+                                <div class="panel-body">
+
+                                    <div class="reviewwrap">
+
+                                        <div class="aboutreview">
+                                            <br>
+                                            <strong>Overall Rating :
+                                            </strong>
+                                            <%= @reviews["overallRating"] %><br>
+                                            <strong>Rating Description :
+                                            </strong>
+                                            <%= @reviews["ratingDescription"] %><br>
+                                            <strong>Culture And Values Rating :
+                                            </strong>
+                                            <%= @reviews["cultureAndValuesRating"] %><br>
+                                            <strong>Senior Leadership Rating :
+                                            </strong>
+                                            <%= @reviews["seniorLeadershipRating"] %><br>
+                                            <strong>Compensation And Benefits Rating :
+                                            </strong>
+                                            <%= @reviews["compensationAndBenefitsRating"] %><br>
+                                            <strong>Career Opportunities Rating :
+                                            </strong>
+                                            <%= @reviews["careerOpportunitiesRating"] %><br>
+                                            <strong>Work Life Balance Rating :
+                                            </strong>
+                                            <%= @reviews["workLifeBalanceRating"] %><br>
+                                            <strong>Recommend To Friend Rating :
+                                            </strong>
+                                            <%= @reviews["recommendToFriendRating"] %><br>
+                                            <strong>Sector Id :
+                                            </strong>
+                                            <%= @reviews["sectorId"] %><br>
+                                            <strong>Sector Name :
+                                            </strong>
+                                            <%= @reviews["sectorName"] %><br>
+                                            <strong>Industry Id :
+                                            </strong>
+                                            <%= @reviews["industryId"] %><br>
+                                            <strong>Industry Name :
+                                            </strong>
+                                            <%= @reviews["industryName"] %><br>
+                                        </div>
+
+                                        <div class="aboutreview">
+                                            <br>
+                                            <strong>Id :
+                                            </strong>
+                                            <%= @reviews["id"] %><br>
+                                            <strong>Name :
+                                            </strong>
+                                            <%= @reviews["name"] %><br>
+                                            <strong>Website :
+                                            </strong>
+                                            <%= @reviews["website"] %><br>
+                                            <strong>Industry :
+                                            </strong>
+                                            <%= @reviews["industry"] %><br>
+                                            <strong>Number Of Ratings :
+                                            </strong>
+                                            <%= @reviews["numberOfRatings"] %><br>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h2 class="panel-title">Featured Review</h2>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="featuredReview">
+                                        <strong>Job Title :
+                                        </strong>
+                                        <%= @reviews["featuredReview"]["jobTitle"] %><br>
+                                        <strong>Location :
+                                        </strong>
+                                        <%= @reviews["featuredReview"]["location"] %><br>
+                                        <strong>Headline :
+                                        </strong>
+                                        <%= @reviews["featuredReview"]["location"] %><br>
+                                        <strong>Pros :
+                                        </strong>
+                                        <%= @reviews["featuredReview"]["pros"] %><br>
+                                        <strong>Cons :
+                                        </strong>
+                                        <%= @reviews["featuredReview"]["cons"] %><br>
+                                        <strong>Overall :
+                                        </strong>
+                                        <%= @reviews["featuredReview"]["overall"] %><br>
+                                        <strong>Featured Review url :
+                                        </strong>
+                                        <%= link_to @reviews["featuredReview"]["attributionURL"] %><br>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h2 class="panel-title">CEO Review</h2>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="reviewwrap">
+                                        <div class="ceopic">
+
+                                            <% if @reviews["ceo"].present? %>
+                                            <%= image_tag @reviews["ceo"]["image"]["src"] %><br>
+                                            <strong>CEO :
+                                            </strong>
+                                            <%= @reviews["ceo"]["name"] %><br>
+                                        </div>
+
+                                        <div class="ceoabout">
+                                            <strong>Title :
+                                            </strong>
+                                            <%= @reviews["ceo"]["title"] %><br>
+                                            <strong>Number Of Ratings :
+                                            </strong>
+                                            <%= @reviews["ceo"]["numberOfRatings"] %><br>
+                                            <strong>Percentage Approve :
+                                            </strong>
+                                            <%= @reviews["ceo"]["pctApprove"] %>%<br>
+                                            <strong>Percentage Disapprove :
+                                            </strong>
+                                            <%= @reviews["ceo"]["pctDisapprove"] %>%<br>
+                                        <% else %>
+                                            Not Available
+                                            <% end %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
 
                     </div>
 
@@ -166,100 +322,299 @@
 
                         <% if @descomp.twitter.nil? %>
 
-                        <%= form_for @descomp, url: edit_company_path(id: @descomp.id) do |f| %>
-                        <%= f.label :twitter %>
-                        <%= f.text_field :twitter, class:"form-control" %>
-                        <%= f.submit %>
-                        <% end %>
+                              <%= form_for @descomp, url: edit_company_path(id: @descomp.id) do |f| %>
+                              <%= f.label :twitter %>
+                              <%= f.text_field :twitter, class:"form-control" %>
+                              <%= f.submit %>
+                              <% end %>
                         <h2>The Twitter for the Company you're researching wasn't found, but here are some tweets mentioning
                             <%= @descomp.company %>
                         </h2>
                         <% @client.search("#{@descomp.company}", result_type: "recent").take(10).collect do |t| %>
 
-
                         <% if false %>
                         <%= raw(@client.oembed(t.id).html) %>
                         <% end %>
 
-
                         <% end %>
 
                     <% else %>
-                    <div class="twitter-wrap">
+                        <div class="twitter-wrap">
+                          <div class="panel panel-default">
+                              <div class="panel-heading">
+                                  <h2 class="panel-title">Company Twitter</h2>
+                              </div>
+                              <div class="panel-body">
+                            <div class="company-twitter">
 
 
-                        <div class="company-twitter">
-                            <%=image_tag @banner_img %><br>
-                            <h2>Company Twitter</h2>
-                            <br>
-                            <% @client.user_timeline(@descomp.twitter).each do |t| %>
+
+                                <br>
+                                <% @client.user_timeline(@descomp.twitter).each do |t| %>
+                                <%= raw(@client.oembed(t.id).html) %>
+                                <% end %>
+                                <% if @descomp.twitter.nil? %>
+                            <% else %>
+                                <h2>Not the correct twitter?</h2>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newcomp">Edit Twitter Handle</button>
+                                <% end %>
+                            </div></div></div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h2 class="panel-title">Tweets mentioning <%= @descomp.company %></h2>
+                                </div>
+                                <div class="panel-body">
+                            <div class="company-mentions">
 
 
-                            <% if false %>
-                            <%= raw(@client.oembed(t.id).html) %>
-                            <% end %>
+                                <% @client.search("#{@descomp.company}", result_type: "recent").take(3).collect do |t| %>
+
+                                <%= raw(@client.oembed(t.id).html) %>
 
 
-                            <% end %>
-                            <% if @descomp.twitter.nil? %>
-                        <% else %>
-                            <h2>Not the correct twitter?</h2>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newcomp">Edit Twitter Handle</button>
-                            <% end %>
-                        </div>
-
-                        <div class="company-mentions">
-                            Tweets mentioning
-                            <%= @descomp.company %>
-                            <% @client.search("#{@descomp.company}", result_type: "recent").take(5).collect do |t| %>
-
-                            <% if false %>
-                            <%= raw(@client.oembed(t.id).html) %>
-                            <% end %>
-
-
-                            <% end %>
-                        </div>
+                                <% end %>
+                            </div>  </div>  </div>
 
                         </div>
                         <% end %>
                     </div>
 
                     <div role="tabpanel" class="tab-pane" id="settings">
-                        <h2>Boss' Information</h2>
-                        <% @descomp.bosses.each do |boss| %>
-                        <%= boss.gravatar_avatar %><br>
-                        <%= boss.email %><br>
-                        <%= boss.twitter %><br>
-                        <%= boss.linked %><br>
-                        <%= boss.name %><br>
-                        <%= boss.twitter_bio %><br>
-                        <%= boss.twitter_followers %><br>
-                        <%= boss.twitter_following %><br>
-                        <%= boss.twitter_site %><br>
-                        <%= boss.twitter_avatar %><br>
-                        <%= boss.company %><br>
-                        <%= boss.gender %><br>
-                        <%= boss.location %><br>
-                        <%= boss.facebook %><br>
-                        <%= boss.github_handle %><br>
-                        <%= boss.github_avatar %><br>
-                        <%= boss.github_company %><br>
-                        <%= boss.github_blog %><br>
-                        <%= boss.github_followers %><br>
-                        <%= boss.github_following %><br>
-                        <%= boss.google %><br>
-                        <%= boss.angellist %><br>
-                        <%= boss.angel_bio %><br>
-                        <%= boss.angel_blog %><br>
-                        <%= boss.angel_avatar %><br>
-                        <%= boss.about_handle %><br>
-                        <%= boss.about_bio %><br>
-                        <%= boss.about_avatar %><br>
-                        <%= boss.gravatar %><br>
-                        <%= boss.valve %><br>
-                        <% end %>
+                        <div class="reviewwrap">
 
+                            <div class="contentcontainer">
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h2 class="panel-title">Hiring Manager's Information</h2>
+                                    </div>
+                                    <div class="panel-body">
+
+                                        <% @descomp.bosses.each do |boss| %>
+                                        <% if boss.twitter_avatar.present? %>
+                                        <%= image_tag boss.twitter_avatar, class:"avatar" %>
+                                        <% elsif %>
+
+                                        <% boss.github_avatar.present? %>
+                                        <%= image_tag boss.github_avatar, class:"avatar" %>
+                                        <% elsif %>
+
+                                        <% boss.angel_avatar.present? %>
+                                        <%= image_tag boss.angel_avatar, class:"avatar" %>
+                                        <% elsif %>
+
+                                        <% boss.about_avatar.present? %>
+                                        <%= image_tag boss.about_avatar, class:"avatar" %>
+                                        <% elsif %>
+
+                                        <% boss.gravatar_avatar.present? %>
+                                        <%= image_tag boss.gravatar_avatar, class:"avatar" %>
+                                    <% else %>
+                                        <%= image_tag "default_large.png", class:"avatar"  %>
+                                        <% end %><br>
+                                        <% if boss.name.present? %>
+                                        <strong>Name:
+                                        </strong>
+                                        <%= boss.name %><br>
+                                    <% else %>
+                                        <% end %>
+                                        <% if boss.location.present? %>
+                                        <strong>Location:
+                                        </strong>
+                                        <%= boss.location %><br>
+                                    <% else %>
+                                        <% end %>
+                                        <% if boss.gender.present? %>
+                                        <strong>Gender:
+                                        </strong>
+                                        <%= boss.gender %><br>
+                                    <% else %>
+                                        <% end %>
+                                        <strong>Email:
+                                        </strong>
+                                        <%= boss.email %><br>
+                                        <% if boss.twitter.present? %>
+                                        <strong>Twitter Handle:
+                                        </strong>
+                                        <%= boss.twitter %><br>
+
+                                    <% else %>
+                                        <% end %>
+                                        <% if boss.twitter_site.present? %>
+                                        <%= boss.twitter_site %><br>
+                                    <% else %>
+                                        <% end %>
+
+                                        <% if boss.linked.present? %>
+                                        <strong>Linkedin Profile:
+                                        </strong>
+                                        <%=link_to "linkedin.com/#{boss.linked}", "http://www.linkedin.com/#{boss.linked}" %><br>
+                                    <% else %>
+                                        <% end %>
+                                        <% if boss.twitter_bio.present? %>
+                                        <strong>Twitter Bio:
+                                        </strong>
+                                        <%= boss.twitter_bio %><br>
+                                    <% else %>
+                                        <% end %>
+                                        <% if boss.twitter.present? %>
+                                        <strong>Twitter Followers:
+                                        </strong>
+                                        <%= boss.twitter_followers %><br>
+                                        <strong>Twitter Following:
+                                        </strong>
+                                        <%= boss.twitter_following %><br>
+                                    <% else %>
+                                        <% end %>
+
+                                        <% if boss.company.present? %>
+                                        <strong>Company:
+                                        </strong>
+                                        <%= boss.company %><br>
+                                    <% else %>
+                                        <% end %>
+
+                                        <% if boss.facebook.present? %>
+                                        <strong>Facebook:
+                                        </strong>
+                                        <%= boss.facebook %><br>
+                                    <% else %>
+                                        <% end %>
+                                        <% if boss.github_handle.present? %>
+                                        <strong>Github Handle:
+                                        </strong>
+                                        <%= boss.github_handle %><br>
+                                    <% else %>
+                                        <% end %>
+                                        <% if boss.github_company.present? %>
+                                        <strong>Company:
+                                        </strong>
+                                        <%= boss.github_company %><br>
+                                    <% else %>
+                                        <% end %>
+                                        <% if boss.github_blog.present? %>
+                                        <strong>Github Blog:
+                                        </strong>
+                                        <%= boss.github_blog %><br>
+                                    <% else %>
+                                        <% end %>
+                                        <% if boss.github_followers.present? %>
+                                        <strong>Github Followers:
+                                        </strong>
+                                        <%= boss.github_followers %><br>
+                                    <% else %>
+                                        <% end %>
+                                        <% if boss.github_following.present? %>
+                                        <strong>Github Following:
+                                        </strong>
+                                        <%= boss.github_following %><br>
+                                    <% else %>
+                                        <% end %>
+                                        <% if boss.google.present? %>
+                                        <strong>Google Plus:
+                                        </strong>
+                                        <%= boss.google %><br>
+                                    <% else %>
+                                        <% end %>
+                                        <% if boss.angellist.present? %>
+                                        <strong>Angel List:
+                                        </strong>
+                                        <%= boss.angellist %><br>
+                                    <% else %>
+                                        <% end %>
+                                        <% if boss.angel_bio.present? %>
+                                        <strong>Angel Bio:
+                                        </strong>
+                                        <%= boss.angel_bio %><br>
+                                    <% else %>
+                                        <% end %>
+                                        <% if boss.angel_blog.present? %>
+                                        <strong>Angel Blog:
+                                        </strong>
+                                        <%= boss.angel_blog %><br>
+                                    <% else %>
+                                        <% end %>
+                                        <% if boss.about_handle.present? %>
+                                        <strong>About:
+                                        </strong>
+                                        <%= boss.about_handle %><br>
+                                    <% else %>
+                                        <% end %>
+                                        <% if boss.about_bio.present? %>
+                                        <strong>About Bio:</strong>
+                                        <%= boss.about_bio %><br>
+                                    <% else %>
+                                        <% end %>
+                                        <% if boss.valve.present? %>
+                                        <strong>Valve:
+                                        </strong>
+                                        <%= boss.valve %><br>
+                                    <% else %>
+                                        <% end %>
+
+                                        <% end %><br>
+                                    </div>
+                                </div>
+
+                                <div class="boss-mentions">
+                                    <% @descomp.bosses.each do |boss| %>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h2 class="panel-title">Tweets mentioning
+                                                <%= boss.twitter %></h2>
+                                        </div>
+                                        <div class="panel-body">
+                                            <% @client.search("to: @#{ boss.twitter }", result_type: "recent").take(5).collect do |t| %>
+
+                                            <%= raw(@client.oembed(t.id).html) %>
+
+                                            <% end %>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="contentcontainer">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h2 class="panel-title">Hiring Manager's Twitter</h2>
+                                    </div>
+                                    <div class="panel-body">
+
+                                        <% if boss.twitter.nil? %>
+                                        Twitter handle wasn't found. Please enter it here.
+                                              <%= form_for @boss, url: edit_boss_path(id: boss.id) do |f| %>
+                                              <%= f.label :twitter %>
+                                              <%= f.text_field :twitter, class:"form-control" %>
+                                              <%= f.submit %>
+                                              <% end %>
+
+                                              <% else %>
+                                        <br>
+                                                <% @client.user_timeline( boss.twitter ).each do |t| %>
+
+
+                                                <%= raw(@client.oembed(t.id).html) %>
+
+
+                                                <% end %>
+
+                                                      <% if boss.twitter.nil? %>
+                                                      <% else %>
+                                        <h2>Not the correct twitter?</h2>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newboss">Edit Twitter Handle</button>
+                                                <% end %>
+                                        <% end %>
+                                        <% end %>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
                     </div>
 
                     <div class="modal fade" id="newboss" tabindex="-1" role="dialog">
@@ -270,7 +625,7 @@
                                         <span class="ion-ios-close-empty"></span>
                                     </button>
                                     <span class="pe-7s-airplay services-icon-2"></span>
-                                    <h4 class="service-title">Edit Boss' Twitter</h4>
+                                    <h4 class="service-title">Edit Hiring Manager's Twitter</h4>
                                 </div>
                                 <div class="modal-body">
                                     <% @descomp.bosses.each do |boss| %>
@@ -289,71 +644,13 @@
                     </div>
                     <!-- /.modal -->
 
-                    <div role="tabpanel" class="tab-pane" id="settings2">
-
-
-                      <% @descomp.bosses.each do |boss| %>
-                      <% if boss.twitter.nil? %>
-                      Twitter handle wasn't found. Please enter it here.
-                        <%= form_for @boss, url: edit_boss_path(id: boss.id) do |f| %>
-                        <%= f.label :twitter %>
-                        <%= f.text_field :twitter, class:"form-control" %>
-                        <%= f.submit %>
-                        <% end %>
-
-
-                  <% else %>
-
-                      <div class="twitter-wrap">
-
-
-                          <div class="boss-twitter">
-                            <%= image_tag @boss_banner %>
-                            <h2>Boss' Twitter</h2>
-                              <br>
-                              <% @client.user_timeline( boss.twitter ).each do |t| %>
-
-                              <% if false %>
-                              <%= raw(@client.oembed(t.id).html) %>
-                              <% end %>
-
-                              <% end %>
-
-                              <% if boss.twitter.nil? %>
-                          <% else %>
-                              <h2>Not the correct twitter?</h2>
-                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newboss">Edit Twitter Handle</button>
-                              <% end %>
-                          </div>
-
-                          <div class="boss-mentions">
-                              Tweets mentioning
-                              <%= boss.twitter %>
-                              <% @client.search("to: @#{ boss.twitter }", result_type: "recent").take(5).collect do |t| %>
-
-                              <% if false %>
-                              <%= raw(@client.oembed(t.id).html) %>
-                              <% end %>
-
-                              <% end %>
-                          </div>
-
-                          </div>
-                          <% end %>
-                          <% end %>
-                      </div>
-
-
-                    </div>
-
                 </div>
 
             </div>
 
         </div>
 
+    </div>
 
-
-
-    </body>
+</body>
 </html>
