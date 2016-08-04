@@ -75,6 +75,11 @@
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="home">
             <div class="container2">
+              <% if notice %>
+              <div class="alert alert-info" role="alert">
+                  <%= notice %>
+              </div>
+              <% end %>
                 <div class="panel">
 
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newcomp">1. Research Company</button><br>
@@ -110,23 +115,23 @@
                         <%= image_tag boss.twitter_avatar, class:"avatar" %>
                         <% elsif %>
 
-                        <% boss.github_avatar.present? %>
+                        <% if boss.github_avatar.present? %>
                         <%= image_tag boss.github_avatar, class:"avatar" %>
                         <% elsif %>
 
-                        <% boss.angel_avatar.present? %>
+                        <% if boss.angel_avatar.present? %>
                         <%= image_tag boss.angel_avatar, class:"avatar" %>
                         <% elsif %>
 
-                        <% boss.about_avatar.present? %>
+                        <% if boss.about_avatar.present? %>
                         <%= image_tag boss.about_avatar, class:"avatar" %>
                         <% elsif %>
 
-                        <% boss.gravatar_avatar.present? %>
+                        <% if boss.gravatar_avatar.present? %>
                         <%= image_tag boss.gravatar_avatar, class:"avatar" %>
                         <% else %>
                         <%= image_tag "default_large.png", class:"avatar"  %>
-                        <% end %><% end %>
+                        <% end %><% end %><% end %><% end %><% end %><% end %>
 
                         </div>
                         </div>

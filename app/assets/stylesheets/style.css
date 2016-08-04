@@ -683,12 +683,13 @@ ul.social-buttons li a:active {
 
 .panel-info>.panel-heading {
     color: #fff;
-    background-color: #5bc0de;
-    border-color: #46b8da;
+    background-color: #313131;
+    border-color: #313131;
 }
 
 .panel-info {
-    border-color: #5bc0de;
+    border-color: #ccc;
+		margin-bottom: 2px;
 }
 
 .panel-warning>.panel-heading {

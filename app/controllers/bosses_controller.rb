@@ -1,6 +1,6 @@
 class BossesController < ApplicationController
   require 'clearbit'
-  
+
   before_action except: [] do
   if session[:user_id].nil?
     redirect_to sign_in_path, notice: "You must sign in!"
@@ -17,8 +17,12 @@ def create
   @boss.email = params[:boss][:email]
    @boss.descomp_id = params[:boss][:descomp_id]
   response = Clearbit::Enrichment.find(email: @boss.email)
+
+
   @boss.user_id = @current_user.id
+  unless response.nil?
   @boss.name = response.person.name.fullName
+
 unless response.person.twitter.nil?
   @boss.twitter = response.person.twitter.handle
   @boss.twitter_bio = response.person.twitter.bio
@@ -56,18 +60,35 @@ unless response.person.gravatar.nil?
   @boss.gravatar = response.person.gravatar.handle
   @boss.gravatar_avatar = response.person.gravatar.avatar
 end
+end
   if @boss.save
     redirect_to user_path(id: @current_user.id)
   else
-    render :new
-  end
+
+
+    redirect_to user_path(id: @current_user.id), notice: "Hiring manager could not be found"
+
   end
 
+end
 
 
 def update
   @boss = Boss.find_by id: params[:id]
   @boss.twitter = params[:boss][:twitter]
+  @boss.name = params[:boss][:name]
+  @boss.gender = params[:boss][:gender]
+  @boss.company = params[:boss][:company]
+  @boss.linked = params[:boss][:linked]
+  @boss.location = params[:boss][:location]
+  @boss.facebook = params[:boss][:facebook]
+  @boss.github_handle = params[:boss][:github_handle]
+  @boss.google = params[:boss][:google]
+  @boss.angellist = params[:boss][:angellist]
+  @boss.about_handle = params[:boss][:about_handle]
+  @boss.gravatar = params[:boss][:gravatar]
+  @boss.gravatar_avatar = params[:boss][:gravatar_avatar]
+  @boss.twitter_avatar = params[:boss][:twitter_avatar]
    @boss.save
     redirect_to user_path(id: @current_user.id)
 

@@ -95,6 +95,7 @@ align-items: center;
 }
 .container{
   padding-top: 100px;
+  width: 96%;
 }
 
 .container1{
@@ -123,9 +124,11 @@ align-items: center;
 .tab-content{
   background-color: white;
   padding: 0px;
+width: 95%;
 .tab-pane{
   background-color: white;
   padding: 0px;
+    width: 100%;
 }
 }
 
@@ -244,12 +247,13 @@ textarea{
 
 .contentcontainer{
   padding: 20px;
+  position: relative;
 }
 .reviewwrap{
   display:flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content:flex-start;
+  justify-content:flex-end;
   align-content: flex-start;
   align-items: flex-start;
   padding: 15px;
@@ -257,7 +261,7 @@ textarea{
 
 .aboutreview{
   padding: 20px;
-
+width: 100%;
 }
 .reviewwrap{
   padding: 20px;
@@ -274,4 +278,51 @@ textarea{
   padding: 20px;
   border: 1px solid gray;
 }
+}
+
+.boss-mentions{
+  width: 300px;
+}
+
+.static-about{
+  position: fixed;
+
+
+  width: 300px;
+}
+
+.contact-absolute{
+margin-left: 350px;
+}
+
+.links-absolute{
+  margin-left: 350px;
+}
+
+.social-absolute{
+  margin-left: 350px;
+}
+
+.manager{
+  position: fixed;
+  width: 28%;
+  margin-left: 10px;
+  margin-top: 20px;
+}
+
+.update-absolute{
+  width: 29%;
+  margin-left: 10px;
+}
+.twitter-center{
+  width: 39%;
+
+}
+
+.companytwitter{
+  width: 40%;
+}
+
+.tweets-liked{
+  width: 30%;
 }

@@ -6,6 +6,11 @@
     </head>
     <body>
         <div class="container">
+
+            <% if flash[:notice] %>
+            <div class="notice"><%= flash[:notice] %></div>
+            <% end %>
+
             <div>
 
                 <!-- Nav tabs -->
@@ -30,18 +35,17 @@
                     <div role="tabpanel" class="tab-pane active" id="home">
                         <div class="contentcontainer">
 
-                            <div class="text-center">
-                                <h2>Company Information</h2>
-                                <%= image_tag @descomp.logo %><br>
-
-                            </div>
-
-                            <div class="panel panel-default">
+                            <div class="panel panel-default static-about">
                                 <div class="panel-heading">
                                     <h2 class="panel-title">About</h2>
                                 </div>
                                 <div class="panel-body">
                                     <div class="about">
+                                        <div class="text-center">
+
+                                            <%= image_tag @descomp.logo %><br>
+
+                                        </div>
                                         <strong>Approximate employees:
                                         </strong><%= @company2["organization"]["approx_employees"] %><br>
                                         <strong>Founded:
@@ -60,15 +64,18 @@
                                 </div>
                             </div>
 
-                            <div class="panel panel-default">
+                            <div class="panel panel-default contact-absolute">
                                 <div class="panel-heading">
                                     <h2 class="panel-title">Contact</h2>
                                 </div>
                                 <div class="panel-body">
                                     <div class="contact">
+                                        <% if @company2["organization"]["contact_info"]["phone_numbers"].nil? %>
+                                    <% else %>
                                         <% @company2["organization"]["contact_info"]["phone_numbers"].map do |phone_hash| %>
                                         <strong>Phone Number(s):
                                         </strong><%= phone_hash["number"] %>,
+                                        <% end %>
                                         <% end %>
                                         <br>
                                         <%= @descomp.phone %>
@@ -83,6 +90,8 @@
                                         <% if @descomp.address.present? %>
                                         <%= @descomp.address %><br>
                                     <% else %>
+                                        <% if @company2["organization"]["contact_info"]["addresses"].nil? %>
+                                    <% else %>
                                         <% @company2["organization"]["contact_info"]["addresses"].map do |address_hash|  %>
                                         <%= address_hash["address_line1"] %>,
                                         <%= address_hash["locality"] %>
@@ -90,24 +99,28 @@
                                         <%= address_hash["postal_code"] %>
                                         <% end %>
                                         <% end %>
+                                        <% end %>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="panel panel-default">
+                            <div class="panel panel-default links-absolute">
                                 <div class="panel-heading">
                                     <h2 class="panel-title">Links</h2>
                                 </div>
                                 <div class="panel-body">
 
                                     <%= link_to @company2["website"], @company2["website"] %><br>
+                                    <% if @company2["organization"]["links"].nil? %>
+                                <% else %>
                                     <% @company2["organization"]["links"].map do |links_hash|  %>
                                     <%= link_to links_hash["url"], links_hash["url"] %><br>
+                                    <% end %>
                                     <% end %>
                                 </div>
                             </div>
 
-                            <div class="panel panel-default">
+                            <div class="panel panel-default social-absolute">
                                 <div class="panel-heading">
                                     <h2 class="panel-title">
                                         <%= @descomp.company %>
@@ -261,7 +274,10 @@
                                         <div class="ceopic">
 
                                             <% if @reviews["ceo"].present? %>
+                                            <% if image_tag @reviews["ceo"]["image"].nil? %>
+                                        <% else %>
                                             <%= image_tag @reviews["ceo"]["image"]["src"] %><br>
+                                            <% end %>
                                             <strong>CEO :
                                             </strong>
                                             <%= @reviews["ceo"]["name"] %><br>
@@ -303,6 +319,7 @@
                                     <h4 class="service-title">Edit Company Twitter</h4>
                                 </div>
                                 <div class="modal-body">
+
                                     <%= form_for @descomp, url: edit_company_path(id: @descomp.id) do |f| %>
                                     <%= f.label :twitter %>
                                     <%= f.text_field :twitter, class:"form-control" %>
@@ -322,327 +339,387 @@
 
                         <% if @descomp.twitter.nil? %>
 
-                              <%= form_for @descomp, url: edit_company_path(id: @descomp.id) do |f| %>
-                              <%= f.label :twitter %>
-                              <%= f.text_field :twitter, class:"form-control" %>
-                              <%= f.submit %>
-                              <% end %>
+                        <%= form_for @descomp, url: edit_company_path(id: @descomp.id) do |f| %>
+                        <%= f.label :twitter %>
+                        <%= f.text_field :twitter, class:"form-control" %>
+                        <%= f.submit %>
+                        <% end %>
                         <h2>The Twitter for the Company you're researching wasn't found, but here are some tweets mentioning
                             <%= @descomp.company %>
                         </h2>
                         <% @client.search("#{@descomp.company}", result_type: "recent").take(10).collect do |t| %>
 
-                        
+                        <% if false %>
                         <%= raw(@client.oembed(t.id).html) %>
-                        
+                        <% end %>
 
                         <% end %>
 
                     <% else %>
                         <div class="twitter-wrap">
-                          <div class="panel panel-default">
-                              <div class="panel-heading">
-                                  <h2 class="panel-title">Company Twitter</h2>
-                              </div>
-                              <div class="panel-body">
-                            <div class="company-twitter">
-
-
-
-                                <br>
-                                <% @client.user_timeline(@descomp.twitter).each do |t| %>
-                                <%= raw(@client.oembed(t.id).html) %>
-                                <% end %>
-                                <% if @descomp.twitter.nil? %>
-                            <% else %>
-                                <h2>Not the correct twitter?</h2>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newcomp">Edit Twitter Handle</button>
-                                <% end %>
-                            </div></div></div>
-
-                            <div class="panel panel-default">
+                            <div class="panel panel-default companytwitter">
                                 <div class="panel-heading">
-                                    <h2 class="panel-title">Tweets mentioning <%= @descomp.company %></h2>
+                                    <h2 class="panel-title">Company Twitter</h2>
                                 </div>
                                 <div class="panel-body">
-                            <div class="company-mentions">
+                                    <div class="company-twitter">
 
 
-                                <% @client.search("#{@descomp.company}", result_type: "recent").take(3).collect do |t| %>
+                                      <div class="Update" id="accordion" role="tablist" aria-multiselectable="true">
+                                          <div class="panel-info">
+                                              <div class="panel-heading" role="tab" id="headingTwo">
+                                                  <div class="text-center">
 
-                                <%= raw(@client.oembed(t.id).html) %>
+                                                      <h4 class="panel-title">
+
+                                                          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#liked" href="#liked" aria-expanded="false" aria-controls="collapseTwo">
+                                                              Click to see tweets liked by @<%= @descomp.twitter %>
+                                                          </a>
+
+                                                      </h4>
+                                                  </div>
+                                              </div>
+                                              <div id="liked" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                                  <div class="panel-body">
+
+                                                      <a class="twitter-timeline" href="https://twitter.com/<%= @descomp.twitter %>/likes">Tweets Liked by @TwitterDev</a>
+                                                      <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+                                                  </div>
+                                              </div>
+                                          </div>
+
+                                      </div>
 
 
-                                <% end %>
-                            </div>  </div>  </div>
+                                        <a class="twitter-timeline" href="https://twitter.com/<%= @descomp.twitter %>"></a>
+                                        <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+                                        <% if @descomp.twitter.nil? %>
+                                    <% else %>
+                                        <h2>Not the correct twitter?</h2>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newcomp">Edit Twitter Handle</button>
+                                        <% end %>
+                                    </div>
+                                </div>
+                            </div>
+
+
 
                         </div>
                         <% end %>
                     </div>
 
                     <div role="tabpanel" class="tab-pane" id="settings">
-                        <div class="reviewwrap">
 
-                            <div class="contentcontainer">
+                        <div class="manager">
 
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h2 class="panel-title">Hiring Manager's Information</h2>
-                                    </div>
-                                    <div class="panel-body">
-
-                                        <% @descomp.bosses.each do |boss| %>
-                                        <% if boss.twitter_avatar.present? %>
-                                        <%= image_tag boss.twitter_avatar, class:"avatar" %>
-                                        <% elsif %>
-
-                                        <% boss.github_avatar.present? %>
-                                        <%= image_tag boss.github_avatar, class:"avatar" %>
-                                        <% elsif %>
-
-                                        <% boss.angel_avatar.present? %>
-                                        <%= image_tag boss.angel_avatar, class:"avatar" %>
-                                        <% elsif %>
-
-                                        <% boss.about_avatar.present? %>
-                                        <%= image_tag boss.about_avatar, class:"avatar" %>
-                                        <% elsif %>
-
-                                        <% boss.gravatar_avatar.present? %>
-                                        <%= image_tag boss.gravatar_avatar, class:"avatar" %>
-                                    <% else %>
-                                        <%= image_tag "default_large.png", class:"avatar"  %>
-                                        <% end %><br>
-                                        <% if boss.name.present? %>
-                                        <strong>Name:
-                                        </strong>
-                                        <%= boss.name %><br>
-                                    <% else %>
-                                        <% end %>
-                                        <% if boss.location.present? %>
-                                        <strong>Location:
-                                        </strong>
-                                        <%= boss.location %><br>
-                                    <% else %>
-                                        <% end %>
-                                        <% if boss.gender.present? %>
-                                        <strong>Gender:
-                                        </strong>
-                                        <%= boss.gender %><br>
-                                    <% else %>
-                                        <% end %>
-                                        <strong>Email:
-                                        </strong>
-                                        <%= boss.email %><br>
-                                        <% if boss.twitter.present? %>
-                                        <strong>Twitter Handle:
-                                        </strong>
-                                        <%= boss.twitter %><br>
-
-                                    <% else %>
-                                        <% end %>
-                                        <% if boss.twitter_site.present? %>
-                                        <%= boss.twitter_site %><br>
-                                    <% else %>
-                                        <% end %>
-
-                                        <% if boss.linked.present? %>
-                                        <strong>Linkedin Profile:
-                                        </strong>
-                                        <%=link_to "linkedin.com/#{boss.linked}", "http://www.linkedin.com/#{boss.linked}" %><br>
-                                    <% else %>
-                                        <% end %>
-                                        <% if boss.twitter_bio.present? %>
-                                        <strong>Twitter Bio:
-                                        </strong>
-                                        <%= boss.twitter_bio %><br>
-                                    <% else %>
-                                        <% end %>
-                                        <% if boss.twitter.present? %>
-                                        <strong>Twitter Followers:
-                                        </strong>
-                                        <%= boss.twitter_followers %><br>
-                                        <strong>Twitter Following:
-                                        </strong>
-                                        <%= boss.twitter_following %><br>
-                                    <% else %>
-                                        <% end %>
-
-                                        <% if boss.company.present? %>
-                                        <strong>Company:
-                                        </strong>
-                                        <%= boss.company %><br>
-                                    <% else %>
-                                        <% end %>
-
-                                        <% if boss.facebook.present? %>
-                                        <strong>Facebook:
-                                        </strong>
-                                        <%= boss.facebook %><br>
-                                    <% else %>
-                                        <% end %>
-                                        <% if boss.github_handle.present? %>
-                                        <strong>Github Handle:
-                                        </strong>
-                                        <%= boss.github_handle %><br>
-                                    <% else %>
-                                        <% end %>
-                                        <% if boss.github_company.present? %>
-                                        <strong>Company:
-                                        </strong>
-                                        <%= boss.github_company %><br>
-                                    <% else %>
-                                        <% end %>
-                                        <% if boss.github_blog.present? %>
-                                        <strong>Github Blog:
-                                        </strong>
-                                        <%= boss.github_blog %><br>
-                                    <% else %>
-                                        <% end %>
-                                        <% if boss.github_followers.present? %>
-                                        <strong>Github Followers:
-                                        </strong>
-                                        <%= boss.github_followers %><br>
-                                    <% else %>
-                                        <% end %>
-                                        <% if boss.github_following.present? %>
-                                        <strong>Github Following:
-                                        </strong>
-                                        <%= boss.github_following %><br>
-                                    <% else %>
-                                        <% end %>
-                                        <% if boss.google.present? %>
-                                        <strong>Google Plus:
-                                        </strong>
-                                        <%= boss.google %><br>
-                                    <% else %>
-                                        <% end %>
-                                        <% if boss.angellist.present? %>
-                                        <strong>Angel List:
-                                        </strong>
-                                        <%= boss.angellist %><br>
-                                    <% else %>
-                                        <% end %>
-                                        <% if boss.angel_bio.present? %>
-                                        <strong>Angel Bio:
-                                        </strong>
-                                        <%= boss.angel_bio %><br>
-                                    <% else %>
-                                        <% end %>
-                                        <% if boss.angel_blog.present? %>
-                                        <strong>Angel Blog:
-                                        </strong>
-                                        <%= boss.angel_blog %><br>
-                                    <% else %>
-                                        <% end %>
-                                        <% if boss.about_handle.present? %>
-                                        <strong>About:
-                                        </strong>
-                                        <%= boss.about_handle %><br>
-                                    <% else %>
-                                        <% end %>
-                                        <% if boss.about_bio.present? %>
-                                        <strong>About Bio:</strong>
-                                        <%= boss.about_bio %><br>
-                                    <% else %>
-                                        <% end %>
-                                        <% if boss.valve.present? %>
-                                        <strong>Valve:
-                                        </strong>
-                                        <%= boss.valve %><br>
-                                    <% else %>
-                                        <% end %>
-
-                                        <% end %><br>
-                                    </div>
+                            <div class="panel panel-default ">
+                                <div class="panel-heading">
+                                    <h2 class="panel-title">Hiring Manager's Information</h2>
                                 </div>
+                                <div class="panel-body">
 
-                                <div class="boss-mentions">
                                     <% @descomp.bosses.each do |boss| %>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h2 class="panel-title">Tweets mentioning
-                                                <%= boss.twitter %></h2>
-                                        </div>
-                                        <div class="panel-body">
-                                            <% @client.search("to: @#{ boss.twitter }", result_type: "recent").take(5).collect do |t| %>
+                                    <% if boss.twitter_avatar.present? %>
+                                    <%= image_tag boss.twitter_avatar, class:"avatar" %>
+                                    <% elsif %>
 
-                                            <%= raw(@client.oembed(t.id).html) %>
+                                    <% if boss.github_avatar.present? %>
+                                    <%= image_tag boss.github_avatar, class:"avatar" %>
+                                    <% elsif %>
+
+                                    <% if boss.angel_avatar.present? %>
+                                    <%= image_tag boss.angel_avatar, class:"avatar" %>
+                                    <% elsif %>
+
+                                    <% if boss.about_avatar.present? %>
+                                    <%= image_tag boss.about_avatar, class:"avatar" %>
+                                    <% elsif %>
+
+                                    <% if boss.gravatar_avatar.present? %>
+                                    <%= image_tag boss.gravatar_avatar, class:"avatar" %>
+                                <% else %>
+                                    <%= image_tag "default_large.png", class:"avatar"  %>
+                                    <% end %><% end %><% end %><% end %><% end %><br>
+                                    <% if boss.name.present? %>
+                                    <strong>Name:
+                                    </strong>
+                                    <%= boss.name %><br>
+                                <% else %>
+
+                                    <% end %>
+                                    <% if boss.location.present? %>
+                                    <strong>Location:
+                                    </strong>
+                                    <%= boss.location %><br>
+                                <% else %>
+                                    <% end %>
+                                    <% if boss.gender.present? %>
+                                    <strong>Gender:
+                                    </strong>
+                                    <%= boss.gender %><br>
+                                <% else %>
+
+                                    <% end %>
+                                    <strong>Email:
+                                    </strong>
+                                    <%= boss.email %><br>
+                                    <% if boss.twitter.present? %>
+                                    <strong>Twitter Handle:
+                                    </strong>
+                                    <%= boss.twitter %><br>
+
+                                <% else %>
+                                    <% end %>
+                                    <% if boss.twitter_site.present? %>
+                                    <%= boss.twitter_site %><br>
+                                <% else %>
+                                    <% end %>
+
+                                    <% if boss.linked.present? %>
+                                    <strong>Linkedin Profile:
+                                    </strong>
+                                    <%=link_to "linkedin.com/#{boss.linked}", "http://www.linkedin.com/#{boss.linked}" %><br>
+                                <% else %>
+                                    <% end %>
+                                    <% if boss.twitter_bio.present? %>
+                                    <strong>Twitter Bio:
+                                    </strong>
+                                    <%= boss.twitter_bio %><br>
+                                <% else %>
+                                    <% end %>
+                                    <% if boss.twitter.present? %>
+                                    <strong>Twitter Followers:
+                                    </strong>
+                                    <%= boss.twitter_followers %><br>
+                                    <strong>Twitter Following:
+                                    </strong>
+                                    <%= boss.twitter_following %><br>
+                                <% else %>
+                                    <% end %>
+
+                                    <% if boss.company.present? %>
+                                    <strong>Company:
+                                    </strong>
+                                    <%= boss.company %><br>
+                                <% else %>
+
+                                    <% end %>
+
+                                    <% if boss.facebook.present? %>
+                                    <strong>Facebook:
+                                    </strong>
+                                    <%= boss.facebook %><br>
+                                <% else %>
+                                    <% end %>
+                                    <% if boss.github_handle.present? %>
+                                    <strong>Github Handle:
+                                    </strong>
+                                    <%= boss.github_handle %><br>
+                                <% else %>
+                                    <% end %>
+                                    <% if boss.github_company.present? %>
+                                    <strong>Company:
+                                    </strong>
+                                    <%= boss.github_company %><br>
+                                <% else %>
+                                    <% end %>
+                                    <% if boss.github_blog.present? %>
+                                    <strong>Github Blog:
+                                    </strong>
+                                    <%= boss.github_blog %><br>
+                                <% else %>
+                                    <% end %>
+                                    <% if boss.github_followers.present? %>
+                                    <strong>Github Followers:
+                                    </strong>
+                                    <%= boss.github_followers %><br>
+                                <% else %>
+                                    <% end %>
+                                    <% if boss.github_following.present? %>
+                                    <strong>Github Following:
+                                    </strong>
+                                    <%= boss.github_following %><br>
+                                <% else %>
+                                    <% end %>
+                                    <% if boss.google.present? %>
+                                    <strong>Google Plus:
+                                    </strong>
+                                    <%= boss.google %><br>
+                                <% else %>
+                                    <% end %>
+                                    <% if boss.angellist.present? %>
+                                    <strong>Angel List:
+                                    </strong>
+                                    <%= boss.angellist %><br>
+                                <% else %>
+                                    <% end %>
+                                    <% if boss.angel_bio.present? %>
+                                    <strong>Angel Bio:
+                                    </strong>
+                                    <%= boss.angel_bio %><br>
+                                <% else %>
+                                    <% end %>
+                                    <% if boss.angel_blog.present? %>
+                                    <strong>Angel Blog:
+                                    </strong>
+                                    <%= boss.angel_blog %><br>
+                                <% else %>
+                                    <% end %>
+                                    <% if boss.about_handle.present? %>
+                                    <strong>About:
+                                    </strong>
+                                    <%= boss.about_handle %><br>
+                                <% else %>
+                                    <% end %>
+                                    <% if boss.about_bio.present? %>
+                                    <strong>About Bio:</strong>
+                                    <%= boss.about_bio %><br>
+                                <% else %>
+                                    <% end %>
+                                    <% if boss.valve.present? %>
+                                    <strong>Valve:
+                                    </strong>
+                                    <%= boss.valve %><br>
+                                <% else %>
+                                    <% end %>
+
+                                    <% end %><br>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="reviewwrap">
+                            <div class="twitter-center">
+
+                                <div class="panel panel-default ">
+                                    <div class="panel-heading">
+                                        <% @descomp.bosses.each do |boss| %>
+                                        <% if boss.twitter.present? %>
+                                        <h2 class="panel-title">@<%= boss.twitter %>
+                                            Timeline</h2>
+                                        <% else %>
+                                        <h2 class="panel-title">Twitter Timeline</h2>
 
                                             <% end %>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="contentcontainer">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h2 class="panel-title">Hiring Manager's Twitter</h2>
                                     </div>
                                     <div class="panel-body">
+                                      <% @descomp.bosses.each do |boss| %>
+                                      <% if boss.twitter.present? %>
+                                        <div class="Update" id="accordion" role="tablist" aria-multiselectable="true">
+                                            <div class="panel-info">
+                                                <div class="panel-heading" role="tab" id="headingTwo">
+                                                    <div class="text-center">
 
-                                        <% if boss.twitter.nil? %>
-                                        Twitter handle wasn't found. Please enter it here.
-                                              <%= form_for @boss, url: edit_boss_path(id: boss.id) do |f| %>
-                                              <%= f.label :twitter %>
-                                              <%= f.text_field :twitter, class:"form-control" %>
-                                              <%= f.submit %>
-                                              <% end %>
+                                                        <h4 class="panel-title">
 
-                                              <% else %>
-                                        <br>
-                                                <% @client.user_timeline( boss.twitter ).each do |t| %>
+                                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#liked" href="#liked" aria-expanded="false" aria-controls="collapseTwo">
+                                                                Click to see tweets liked by @<%= boss.twitter %>
+                                                            </a>
+
+                                                        </h4>
+                                                    </div>
+                                                </div>
+                                                <div id="liked" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                                    <div class="panel-body">
+
+                                                        <a class="twitter-timeline" href="https://twitter.com/<%= boss.twitter %>/likes">Tweets Liked by @TwitterDev</a>
+                                                        <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <% else %>
+                                        <% end %>
+
+                                        <% if boss.twitter.present? %>
+
+                                        <a class="twitter-timeline" href="https://twitter.com/<%= boss.twitter %>">Tweets Liked by @TwitterDev</a>
+                                        <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                    <% else %>
+                                        Update Twitter handle in the 'Update Information' panel
 
 
-                                                <%= raw(@client.oembed(t.id).html) %>
 
 
-                                                <% end %>
-
-                                                      <% if boss.twitter.nil? %>
-                                                      <% else %>
-                                        <h2>Not the correct twitter?</h2>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newboss">Edit Twitter Handle</button>
-                                                <% end %>
                                         <% end %>
                                         <% end %>
-
+                                        <% end %>
                                     </div>
                                 </div>
 
                             </div>
 
-                        </div>
-                    </div>
+                            <div class="boss-mentions update-absolute">
 
-                    <div class="modal fade" id="newboss" tabindex="-1" role="dialog">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span class="ion-ios-close-empty"></span>
-                                    </button>
-                                    <span class="pe-7s-airplay services-icon-2"></span>
-                                    <h4 class="service-title">Edit Hiring Manager's Twitter</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <% @descomp.bosses.each do |boss| %>
-                                    <%= form_for @boss, url: edit_boss_path(id: boss.id) do |f| %>
-                                    <%= f.label :twitter %>
-                                    <%= f.text_field :twitter, class:"form-control" %>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h2 class="panel-title">Update Information</h2>
+                                    </div>
+                                    <div class="panel-body">
+                                      Please update hiring manager's Information if it's outdated or not currently present.<br><br>
+                                        <div class="Update" id="accordion" role="tablist" aria-multiselectable="true">
+                                            <div class="panel-info">
+                                                <div class="panel-heading" role="tab" id="headingTwo">
+                                                    <h4 class="panel-title">
+                                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                            Click Here to Update Information
+                                                        </a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                                    <div class="panel-body">
 
-                                    <%= f.submit "Edit Twitter Handle", class:"btn btn-primary" %>
-                                    <% end %>
-                                    <% end %>
+                                                        <% @descomp.bosses.each do |boss| %>
+                                                        <%= form_for @boss, url: edit_boss_path(id: boss.id) do |f| %>
+                                                        <%= f.label :twitter, "Twitter Handle" %>
+                                                        <%= f.text_field :twitter, class:"form-control" %>
+                                                        <%= f.label :name, "Full Name" %>
+                                                        <%= f.text_field :name, class:"form-control" %>
+                                                        <%= f.label :gender, "Gender" %>
+                                                        <%= f.text_field :gender, class:"form-control" %>
+                                                        <%= f.label :company, "Company" %>
+                                                        <%= f.text_field :company, class:"form-control" %>
+                                                        <%= f.label :linked, "Linkedin Profile" %>
+                                                        <%= f.text_field :linked, class:"form-control" %>
+                                                        <%= f.label :location %>
+                                                        <%= f.text_field :location, class:"form-control" %>
+                                                        <%= f.label :facebook %>
+                                                        <%= f.text_field :facebook, class:"form-control" %>
+                                                        <%= f.label :github_handle, "Github Handle" %>
+                                                        <%= f.text_field :github_handle, class:"form-control" %>
+                                                        <%= f.label :google, "GooglePlus Handle" %>
+                                                        <%= f.text_field :google, class:"form-control" %>
+                                                        <%= f.label :angellist, "Anglelist Handle" %>
+                                                        <%= f.text_field :angellist, class:"form-control" %>
+                                                        <%= f.label :about_handle, "About Handle" %>
+                                                        <%= f.text_field :about_handle, class:"form-control" %>
+                                                        <%= f.label :gravatar, "Gravatar Handle" %>
+                                                        <%= f.text_field :gravatar, class:"form-control" %>
+                                                        <%= f.label :gravatar_avatar, "Gravatar Avatar URL" %>
+                                                        <%= f.text_field :gravatar_avatar, class:"form-control" %>
+                                                        <%= f.label :twitter_avatar, "Twitter Avatar URL" %>
+                                                        <%= f.text_field :twitter_avatar, class:"form-control" %>
+                                                        <%= f.submit %>
+                                                        <% end %>
+                                                        <% end %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+
+                                    </div>
                                 </div>
                             </div>
-                            <!-- /.modal-content -->
+
                         </div>
-                        <!-- /.modal-dialog -->
                     </div>
-                    <!-- /.modal -->
+
+
 
                 </div>
 
