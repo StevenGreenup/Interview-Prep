@@ -22,9 +22,6 @@
                         <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Company GlassDoor</a>
                     </li>
                     <li role="presentation">
-                        <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Company Twitter</a>
-                    </li>
-                    <li role="presentation">
                         <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Hiring Manager Information and Twitter</a>
                     </li>
 
@@ -33,76 +30,134 @@
                 <!-- Tab panes -->
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="home">
-                        <div class="contentcontainer">
 
-                            <div class="panel panel-default static-about">
-                                <div class="panel-heading">
-                                    <h2 class="panel-title">About</h2>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="about">
-                                        <div class="text-center">
+                      <div class="contentcontainer1">
+                      <div class="static-about">
 
-                                            <%= image_tag @descomp.logo %><br>
 
+                      <div class="panel panel-default ">
+                          <div class="panel-heading">
+                              <h2 class="panel-title">About</h2>
+                          </div>
+                          <div class="panel-body">
+                              <div class="about">
+                                  <div class="text-center">
+
+                                      <%= image_tag @descomp.logo %><br>
+
+                                  </div>
+                                  <strong>Approximate employees:
+                                  </strong><%= @company2["organization"]["approx_employees"] %><br>
+                                  <strong>Founded:
+                                  </strong><%= @company2["organization"]["founded"] %><br>
+                                  <strong>Sector:
+                                  </strong><%= @descomp.sector %><br>
+                                  <strong>Industry group:
+                                  </strong><%= @descomp.industrygroup %><br>
+                                  <strong>Industry:
+                                  </strong><%= @descomp.industry %><br>
+                                  <strong>Subindustry:
+                                  </strong><%= @descomp.subindustry %><br>
+                                  <strong>Description:
+                                  </strong><%= @descomp.description %><br>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="panel panel-default contact-absolute">
+                          <div class="panel-heading">
+                              <h2 class="panel-title">Contact</h2>
+                          </div>
+                          <div class="panel-body">
+                              <div class="contact">
+
+                                  <strong>Headquarter address:</strong>
+                                  <% if @descomp.address.present? %>
+                                  <%= @descomp.address %><br>
+                              <% else %>
+                                  <% if @company2["organization"]["contact_info"]["addresses"].nil? %>
+                              <% else %>
+                                  <% @company2["organization"]["contact_info"]["addresses"].map do |address_hash|  %>
+                                  <%= address_hash["address_line1"] %>,
+                                  <%= address_hash["locality"] %>
+                                  <%= address_hash["region"]["code"] %>,
+                                  <%= address_hash["postal_code"] %>
+                                  <% end %>
+                                  <% end %>
+                                  <% end %>
+                              </div>
+                          </div>
+                      </div>
+                        </div>
+
+
+                          <div class="panel panel-default companytwitter">
+                              <div class="panel-heading">
+                                  <h2 class="panel-title">Company Twitter</h2>
+                              </div>
+                              <div class="panel-body">
+                                <% if @descomp.twitter.nil? %>
+
+                                <%= form_for @descomp, url: edit_company_path(id: @descomp.id) do |f| %>
+                                <%= f.label :twitter %>
+                                <%= f.text_field :twitter, class:"form-control" %>
+                                <%= f.submit %>
+                                <% end %>
+                                <h2>The Twitter for the Company you're researching wasn't found, but here are some tweets mentioning
+                                    <%= @descomp.company %>
+                                </h2>
+                                <% @client.search("#{@descomp.company}", result_type: "recent").take(10).collect do |t| %>
+
+
+                                <%= raw(@client.oembed(t.id).html) %>
+
+
+                                <% end %>
+
+                            <% else %>
+                                  <div class="company-twitter">
+                                    <div class="Update" id="accordion" role="tablist" aria-multiselectable="true">
+                                        <div class="panel-info">
+                                            <div class="panel-heading" role="tab" id="headingTwo">
+                                                <div class="text-center">
+
+                                                    <h4 class="panel-title">
+
+                                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#liked" href="#liked" aria-expanded="false" aria-controls="collapseTwo">
+                                                            Click to see tweets liked by @<%= @descomp.twitter %>
+                                                        </a>
+
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                            <div id="liked" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                                <div class="panel-body">
+
+                                                    <a class="twitter-timeline" href="https://twitter.com/<%= @descomp.twitter %>/likes">Tweets Liked by @TwitterDev</a>
+                                                    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+                                                </div>
+                                            </div>
                                         </div>
-                                        <strong>Approximate employees:
-                                        </strong><%= @company2["organization"]["approx_employees"] %><br>
-                                        <strong>Founded:
-                                        </strong><%= @company2["organization"]["founded"] %><br>
-                                        <strong>Sector:
-                                        </strong><%= @descomp.sector %><br>
-                                        <strong>Industry group:
-                                        </strong><%= @descomp.industrygroup %><br>
-                                        <strong>Industry:
-                                        </strong><%= @descomp.industry %><br>
-                                        <strong>Subindustry:
-                                        </strong><%= @descomp.subindustry %><br>
-                                        <strong>Description:
-                                        </strong><%= @descomp.description %><br>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="panel panel-default contact-absolute">
-                                <div class="panel-heading">
-                                    <h2 class="panel-title">Contact</h2>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="contact">
-                                        <% if @company2["organization"]["contact_info"]["phone_numbers"].nil? %>
-                                    <% else %>
-                                        <% @company2["organization"]["contact_info"]["phone_numbers"].map do |phone_hash| %>
-                                        <strong>Phone Number(s):
-                                        </strong><%= phone_hash["number"] %>,
-                                        <% end %>
-                                        <% end %>
-                                        <br>
-                                        <%= @descomp.phone %>
-                                        <br>
-                                        <% if @descomp.email.present? %>
-                                        <strong>Useful Email addresses:</strong>
-                                        <%= @descomp.email %><br>
-                                    <% else %>
-                                        <% end %>
-                                        <br>
-                                        <strong>Headquarter address:</strong>
-                                        <% if @descomp.address.present? %>
-                                        <%= @descomp.address %><br>
-                                    <% else %>
-                                        <% if @company2["organization"]["contact_info"]["addresses"].nil? %>
-                                    <% else %>
-                                        <% @company2["organization"]["contact_info"]["addresses"].map do |address_hash|  %>
-                                        <%= address_hash["address_line1"] %>,
-                                        <%= address_hash["locality"] %>
-                                        <%= address_hash["region"]["code"] %>,
-                                        <%= address_hash["postal_code"] %>
-                                        <% end %>
-                                        <% end %>
-                                        <% end %>
                                     </div>
-                                </div>
-                            </div>
+
+
+                                      <a class="twitter-timeline" href="https://twitter.com/<%= @descomp.twitter %>"></a>
+                                      <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+                                      <% if @descomp.twitter.nil? %>
+                                  <% else %>
+                                      <h2>Not the correct twitter?</h2>
+                                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newcomp">Edit Twitter Handle</button>
+                                      <% end %>
+                                  </div>
+                                  <% end %>
+                              </div>
+                          </div>
+
+                          <div class="aboutwrap">
+
 
                             <div class="panel panel-default links-absolute">
                                 <div class="panel-heading">
@@ -126,7 +181,7 @@
                                         <%= @descomp.company %>
                                         Social Profiles</h2>
                                 </div>
-                                <div class="panel-body">
+                                <div class="social-panel-body">
                                     <div class="social-profiles">
 
                                         <% @company2["social_profiles"].each do |t| %>
@@ -150,7 +205,7 @@
                                     </div>
                                 </div>
                             </div>
-
+                            </div>
                         </div>
 
                     </div>
@@ -335,80 +390,7 @@
                     </div>
                     <!-- /.modal -->
 
-                    <div role="tabpanel" class="tab-pane" id="messages">
 
-                        <% if @descomp.twitter.nil? %>
-
-                        <%= form_for @descomp, url: edit_company_path(id: @descomp.id) do |f| %>
-                        <%= f.label :twitter %>
-                        <%= f.text_field :twitter, class:"form-control" %>
-                        <%= f.submit %>
-                        <% end %>
-                        <h2>The Twitter for the Company you're researching wasn't found, but here are some tweets mentioning
-                            <%= @descomp.company %>
-                        </h2>
-                        <% @client.search("#{@descomp.company}", result_type: "recent").take(10).collect do |t| %>
-
-                        <% if false %>
-                        <%= raw(@client.oembed(t.id).html) %>
-                        <% end %>
-
-                        <% end %>
-
-                    <% else %>
-                        <div class="twitter-wrap">
-                            <div class="panel panel-default companytwitter">
-                                <div class="panel-heading">
-                                    <h2 class="panel-title">Company Twitter</h2>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="company-twitter">
-
-
-                                      <div class="Update" id="accordion" role="tablist" aria-multiselectable="true">
-                                          <div class="panel-info">
-                                              <div class="panel-heading" role="tab" id="headingTwo">
-                                                  <div class="text-center">
-
-                                                      <h4 class="panel-title">
-
-                                                          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#liked" href="#liked" aria-expanded="false" aria-controls="collapseTwo">
-                                                              Click to see tweets liked by @<%= @descomp.twitter %>
-                                                          </a>
-
-                                                      </h4>
-                                                  </div>
-                                              </div>
-                                              <div id="liked" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                                  <div class="panel-body">
-
-                                                      <a class="twitter-timeline" href="https://twitter.com/<%= @descomp.twitter %>/likes">Tweets Liked by @TwitterDev</a>
-                                                      <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-                                                  </div>
-                                              </div>
-                                          </div>
-
-                                      </div>
-
-
-                                        <a class="twitter-timeline" href="https://twitter.com/<%= @descomp.twitter %>"></a>
-                                        <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-                                        <% if @descomp.twitter.nil? %>
-                                    <% else %>
-                                        <h2>Not the correct twitter?</h2>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newcomp">Edit Twitter Handle</button>
-                                        <% end %>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-                        </div>
-                        <% end %>
-                    </div>
 
                     <div role="tabpanel" class="tab-pane" id="settings">
 
@@ -607,24 +589,25 @@
                                     <div class="panel-body">
                                       <% @descomp.bosses.each do |boss| %>
                                       <% if boss.twitter.present? %>
-                                        <div class="Update" id="accordion" role="tablist" aria-multiselectable="true">
-                                            <div class="panel-info">
-                                                <div class="panel-heading" role="tab" id="headingTwo">
-                                                    <div class="text-center">
 
-                                                        <h4 class="panel-title">
 
-                                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#liked" href="#liked" aria-expanded="false" aria-controls="collapseTwo">
-                                                                Click to see tweets liked by @<%= boss.twitter %>
-                                                            </a>
+                                      <div class="Update" id="accordion" role="tablist" aria-multiselectable="true">
+                                          <div class="panel-info">
+                                              <div class="panel-heading" role="tab" id="headingTwo">
+                                                  <h4 class="panel-title">
+                                                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseone" aria-expanded="false" aria-controls="collapseone">
+                                                          Click to see tweets liked by @<%= boss.twitter %>
+                                                      </a>
+                                                  </h4>
+                                              </div>
+                                              <div id="collapseone" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingone">
 
-                                                        </h4>
-                                                    </div>
-                                                </div>
-                                                <div id="liked" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+
+
+
                                                     <div class="panel-body">
 
-                                                        <a class="twitter-timeline" href="https://twitter.com/<%= boss.twitter %>/likes">Tweets Liked by @TwitterDev</a>
+                                                        <a class="twitter-timeline" href="https://twitter.com/<%= boss.twitter %>/likes"></a>
                                                         <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
                                                     </div>

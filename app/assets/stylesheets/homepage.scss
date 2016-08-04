@@ -122,13 +122,15 @@ align-items: center;
 }
 
 .tab-content{
-  background-color: white;
+  background-color: #ecf0f1;
   padding: 0px;
 width: 95%;
+border: none;
 .tab-pane{
-  background-color: white;
+  background-color: #ecf0f1;
   padding: 0px;
     width: 100%;
+    border: none;
 }
 }
 
@@ -248,7 +250,21 @@ textarea{
 .contentcontainer{
   padding: 20px;
   position: relative;
+
 }
+
+.contentcontainer1{
+  padding: 20px;
+
+  display:flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content:space-between;
+  align-content: flex-start;
+  align-items: flex-start;
+  padding: 15px;
+}
+
 .reviewwrap{
   display:flex;
   flex-direction: row;
@@ -274,6 +290,10 @@ width: 100%;
 }
 .social-profiles{
   padding: 10px;
+  height:590px;
+  overflow-y:scroll;
+   background:#fff;
+
 .social-profile{
   padding: 20px;
   border: 1px solid gray;
@@ -285,29 +305,19 @@ width: 100%;
 }
 
 .static-about{
-  position: fixed;
 
+  width: 26%;
 
-  width: 300px;
 }
 
-.contact-absolute{
-margin-left: 350px;
-}
 
-.links-absolute{
-  margin-left: 350px;
-}
-
-.social-absolute{
-  margin-left: 350px;
-}
 
 .manager{
   position: fixed;
   width: 28%;
   margin-left: 10px;
   margin-top: 20px;
+
 }
 
 .update-absolute{
@@ -325,4 +335,16 @@ margin-left: 350px;
 
 .tweets-liked{
   width: 30%;
+}
+.panel-body{
+    background-color: white;
+}
+.social-panel-body{
+    background-color: white;
+    height: 600px;
+}
+
+.aboutwrap{
+  width: 29%;
+  margin-left: 10px;
 }
