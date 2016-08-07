@@ -39,7 +39,7 @@ def create
       @boss.facebook = response.person.facebook.handle unless response.person.facebook.nil?
     unless response.person.github.nil?
       @boss.github_handle = response.person.github.handle
-      github = Github.new oauth_token: 'd084730c29f6fb328094cccbaa8f3d4e917b1796'
+      github = Github.new oauth_token: ' '
       repos = Github::Client::Repos.new
 
       response = repos.list user: "#{response.person.github.handle}"
