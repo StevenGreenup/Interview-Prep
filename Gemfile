@@ -36,6 +36,8 @@ gem 'leaflet-rails'
 gem 'mechanize'
 gem 'fullcontact'
 gem 'hashie'
+gem 'github_api'
+gem "chartkick"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

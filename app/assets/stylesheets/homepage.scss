@@ -3,7 +3,15 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+.pie{
+  background-color: white;
+  width: 100%;
+}
 
+hr{
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
 
 .modal-sm{
   width: 400px;
@@ -109,7 +117,7 @@ align-items: center;
   margin-right: 100px;
   padding-left: 15px;
   padding-right: 15px;
-  background-color: white;
+  background-color: #ecf0f1;
 }
 
 
@@ -347,4 +355,10 @@ width: 100%;
 .aboutwrap{
   width: 29%;
   margin-left: 10px;
+}
+
+h2 .panel-font{
+  font-family: "Montserrat",sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
 }
