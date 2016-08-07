@@ -74,16 +74,12 @@ end
 
    @reviews = (json["response"]["employers"]).first
 
-   @boss.langcount.map do |hash|
-    @total = hash.values.reduce(:+) 
-    end
+   FullContact.configure do |config|
+       config.api_key = '7de9052682ff66d2'
+   end
 
-  #  FullContact.configure do |config|
-  #      config.api_key = '7de9052682ff66d2'
-  #  end
-   #
-  #  @company1 = FullContact.company(domain: @descomp.url)
-  #  @company2 = @company1.to_hash
+   @company1 = FullContact.company(domain: @descomp.url)
+   @company2 = @company1.to_hash
 
 
 

@@ -39,40 +39,6 @@ def create
       @boss.facebook = response.person.facebook.handle unless response.person.facebook.nil?
     unless response.person.github.nil?
       @boss.github_handle = response.person.github.handle
-      github = Github.new oauth_token: 'd084730c29f6fb328094cccbaa8f3d4e917b1796'
-      repos = Github::Client::Repos.new
-
-      response = repos.list user: "#{response.person.github.handle}"
-      @clone = []
-      count = []
-
-      response.take(10).each do |r|
-      langurl = r.languages_url
-      @clone << r.clone_url
-
-      count << JSON.parse(Http.get(langurl).body)
-      end
-
-
-      @lang = []
-      count.each do |h|
-        h.map do |k,v|
-          @lang << {k => v}
-        end
-      end
-
-
-     @derp = @lang.group_by{|h| h[0]}.map do |_,val|
-          val.inject do |h1,h2|
-            h1.merge(h2) do |k,o,n|
-              k == 'name' ? o : o + n
-            end
-          end
-      end
-
-
-      @boss.clone = @clone
-      @boss.langcount = @derp
       @boss.github_avatar = response.person.github.avatar
       @boss.github_company = response.person.github.company
       @boss.github_blog = response.person.github.blog
@@ -125,44 +91,6 @@ def update
   @boss.gravatar_avatar = params[:boss][:gravatar_avatar]
   @boss.twitter_avatar = params[:boss][:twitter_avatar]
    @boss.save
-    unless @boss.github_handle.nil?
-   github = Github.new oauth_token: 'd084730c29f6fb328094cccbaa8f3d4e917b1796'
-   repos = Github::Client::Repos.new
-
-   response = repos.list user: "#{@boss.github_handle}"
-   @clone = []
-   count = []
-
-   response.take(10).each do |r|
-   langurl = r.languages_url
-   @clone << r.clone_url
-
-   count << JSON.parse(Http.get(langurl).body)
-   end
-
-
-   @lang = []
-   count.each do |h|
-     h.map do |k,v|
-       @lang << {k => v}
-     end
-   end
-
-
-  @derp = @lang.group_by{|h| h[0]}.map do |_,val|
-       val.inject do |h1,h2|
-         h1.merge(h2) do |k,o,n|
-           k == 'name' ? o : o + n
-         end
-       end
-   end
-
-
-   @boss.clone = @clone
-
-   @boss.langcount = @derp
-   @boss.save
-   end
     redirect_to user_path(id: @current_user.id)
 
   end

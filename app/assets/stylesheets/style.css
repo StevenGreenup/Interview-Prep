@@ -45,7 +45,7 @@ Author:Denis Samardjiev
 body {
 	background-color: #D5D5D5;
 	font-family: 'Roboto', sans-serif;
-	font-size: 16px;
+	font-size: 18px;
 	font-weight: 300;
 	color: #333333;
 	height: 100%;
@@ -247,9 +247,6 @@ button:hover,
 }
 
 .h2, h2 {
-	font-family: "Montserrat",sans-serif;
-  font-size: 20px;
-  text-transform: uppercase;
 	font-weight: 100;
 	color: #1d1d1d;
 }
@@ -268,7 +265,7 @@ button:hover,
 
 .section-title h2 {
     font-family: 'Montserrat', sans-serif;
-    font-size: 20px;
+    font-size: 38px;
     font-weight: 400;
     color: #fff;
     margin: 0;
@@ -591,9 +588,6 @@ ul.social-buttons li a:active {
 .nav-tabs>li>a {
     font-size: 16px;
     color: #1d1d1d;
-		font-family: "Montserrat",sans-serif;
-		font-size: 10px;
-		text-transform: uppercase;
 }
 
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
@@ -611,8 +605,6 @@ ul.social-buttons li a:active {
     text-decoration: none;
     background-color: #615fde;
     color: #fff;
-
-
 }
 
 .tab-content {
@@ -627,6 +619,12 @@ ul.social-buttons li a:active {
     border-top:none;
 }
 
+.tab-pane::first-letter {
+    font-size: 120%;
+    color: #fff;
+    font-family: "Montserrat",sans-serif;
+    font-weight: 700;
+}
 
 /* =Panels
 -------------------------------------------------------------- */
@@ -722,7 +720,7 @@ ul.social-buttons li a:active {
 -------------------------------------------------------------- */
 .thumbnail {
     padding: 19px;
-    background-color: white;
+    background-color: transparent;
     border: 1px solid #313131;
     border-radius: 0;
 }

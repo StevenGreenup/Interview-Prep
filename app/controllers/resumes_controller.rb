@@ -142,6 +142,9 @@ end
 
 
     if @resume.save
+      # respond_to do |format|
+      #   format.js
+      # end
       redirect_to user_path(id: @current_user.id)
     else
       render :new
