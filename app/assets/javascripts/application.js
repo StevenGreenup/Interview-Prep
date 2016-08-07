@@ -12,6 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require highcharts
+//= require Chart.bundle
+//= require chartkick
 //= require bootstrap
 //= require descomps
 //= require homepage

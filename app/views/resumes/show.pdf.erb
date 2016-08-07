@@ -2,9 +2,22 @@
 <body>
 <div class="contact-resume">
     <h2><%= @current_user.name %></h2>
-    <%=@resume.website %>
-    -
+
+
+    <% if @resume.website.present? && @resume.linked.present? %>
+    <%=@resume.website %> - <%=@resume.linked %><br>
+    <% else %>
+    <% if @resume.website.present? && @resume.linked.blank? %>
+    <%=@resume.website %><br>
+    <% else %>
+    <% if @resume.linked.present? && @resume.website.blank? %>
     <%=@resume.linked %><br>
+    <% else %>
+    <% end %>
+    <% end %>
+    <% end %>
+
+
     <%= @resume.address %>
     <%=@resume.addresscity %>,
     <%=@resume.addressstate %>
@@ -215,77 +228,7 @@
 <% else %>
 <% end %>
 
-<% if @resume.excomp5.present? %>
-<div class="company">
-  <div class="startend">
-      <%= @resume.exstart5 %>
-      -
-      <%= @resume.exend5 %><br>
-  </div>
-    <div class="Position">
-        &nbsp;<%= @resume.excomp5 %>,&nbsp;<%= @resume.excomploc5 %>
-        <br>&nbsp;&nbsp;<i><%= @resume.expos5 %></i>
-      </div>
-  </div>
-  <div class="content">
-        <ul>
-            <% if @resume.expos51about.present? %>
-            <li><%=@resume.expos51about %></li>
-        <% else %><% end %>
-            <% if @resume.expos52about.present? %>
-            <li><%=@resume.expos52about %></li>
-        <% else %><% end %>
-            <% if @resume.expos53about.present? %>
-            <li><%=@resume.expos53about %></li>
-        <% else %><% end %>
-            <% if @resume.expos54about.present? %>
-            <li><%=@resume.expos54about %></li>
-        <% else %><% end %>
-            <% if @resume.expos55about.present? %>
-            <li><%=@resume.expos55about %></li>
-        <% else %><% end %>
-        </ul>
-</div>
-<br>
-<% else %>
-<% end %>
 
-
-<% if @resume.excomp6.present? %>
-<div class="company">
-  <div class="startend">
-      <%= @resume.exstart6 %>
-      -
-      <%= @resume.exend6 %><br>
-  </div>
-    <div class="Position">
-        &nbsp;<%= @resume.excomp6 %>,&nbsp;<%= @resume.excomploc6 %>
-        <br>&nbsp;&nbsp;<i><%= @resume.expos6 %></i>
-
-            </div>
-        </div>
-        <div class="content">
-        <ul>
-            <% if @resume.expos61about.present? %>
-            <li><%=@resume.expos61about %></li>
-        <% else %><% end %>
-            <% if @resume.expos62about.present? %>
-            <li><%=@resume.expos62about %></li>
-        <% else %><% end %>
-            <% if @resume.expos63about.present? %>
-            <li><%=@resume.expos63about %></li>
-        <% else %><% end %>
-            <% if @resume.expos64about.present? %>
-            <li><%=@resume.expos64about %></li>
-        <% else %><% end %>
-            <% if @resume.expos65about.present? %>
-            <li><%=@resume.expos65about %></li>
-        <% else %><% end %>
-        </ul>
-</div>
-<br>
-<% else %>
-<% end %>
 
 
 
