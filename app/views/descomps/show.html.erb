@@ -688,7 +688,6 @@
                                     <div class="panel-body">
                                       <div class="text-center">
 
-
                                         <div class="pie">
                                             <%= pie_chart(@boss.langcount[0]) %>
                                         </div>
@@ -698,8 +697,8 @@
                                         <ul class="list-group">
                                             <% @boss.langcount[0].each do |r| %>
                                             <li class="list-group-item">
-                                                <span class="badge">Lines : <%= r[1] %></span>
-                                                <%= r[0] %> %<%= (((r[1])/(@total).to_f)*100).round  %>
+                                                <span class="badge"> %<%= (((r[1])/(@total).to_f)*100).round(2) %></span>
+                                                <%= r[0] %>
                                             </li>
                                             <% end %>
                                         </ul>

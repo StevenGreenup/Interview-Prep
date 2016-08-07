@@ -21,9 +21,7 @@ def create
 
   @boss.user_id = @current_user.id
   unless response.nil?
-
   @boss.name = response.person.name.fullName
-
     unless response.person.twitter.nil?
       @boss.twitter = response.person.twitter.handle
       @boss.twitter_bio = response.person.twitter.bio
@@ -39,17 +37,17 @@ def create
       @boss.facebook = response.person.facebook.handle unless response.person.facebook.nil?
     unless response.person.github.nil?
       @boss.github_handle = response.person.github.handle
-      github = Github.new oauth_token: ''
+      github = Github.new oauth_token: ENV["GITHUB_OAUTH"]
       repos = Github::Client::Repos.new
 
-      response = repos.list user: "#{response.person.github.handle}"
+      git = repos.list user: response.person.github.handle
       @clone = []
       count = []
 
-      response.take(10).each do |r|
+      git.take(10).each do |r|
+
       langurl = r.languages_url
       @clone << r.clone_url
-
       count << JSON.parse(Http.get(langurl).body)
       end
 
@@ -126,13 +124,12 @@ def update
   @boss.twitter_avatar = params[:boss][:twitter_avatar]
    @boss.save
     unless @boss.github_handle.nil?
-   github = Github.new oauth_token: 'd084730c29f6fb328094cccbaa8f3d4e917b1796'
+   github = Github.new oauth_token: ENV["GITHUB_OAUTH"]
    repos = Github::Client::Repos.new
 
    response = repos.list user: "#{@boss.github_handle}"
    @clone = []
    count = []
-
    response.take(10).each do |r|
    langurl = r.languages_url
    @clone << r.clone_url
@@ -145,6 +142,7 @@ def update
    count.each do |h|
      h.map do |k,v|
        @lang << {k => v}
+
      end
    end
 
