@@ -23,14 +23,20 @@ end
    @descomp.user_id = @current_user.id
 
   company = Clearbit::Enrichment::Company.find(domain: @descomp.url, company_name: @descomp.company)
+  unless company.nil?
+    unless company.site.nil?
   @descomp.tag = company.site.h1
   @descomp.desc = company.site.metaDescription
   @descomp.phone = company.site.phoneNumbers
   @descomp.email = company.site.emailAddresses
+  end
+  unless company.category.nil?
   @descomp.sector = company.category.sector
   @descomp.industrygroup = company.category.industryGroup
   @descomp.industry = company.category.industry
   @descomp.subindustry = company.category.subIndustry
+  end
+
   @descomp.tags = company.tags
   @descomp.description = company.description
   @descomp.founded = company.foundedYear
@@ -45,9 +51,11 @@ end
   @descomp.twitlocate = company.twitter.location
   @descomp.twitsite = company.twitter.site
   @descomp.avatar = company.twitter.avatar
+  end
   if @descomp.save
-    redirect_to user_path(id: @current_user.id)
+    redirect_to user_path(id: @current_user.id), notice:"The company your researching has been found. If you have the hiring manager's email address proceed to step 2."
   else
+
     render :new
   end
  end
@@ -73,10 +81,13 @@ end
    json = JSON.parse(Http.get(url).body)
 
    @reviews = (json["response"]["employers"]).first
-
+   unless @boss.nil?
+   unless @boss.github_handle.nil?
    @boss.langcount.map do |hash|
     @total = hash.values.reduce(:+)
     end
+  end
+end
 
   #  FullContact.configure do |config|
   #      config.api_key = '7de9052682ff66d2'

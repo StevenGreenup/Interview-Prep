@@ -98,14 +98,14 @@
                     <div class="modal-content">
 
                         <div class="sign-in" style="visibility: visible">
-                            
+
 
 
 
                             <h2>Sign in</h2>
                             <%= form_tag create_session_path do %>
                             <%= label_tag :email %>
-                            <%= text_field_tag :email,"", class:"form-control" %><br>
+                            <%= email_field_tag :email,"", class:"form-control" %><br>
                             <%= label_tag :password %>
                             <%= password_field_tag :password,"", class:"form-control" %><br>
                             <%= submit_tag "Sign in", class:"btn btn-primary" %>

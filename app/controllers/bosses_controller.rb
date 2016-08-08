@@ -17,8 +17,6 @@ def create
   @boss.email = params[:boss][:email]
    @boss.descomp_id = params[:boss][:descomp_id]
   response = Clearbit::Enrichment.find(email: @boss.email)
-
-
   @boss.user_id = @current_user.id
   unless response.nil?
   @boss.name = response.person.name.fullName
@@ -40,27 +38,33 @@ def create
       github = Github.new oauth_token: ENV["GITHUB_OAUTH"]
       repos = Github::Client::Repos.new
 
+
       git = repos.list user: response.person.github.handle
-      @clone = []
+      clone = []
       count = []
-
+    if git.last_page.present?
       git.take(10).each do |r|
-
       langurl = r.languages_url
-      @clone << r.clone_url
+      clone << r.clone_url
       count << JSON.parse(Http.get(langurl).body)
       end
+    else
+      git.take(10).each do |r|
+      langurl = r.languages_url
+      clone << r.clone_url
+      count << JSON.parse(Http.get(langurl).body)
+      end
+    end
 
-
-      @lang = []
+      lang = []
       count.each do |h|
         h.map do |k,v|
-          @lang << {k => v}
+          lang << {k => v}
         end
       end
 
 
-     @derp = @lang.group_by{|h| h[0]}.map do |_,val|
+     derp = lang.group_by{|h| h[0]}.map do |_,val|
           val.inject do |h1,h2|
             h1.merge(h2) do |k,o,n|
               k == 'name' ? o : o + n
@@ -69,8 +73,8 @@ def create
       end
 
 
-      @boss.clone = @clone
-      @boss.langcount = @derp
+      @boss.clone = clone
+      @boss.langcount = derp
       @boss.github_avatar = response.person.github.avatar
       @boss.github_company = response.person.github.company
       @boss.github_blog = response.person.github.blog
@@ -128,26 +132,34 @@ def update
    repos = Github::Client::Repos.new
 
    response = repos.list user: "#{@boss.github_handle}"
-   @clone = []
+   clone = []
    count = []
-   response.take(10).each do |r|
-   langurl = r.languages_url
-   @clone << r.clone_url
+# if response.last_page.present?
+#     number = response.last_page.count
+#      response.last_page.take(number).each do |r|
+#      langurl = r.languages_url
+#      clone << r.clone_url
+#      count << JSON.parse(Http.get(langurl).body)
+#      end
+#    else
+unless response.nil?
+     response.take(10).each do |r|
+     langurl = r.languages_url
+     clone << r.clone_url
+     count << JSON.parse(Http.get(langurl).body)
+     end
+  #  end
 
-   count << JSON.parse(Http.get(langurl).body)
-   end
 
-
-   @lang = []
+   lang = []
    count.each do |h|
      h.map do |k,v|
-       @lang << {k => v}
-
+       lang << {k => v}
      end
    end
 
 
-  @derp = @lang.group_by{|h| h[0]}.map do |_,val|
+  derp = lang.group_by{|h| h[0]}.map do |_,val|
        val.inject do |h1,h2|
          h1.merge(h2) do |k,o,n|
            k == 'name' ? o : o + n
@@ -156,12 +168,13 @@ def update
    end
 
 
-   @boss.clone = @clone
+   @boss.clone = clone
 
-   @boss.langcount = @derp
+   @boss.langcount = derp
    @boss.save
+    end
    end
-    redirect_to user_path(id: @current_user.id)
+    redirect_to user_path(id: @current_user.id), notice:"Hiring manager was updated."
 
   end
 

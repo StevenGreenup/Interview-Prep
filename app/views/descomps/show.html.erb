@@ -680,6 +680,7 @@
 
                                     </div>
                                 </div>
+                                <% unless @boss.nil? %>
                                 <% unless @boss.github_handle.nil? %>
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
@@ -695,11 +696,13 @@
                                         Github Handle : <%= @boss.github_handle %>
                                         </div>
                                         <ul class="list-group">
+                                          <% unless @boss.langcount[0].nil? %>
                                             <% @boss.langcount[0].each do |r| %>
                                             <li class="list-group-item">
                                                 <span class="badge"> %<%= (((r[1])/(@total).to_f)*100).round(2) %></span>
                                                 <%= r[0] %>
                                             </li>
+                                            <% end %>
                                             <% end %>
                                         </ul>
 
@@ -728,6 +731,7 @@
                                     </div>
                                 </div>
                                 <% end %>
+                                  <% end %>
                             </div>
 
                         </div>
