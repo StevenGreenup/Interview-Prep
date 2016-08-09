@@ -41,5 +41,15 @@ end
 
   end
 
+  def getstarted
+    @resume = Resume.new
+    @boss = Boss.new
+    @descomp = Descomp.new
+    @editresume = Resume.find_by user_id: params[:id]
+    @resumes = Resume.where(user_id: @current_user.id)
+    @descomps = Descomp.where(user_id: @current_user.id)
+    @bosses = Boss.where(user_id: @current_user.id)
+  end
+
 
 end

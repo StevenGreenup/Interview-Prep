@@ -113,23 +113,25 @@
                 </ul>
               </div>
               <% end %>
-
-
-
-
-
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newcomp">1. Research Company</button><br>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newboss">2. Research Hiring Manager</button><br>
 
 
                     <div class="well">
-                        <h2>Companies</h2>
-
+                      <div class="panel-heading">
+                          <h2 class="panel-title">Companies</h2>
+                      </div>
+                      <br>
                     <div class="row">
                       <% @descomps.each do |descomp| %>
                       <div class="text-center">
+
+
                     <div class="col-sm-6">
-                      <div class="thumbnail">
+                      <div class="panel panel-default ">
+
+                          <div class="panel-body">
+
 
                         <div class="wrapcompany">
 
@@ -176,9 +178,11 @@
                         <div class="caption">
                           <p><%= link_to "View Generated Profile", company_path(id: descomp.id), class:"btn btn-primary" %></p>
                         </div>
-                      </div>
+
                     </div>
                     </div>
+                  </div>
+                  </div>
                     <% end %>
 
                   </div>

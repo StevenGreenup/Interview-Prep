@@ -45,7 +45,7 @@ align-items: center;
   left: 50%;
   width: 80px;
   height: 80px;
-  background-color: #FF3B30;
+  background-color: #00b8ce;
   border: 2px solid white;
   border-radius: 100%;
   z-index: 1000000;
@@ -112,9 +112,9 @@ align-items: center;
 
 
 .container2{
-  margin-top: 100px;
-  margin-left: 100px;
-  margin-right: 100px;
+  margin-top: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
   padding-left: 15px;
   padding-right: 15px;
   background-color: #ecf0f1;
@@ -299,6 +299,7 @@ width: 100%;
 .social-profiles{
   padding: 10px;
   height:590px;
+  width: 100%;
   overflow-y:scroll;
    background:#fff;
 
