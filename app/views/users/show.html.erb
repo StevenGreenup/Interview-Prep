@@ -113,22 +113,23 @@
                 </ul>
               </div>
               <% end %>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newcomp">1. Research Company</button><br>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newboss">2. Research Hiring Manager</button><br>
 
 
-                    <div class="well">
-                      <div class="panel-heading">
-                          <h2 class="panel-title">Companies</h2>
-                      </div>
-                      <br>
+                    <div class="panel panel-default ">
+                        <div class="panel-heading">
+                            <h2 class="panel-title">Companies & Hiring Managers</h2>
+                        </div>
+                        <div class="panel-body">
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newcomp">1. Research Company</button>
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newboss">2. Research Hiring Manager</button><br>
+                          <br>
                     <div class="row">
                       <% @descomps.each do |descomp| %>
                       <div class="text-center">
 
 
                     <div class="col-sm-6">
-                      <div class="panel panel-default ">
+                      <div class="panel panel-default mr15 ml15">
 
                           <div class="panel-body">
 
@@ -187,7 +188,7 @@
 
                   </div>
                 <small>Note: If the company or hiring manager you're researching does not have a strong internet presence, then results will be lacking.</small>
-</div>
+</div></div>
 
 
 
@@ -196,6 +197,13 @@
         </div>
 
         <div href="#resume" role="tabpanel" class="tab-pane" id="profile">
+
+          <div class="panel panel-default ">
+              <div class="panel-heading">
+                  <h2 class="panel-title">My Resume</h2>
+              </div>
+              <div class="panel-body">
+
             <div class="contentcontainer1">
                 <div class="col-sm-6">
                     <% if @resumes.present? %>
@@ -257,9 +265,9 @@
 
                                     <%= f.label :value %>
                                     <%= f.text_area :value, class:"form-control", placeholder:"A value or proposition statement is a 3 to 4 sentence overview of your focus and your strengths." %>
-                                    <hr>
+
                                     or
-                                    <hr>
+
                                     <%= f.label :objective %>
                                     <%= f.text_area :objective, class:"form-control", placeholder: "A resume objective is a short, targeted statement that clearly outlines your career direction while simultaneously positioning you as someone who fits what the employer is looking for exactly."%>
 
@@ -344,22 +352,22 @@
                                             <%= f.label :exend1, "End" %>
                                             <%= f.text_field :exend1, class:"form-control" %>
                                         </div>
-                                        <hr>
+
                                         <%= f.label :excomploc1, "Location" %>
                                         <%= f.text_field :excomploc1, class:"form-control" %>
-                                          <hr>
+
                                         <%= f.label :expos11about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos11about, class:"form-control", placeholder:"These fields should be in past tense" %>
-                                        <hr>
+
                                         <%= f.label :expos12about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos12about, class:"form-control" %>
-                                          <hr>
+
                                         <%= f.label :expos13about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos13about, class:"form-control" %>
-                                          <hr>
+
                                         <%= f.label :expos14about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos14about, class:"form-control" %>
-                                          <hr>
+
                                         <%= f.label :expos15about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos15about, class:"form-control" %>
 
@@ -397,22 +405,22 @@
                                             <%= f.label :exend2, "End" %>
                                             <%= f.text_field :exend2, class:"form-control" %>
                                         </div>
-                                        <hr>
+
                                         <%= f.label :excomploc2, "Location" %>
                                         <%= f.text_field :excomploc2, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :expos21about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos21about, class:"form-control", placeholder:"These fields should be in past tense" %>
-                                        <hr>
+
                                         <%= f.label :expos22about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos22about, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :expos23about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos23about, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :expos24about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos24about, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :expos25about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos25about, class:"form-control" %>
 
@@ -450,22 +458,22 @@
                                             <%= f.label :exend3, "End" %>
                                             <%= f.text_field :exend3, class:"form-control" %>
                                         </div>
-                                        <hr>
+
                                         <%= f.label :excomploc3, "Location" %>
                                         <%= f.text_field :excomploc3, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :expos31about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos31about, class:"form-control", placeholder:"These fields should be in past tense" %>
-                                          <hr>
+
                                         <%= f.label :expos32about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos32about, class:"form-control" %>
-                                          <hr>
+
                                         <%= f.label :expos33about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos33about, class:"form-control" %>
-                                          <hr>
+
                                         <%= f.label :expos34about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos34about, class:"form-control" %>
-                                          <hr>
+
                                         <%= f.label :expos35about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos35about, class:"form-control" %>
 
@@ -503,22 +511,22 @@
                                             <%= f.label :exend4, "End" %>
                                             <%= f.text_field :exend4, class:"form-control" %>
                                         </div>
-                                        <hr>
+
                                         <%= f.label :excomploc4, "Location" %>
                                         <%= f.text_field :excomploc4, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :expos41about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos41about, class:"form-control", placeholder:"These fields should be in past tense" %>
-                                        <hr>
+
                                         <%= f.label :expos42about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos42about, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :expos43about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos43about, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :expos44about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos44about, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :expos45about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos45about, class:"form-control" %>
 
@@ -557,22 +565,22 @@
                                             <%= f.label :intend1, "End" %>
                                             <%= f.text_field :intend1, class:"form-control" %>
                                         </div>
-                                        <hr>
+
                                         <%= f.label :intcomploc1, "Location" %>
                                         <%= f.text_field :intcomploc1, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :intcomp11about, "Task or Skill Developed"%>
                                         <%= f.text_field :intcomp11about, class:"form-control", placeholder:"These fields should be in past tense" %>
-                                        <hr>
+
                                         <%= f.label :intcomp12about, "Task or Skill Developed"%>
                                         <%= f.text_field :intcomp12about, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :intcomp13about, "Task or Skill Developed"%>
                                         <%= f.text_field :intcomp13about, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :intcomp14about, "Task or Skill Developed"%>
                                         <%= f.text_field :intcomp14about, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :intcomp15about, "Task or Skill Developed"%>
                                         <%= f.text_field :intcomp15about, class:"form-control" %>
 
@@ -610,22 +618,22 @@
                                             <%= f.label :intend2, "End" %>
                                             <%= f.text_field :intend2, class:"form-control" %>
                                         </div>
-                                        <hr>
+
                                         <%= f.label :intcomploc2, "Location" %>
                                         <%= f.text_field :intcomploc2, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :intcomp21about, "Task or Skill Developed"%>
                                         <%= f.text_field :intcomp21about, class:"form-control", placeholder:"These fields should be in past tense" %>
-                                        <hr>
+
                                         <%= f.label :intcomp22about, "Task or Skill Developed"%>
                                         <%= f.text_field :intcomp22about, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :intcomp23about, "Task or Skill Developed"%>
                                         <%= f.text_field :intcomp23about, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :intcomp24about, "Task or Skill Developed"%>
                                         <%= f.text_field :intcomp24about, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :intcomp25about, "Task or Skill Developed"%>
                                         <%= f.text_field :intcomp25about, class:"form-control" %>
 
@@ -663,22 +671,22 @@
                                             <%= f.label :intend3, "End" %>
                                             <%= f.text_field :intend3, class:"form-control" %>
                                         </div>
-                                        <hr>
+
                                         <%= f.label :intcomploc3, "Location" %>
                                         <%= f.text_field :intcomploc3, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :intcomp31about, "Task or Skill Developed"%>
                                         <%= f.text_field :intcomp31about, class:"form-control", placeholder:"These fields should be in past tense" %>
-                                        <hr>
+
                                         <%= f.label :intcomp32about, "Task or Skill Developed"%>
                                         <%= f.text_field :intcomp32about, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :intcomp33about, "Task or Skill Developed"%>
                                         <%= f.text_field :intcomp33about, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :intcomp34about, "Task or Skill Developed"%>
                                         <%= f.text_field :intcomp34about, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :intcomp35about, "Task or Skill Developed"%>
                                         <%= f.text_field :intcomp35about, class:"form-control" %>
 
@@ -794,9 +802,9 @@
 
                                   <%= f.label :value %>
                                   <%= f.text_area :value, class:"form-control", placeholder:"A value or proposition statement is a 3 to 4 sentence overview of your focus and your strengths." %>
-                                  <hr>
+
                                   or
-                                  <hr>
+
                                   <%= f.label :objective %>
                                   <%= f.text_area :objective, class:"form-control", placeholder: "A resume objective is a short, targeted statement that clearly outlines your career direction while simultaneously positioning you as someone who fits what the employer is looking for exactly."%>
 
@@ -882,22 +890,22 @@
                                             <%= f.label :exend1, "End" %>
                                             <%= f.text_field :exend1, class:"form-control" %>
                                         </div>
-                                        <hr>
+
                                         <%= f.label :excomploc1, "Location" %>
                                         <%= f.text_field :excomploc1, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :expos11about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos11about, class:"form-control", placeholder:"These fields should be in past tense" %>
-                                        <hr>
+
                                         <%= f.label :expos12about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos12about, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :expos13about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos13about, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :expos14about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos14about, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :expos15about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos15about, class:"form-control" %>
 
@@ -935,22 +943,22 @@
                                             <%= f.label :exend2, "End" %>
                                             <%= f.text_field :exend2, class:"form-control" %>
                                         </div>
-                                        <hr>
+
                                         <%= f.label :excomploc2, "Location" %>
                                         <%= f.text_field :excomploc2, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :expos21about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos21about, class:"form-control", placeholder:"These fields should be in past tense" %>
-                                        <hr>
+
                                         <%= f.label :expos22about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos22about, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :expos23about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos23about, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :expos24about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos24about, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :expos25about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos25about, class:"form-control" %>
 
@@ -988,22 +996,22 @@
                                             <%= f.label :exend3, "End" %>
                                             <%= f.text_field :exend3, class:"form-control" %>
                                         </div>
-                                        <hr>
+
                                         <%= f.label :excomploc3, "Location" %>
                                         <%= f.text_field :excomploc3, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :expos31about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos31about, class:"form-control", placeholder:"These fields should be in past tense" %>
-                                        <hr>
+
                                         <%= f.label :expos32about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos32about, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :expos33about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos33about, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :expos34about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos34about, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :expos35about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos35about, class:"form-control" %>
 
@@ -1042,22 +1050,22 @@
                                             <%= f.label :exend4, "End" %>
                                             <%= f.text_field :exend4, class:"form-control" %>
                                         </div>
-                                        <hr>
+
                                         <%= f.label :excomploc4, "Location" %>
                                         <%= f.text_field :excomploc4, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :expos41about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos41about, class:"form-control", placeholder:"These fields should be in past tense" %>
-                                        <hr>
+
                                         <%= f.label :expos42about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos42about, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :expos43about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos43about, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :expos44about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos44about, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :expos45about, "Task or Skill Developed"%>
                                         <%= f.text_field :expos45about, class:"form-control" %>
 
@@ -1097,22 +1105,22 @@
                                             <%= f.label :intend1, "End" %>
                                             <%= f.text_field :intend1, class:"form-control" %>
                                         </div>
-                                        <hr>
+
                                         <%= f.label :intcomploc1, "Location" %>
                                         <%= f.text_field :intcomploc1, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :intcomp11about, "Task or Skill Developed"%>
                                         <%= f.text_field :intcomp11about, class:"form-control", placeholder:"These fields should be in past tense" %>
-                                        <hr>
+
                                         <%= f.label :intcomp12about, "Task or Skill Developed"%>
                                         <%= f.text_field :intcomp12about, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :intcomp13about, "Task or Skill Developed"%>
                                         <%= f.text_field :intcomp13about, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :intcomp14about, "Task or Skill Developed"%>
                                         <%= f.text_field :intcomp14about, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :intcomp15about, "Task or Skill Developed"%>
                                         <%= f.text_field :intcomp15about, class:"form-control" %>
 
@@ -1150,22 +1158,22 @@
                                             <%= f.label :intend2, "End" %>
                                             <%= f.text_field :intend2, class:"form-control" %>
                                         </div>
-                                        <hr>
+
                                         <%= f.label :intcomploc2, "Location" %>
                                         <%= f.text_field :intcomploc2, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :intcomp21about, "Task or Skill Developed"%>
                                         <%= f.text_field :intcomp21about, class:"form-control", placeholder:"These fields should be in past tense" %>
-                                        <hr>
+
                                         <%= f.label :intcomp22about, "Task or Skill Developed"%>
                                         <%= f.text_field :intcomp22about, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :intcomp23about, "Task or Skill Developed"%>
                                         <%= f.text_field :intcomp23about, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :intcomp24about, "Task or Skill Developed"%>
                                         <%= f.text_field :intcomp24about, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :intcomp25about, "Task or Skill Developed"%>
                                         <%= f.text_field :intcomp25about, class:"form-control" %>
 
@@ -1203,22 +1211,22 @@
                                             <%= f.label :intend3, "End" %>
                                             <%= f.text_field :intend3, class:"form-control" %>
                                         </div>
-                                        <hr>
+
                                         <%= f.label :intcomploc3, "Location" %>
                                         <%= f.text_field :intcomploc3, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :intcomp31about, "Task or Skill Developed"%>
                                         <%= f.text_field :intcomp31about, class:"form-control", placeholder:"These fields should be in past tense" %>
-                                        <hr>
+
                                         <%= f.label :intcomp32about, "Task or Skill Developed"%>
                                         <%= f.text_field :intcomp32about, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :intcomp33about, "Task or Skill Developed"%>
                                         <%= f.text_field :intcomp33about, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :intcomp34about, "Task or Skill Developed"%>
                                         <%= f.text_field :intcomp34about, class:"form-control" %>
-                                        <hr>
+
                                         <%= f.label :intcomp35about, "Task or Skill Developed"%>
                                         <%= f.text_field :intcomp35about, class:"form-control" %>
 
@@ -1286,7 +1294,7 @@
                         <% if @resumes.present? %>
                         <% @resumes.each do |resume| %>
                         <%= link_to "#{@current_user.name} Resume.pdf", resume_path(id: resume.id) %><br>
-                        <iframe src=<%= resume_path(id: resume.id) %> width="100%" height="800" style="border: none;"></iframe>
+                        <iframe src=<%= resume_path(id: resume.id) %> width="100%" height="700" style="border: none;"></iframe>
                         <% end %>
                     <% else %>
                         <strong>You currently do not have a resume on record. To create one use the form on the left.</strong>
@@ -1295,7 +1303,7 @@
 
                 </div>
             </div>
-
+</div></div>
         </div>
 
         <div role="tabpanel" class="tab-pane" id="messages">
