@@ -203,10 +203,7 @@
                     </div>
                     <div role="tabpanel" class="tab-pane" id="profile">
 
-                        <div class="text-center">
-                            <%= image_tag @reviews["squareLogo"] %>
 
-                        </div>
 
                         <div class="contentcontainer">
                             <div class="panel panel-default">
@@ -217,9 +214,29 @@
                                 <div class="panel-body">
 
                                     <div class="reviewwrap">
+                                      <div class="picture">
+                                          <%= image_tag @reviews["squareLogo"] %>
+
+                                      </div>
 
                                         <div class="aboutreview">
-                                            <br>
+                                          <br>
+                                          <strong>Id :
+                                          </strong>
+                                          <%= @reviews["id"] %><br>
+                                          <strong>Name :
+                                          </strong>
+                                          <%= @reviews["name"] %><br>
+                                          <strong>Website :
+                                          </strong>
+                                          <%= @reviews["website"] %><br>
+                                          <strong>Industry :
+                                          </strong>
+                                          <%= @reviews["industry"] %><br>
+                                          <strong>Number Of Ratings :
+                                          </strong>
+                                          <%= @reviews["numberOfRatings"] %><br>
+
                                             <strong>Overall Rating :
                                             </strong>
                                             <%= @reviews["overallRating"] %><br>
@@ -259,22 +276,42 @@
                                         </div>
 
                                         <div class="aboutreview">
-                                            <br>
-                                            <strong>Id :
-                                            </strong>
-                                            <%= @reviews["id"] %><br>
-                                            <strong>Name :
-                                            </strong>
-                                            <%= @reviews["name"] %><br>
-                                            <strong>Website :
-                                            </strong>
-                                            <%= @reviews["website"] %><br>
-                                            <strong>Industry :
-                                            </strong>
-                                            <%= @reviews["industry"] %><br>
-                                            <strong>Number Of Ratings :
-                                            </strong>
-                                            <%= @reviews["numberOfRatings"] %><br>
+
+                                          <div class="reviewwrap">
+                                              <div class="ceopic">
+
+                                                  <% if @reviews["ceo"].present? %>
+                                                  <% if @reviews["ceo"]["image"].nil? %>
+                                                    <% else %>
+                                                  <%= image_tag @reviews["ceo"]["image"]["src"] %><br>
+                                                  <% end %>
+
+                                              </div>
+
+                                              <div class="ceoabout">
+                                                <strong>CEO :
+                                                </strong>
+                                                <%= @reviews["ceo"]["name"] %><br>
+                                                  <strong>Title :
+                                                  </strong>
+                                                  <%= @reviews["ceo"]["title"] %><br>
+                                                  <strong>Number Of Ratings :
+                                                  </strong>
+                                                  <%= @reviews["ceo"]["numberOfRatings"] %><br>
+                                                  <strong>Percentage Approve :
+                                                  </strong>
+                                                  <%= @reviews["ceo"]["pctApprove"] %>%<br>
+                                                  <strong>Percentage Disapprove :
+                                                  </strong>
+                                                  <%= @reviews["ceo"]["pctDisapprove"] %>%<br>
+                                              <% else %>
+                                                  
+                                                  <% end %>
+                                              </div>
+                                          </div>
+
+
+
                                         </div>
 
                                     </div>
@@ -312,44 +349,7 @@
                                 </div>
                             </div>
 
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h2 class="panel-title">CEO Review</h2>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="reviewwrap">
-                                        <div class="ceopic">
 
-                                            <% if @reviews["ceo"].present? %>
-                                            <% if image_tag @reviews["ceo"]["image"].nil? %>
-                                        <% else %>
-                                            <%= image_tag @reviews["ceo"]["image"]["src"] %><br>
-                                            <% end %>
-                                            <strong>CEO :
-                                            </strong>
-                                            <%= @reviews["ceo"]["name"] %><br>
-                                        </div>
-
-                                        <div class="ceoabout">
-                                            <strong>Title :
-                                            </strong>
-                                            <%= @reviews["ceo"]["title"] %><br>
-                                            <strong>Number Of Ratings :
-                                            </strong>
-                                            <%= @reviews["ceo"]["numberOfRatings"] %><br>
-                                            <strong>Percentage Approve :
-                                            </strong>
-                                            <%= @reviews["ceo"]["pctApprove"] %>%<br>
-                                            <strong>Percentage Disapprove :
-                                            </strong>
-                                            <%= @reviews["ceo"]["pctDisapprove"] %>%<br>
-                                        <% else %>
-                                            Not Available
-                                            <% end %>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
                         </div>
 
