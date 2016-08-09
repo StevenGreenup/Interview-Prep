@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  require 'cgi'
+
   before_action except: [:create] do
   if session[:user_id].nil?
     redirect_to sign_in_path, notice: "You must sign in!"
@@ -25,15 +25,10 @@ end
             redirect_to user_path(id: @user.id)
 
         else
-          flash.now[:alert] = "Something went wrong. Try again."
             render :new
       end
   end
 
-  def me
-    show
-    render :show
-  end
 
   def show
     @resume = Resume.new
@@ -47,10 +42,4 @@ end
   end
 
 
-  def getstarted
-    @resume = Resume.new
-    @boss = Boss.new
-    @descomp = Descomp.new
-
-  end
 end

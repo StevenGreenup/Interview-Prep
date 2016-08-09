@@ -10,6 +10,20 @@
             </div>
             <div class="modal-body">
                 <%= form_for @boss, url: new_boss_path do |f| %>
+                <% if @boss.errors.any? %>
+                <div id="error_explanation">
+                  <h2>
+                    <%= pluralize(@boss.errors.count, "error") %> prohibited
+                    this user from being saved:
+                  </h2>
+
+                  <ul>
+                    <% @boss.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                    <% end %>
+                  </ul>
+                </div>
+                <% end %>
                 <%= f.label :email %>
                 <%= f.email_field :email, class:"form-control" %>
                 <%= f.label :company %>
@@ -39,7 +53,7 @@
                 <%= f.label :company %>
                 <%= f.text_field :company, class:"form-control" %>
                 <%= f.label :url %>
-                <%= f.text_field :url, class:"form-control" %>
+                <%= f.url_field :url, class:"form-control" %>
                 <%= f.submit "Research Company", class:"btn btn-primary" %>
 
                 <% end %>
@@ -77,6 +91,26 @@
               <% if notice %>
               <div class="alert alert-info" role="alert">
                   <%= notice %>
+              </div>
+              <% end %>
+
+              <% if @descomp.errors.any? %>
+              <div id="error_explanation">
+                <ul>
+                  <% @descomp.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                  <% end %>
+                </ul>
+              </div>
+              <% end %>
+
+              <% if @boss.errors.any? %>
+              <div id="error_explanation">
+                <ul>
+                  <% @boss.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                  <% end %>
+                </ul>
               </div>
               <% end %>
 

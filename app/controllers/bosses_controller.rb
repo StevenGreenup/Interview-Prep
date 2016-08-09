@@ -16,6 +16,7 @@ def create
   @boss = Boss.new
   @boss.email = params[:boss][:email]
    @boss.descomp_id = params[:boss][:descomp_id]
+   if @boss.email.present? && @boss.descomp_id.present?
   response = Clearbit::Enrichment.find(email: @boss.email)
   @boss.user_id = @current_user.id
   unless response.nil?
@@ -35,46 +36,7 @@ def create
       @boss.facebook = response.person.facebook.handle unless response.person.facebook.nil?
     unless response.person.github.nil?
       @boss.github_handle = response.person.github.handle
-      github = Github.new oauth_token: ENV["GITHUB_OAUTH"]
-      repos = Github::Client::Repos.new
 
-
-      git = repos.list user: response.person.github.handle
-      clone = []
-      count = []
-    if git.last_page.present?
-      git.take(10).each do |r|
-      langurl = r.languages_url
-      clone << r.clone_url
-      count << JSON.parse(Http.get(langurl).body)
-      end
-    else
-      git.take(10).each do |r|
-      langurl = r.languages_url
-      clone << r.clone_url
-      count << JSON.parse(Http.get(langurl).body)
-      end
-    end
-
-      lang = []
-      count.each do |h|
-        h.map do |k,v|
-          lang << {k => v}
-        end
-      end
-
-
-     derp = lang.group_by{|h| h[0]}.map do |_,val|
-          val.inject do |h1,h2|
-            h1.merge(h2) do |k,o,n|
-              k == 'name' ? o : o + n
-            end
-          end
-      end
-
-
-      @boss.clone = clone
-      @boss.langcount = derp
       @boss.github_avatar = response.person.github.avatar
       @boss.github_company = response.person.github.company
       @boss.github_blog = response.person.github.blog
@@ -99,14 +61,59 @@ def create
     end
   end
       if @boss.save
+        unless @boss.github_handle.nil?
+        github = Github.new oauth_token: ENV["GITHUB_OAUTH"]
+        repos = Github::Client::Repos.new
+
+
+        git = repos.list user: "#{response.person.github.handle}"
+        clone = []
+        count = []
+      if git.last_page.present?
+        git.take(10).each do |r|
+        langurl = r.languages_url
+        clone << r.clone_url
+        count << JSON.parse(Http.get(langurl).body)
+        end
+      else
+        git.take(10).each do |r|
+        langurl = r.languages_url
+        clone << r.clone_url
+        count << JSON.parse(Http.get(langurl).body)
+        end
+      end
+
+        lang = []
+        count.each do |h|
+          h.map do |k,v|
+            lang << {k => v}
+          end
+        end
+
+
+       derp = lang.group_by{|h| h[0]}.map do |_,val|
+            val.inject do |h1,h2|
+              h1.merge(h2) do |k,o,n|
+                k == 'name' ? o : o + n
+              end
+            end
+        end
+
+
+        @boss.clone = clone
+        @boss.langcount = derp
+      end
+
         redirect_to user_path(id: @current_user.id)
       else
 
 
     redirect_to root_path, notice: "Hiring manager could not be found"
     end
+    else
+    redirect_to user_path(id: @current_user.id), notice: "Hiring manager could not be found"
   end
-
+end
 
 
 

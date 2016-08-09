@@ -4,6 +4,7 @@ class DescompsController < ApplicationController
   require 'fullcontact'
   require 'pp'
 
+
   before_action except: [] do
   if session[:user_id].nil?
     redirect_to sign_in_path, notice: "You must sign in!"
@@ -21,7 +22,7 @@ end
    @descomp.company = params[:descomp][:company]
    @descomp.url = params[:descomp][:url]
    @descomp.user_id = @current_user.id
-
+if @descomp.company.present?
   company = Clearbit::Enrichment::Company.find(domain: @descomp.url, company_name: @descomp.company)
   unless company.nil?
     unless company.site.nil?
@@ -53,11 +54,16 @@ end
   @descomp.avatar = company.twitter.avatar
   end
   if @descomp.save
-    redirect_to user_path(id: @current_user.id), notice:"The company your researching has been found. If you have the hiring manager's email address proceed to step 2."
+
+    redirect_to user_path(id: @current_user.id), notice:"Company was found."
   else
 
-    render :new
+
+    redirect_to user_path(id: @current_user.id), notice:"Something went wrong."
   end
+else
+  redirect_to user_path(id: @current_user.id), notice:"Something went wrong."
+ end
  end
 
 
