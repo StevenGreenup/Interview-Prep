@@ -50,9 +50,9 @@
             </div>
             <div class="modal-body">
                 <%= form_for @descomp, url: new_company_path do |f| %>
-                <%= f.label :company %>
+                <%= f.label :company, "Company Name" %>
                 <%= f.text_field :company, class:"form-control" %>
-                <%= f.label :url %>
+                <%= f.label :url, "Company Website" %>
                 <%= f.url_field :url, class:"form-control" %>
                 <%= f.submit "Research Company", class:"btn btn-primary" %>
 
@@ -129,10 +129,11 @@
                           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newboss">2. Research Hiring Manager</button><br>
                           <br>
                     <div class="row">
+
+                      <% if @descomps.present? %>
                       <% @descomps.each do |descomp| %>
+
                       <div class="text-center">
-
-
                     <div class="col-sm-6">
                       <div class="panel panel-default mr15 ml15">
 
@@ -189,7 +190,30 @@
                   </div>
                   </div>
                     <% end %>
+                    <% else %>
 
+
+
+                    <div class="welcome">
+                    <div class="panel panel-default ">
+                        <div class="panel-heading">
+                            <h2 class="panel-title">Thank you for choosing Interview Prep!</h2>
+                        </div>
+                        <div class="panel-body">
+
+                          Welcome <strong><%= @current_user.name %></strong>! Our system is designed to make you more than prepared for your big day. Impress the hiring manager with your knowledge about the company, and about him/her (don't be creepy about it).<br>
+                          <strong>To get started:</strong>
+                          <ol>
+                            <li>Click <strong>"Research Company"</strong> and fill in <u>Company Name</u> and <u>Comany Website</u>.</li>
+                            <li>Click <strong>"Research Hiring Manager"</strong> and fill in Hiring Manager's <u>Email</u> and select the company you are researching. If you do not have the hiring manager's email all you have to do is ask (people don't bite).</li>
+                          </ol>
+                        <strong>Don't have a resume?</strong> No problem, we have got you covered. Click on <strong>"Generate and View My Resume"</strong> tab above. You will find a very simple form, and once complete you can download your resume for free!
+                        <br><strong>Before your interview</strong> take a look at our <strong>"Polish up for your interview"</strong> tab and find a list of <strong>51</strong> questions you should be asking during your interview.
+                          </div>
+                          </div>
+                          </div>
+
+                    <% end %>
                   </div>
                 <small>Note: If the company or hiring manager you're researching does not have a strong internet presence, then results will be lacking.</small>
 </div></div>

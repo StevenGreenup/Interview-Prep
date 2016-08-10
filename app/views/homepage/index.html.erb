@@ -2,15 +2,6 @@
 
 
 <% if @current_user %>
-<!-- <div class="welcome-div">
-    <div class="text-center">
-
-        <%= link_to "My Profile", user_path(id: @current_user.id), class:"btn-primary form-control" %>
-
-    </div>
-</div> -->
-
-
   <% else %>
       <div class="sign-up-div">
         <% if @user.errors.any? %>
@@ -45,6 +36,14 @@
           </div>
       </div>
 <% end %>
+
+<div class="warnings">
+  <% if notice %>
+  <div class="alert alert-info" role="alert">
+      <%= notice %>
+  </div>
+  <% end %>
+</div>
 
 <div class="ticker-div">
 			<div class="center-vertically">
