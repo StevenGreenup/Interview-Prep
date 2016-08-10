@@ -25,7 +25,6 @@ Rails.application.routes.draw do
   root 'homepage#index'
   post 'users' => 'users#create', as: :create_user
   get 'users/:id' => 'users#show', as: :user
-  # get 'users/:id' => 'users#getstarted', as: :user
 
 
   get "sign_in" => "sessions#new", as: :sign_in

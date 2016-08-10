@@ -154,12 +154,14 @@ end
       @resume = Resume.find_by id: params[:id]
       format.html
       format.pdf do
-        render pdf: "file_name"   # Excluding ".pdf" extension.
+
+        render pdf: "file_name"
       end
     end
-
-
   end
+
+
+
 
   def edit
     @editresume = Resume.find_by user_id: params[:id]
