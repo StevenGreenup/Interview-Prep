@@ -498,6 +498,9 @@ button:hover,
     border-radius: 45px;
     padding: 15px 15px 15px 18px;
     margin-bottom: 15px;
+		margin-top: 15px;
+		width: 50%;
+
 }
 
 .alert-success {

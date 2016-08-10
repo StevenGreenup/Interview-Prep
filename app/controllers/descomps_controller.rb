@@ -22,7 +22,7 @@ end
    @descomp.company = params[:descomp][:company]
    @descomp.url = params[:descomp][:url]
    @descomp.user_id = @current_user.id
-if @descomp.company.present?
+if @descomp.company.present? && @descomp.url.present?
   company = Clearbit::Enrichment::Company.find(domain: @descomp.url, company_name: @descomp.company)
   unless company.nil?
     unless company.site.nil?
@@ -62,7 +62,7 @@ if @descomp.company.present?
     redirect_to user_path(id: @current_user.id), notice:"Something went wrong."
   end
 else
-  redirect_to user_path(id: @current_user.id), notice:"Something went wrong."
+  redirect_to user_path(id: @current_user.id), notice:"Something went wrong. Please make sure you are inputting valid information for the Company and URL fields."
  end
  end
 

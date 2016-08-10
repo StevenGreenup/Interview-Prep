@@ -103,8 +103,9 @@ def create
         @boss.clone = clone
         @boss.langcount = derp
         @boss.save
+        
       end
-
+        @boss.descomp.update available: false
         redirect_to user_path(id: @current_user.id)
       else
 
