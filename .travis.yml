@@ -1,0 +1,15 @@
+language: ruby
+rvm:
+- 2.3.0
+addons:
+  postgresql: '9.4'
+before_script:
+- psql -c 'create database travis_ci_test;' -U postgres
+- cp config/database.yml.travis config/database.yml
+deploy:
+  provider: heroku
+  api_key:
+    secure: jMVP1r7vMqGz2O6dTFxp0FefYCknyfIRxEh2TjwsA98afdNB6R2pmTe4yiTs6fBw4hI/cab2oZKe7ZlhwYE9q2g/6AUZWYJAKLaEyXdEHaqZC9wz9OffLR1toUZB5URPWdvPNvr2PeVbbdRFychIvmiLXSSu0H+j/nM2TL0SF+BzAyYFC5x6wT8BLGCaTTNRfaFTwlGMPAc9IRStcaEyG1eEsRdhGXcF6XQS91mb8U1uKMw/MaLYYGjDoAEu8rtJJtO6NRCU/v3hjjMnzTMJAa9PmQP2csOnlhsBiPlCenRvb6IA9TdxMRKj7fPQWOH1PsCj2Kb11lXIOk7RcNhtjnL2zJK2+vTfVR0irek3NNMxo0cPJUE8sxgX1p8DBwl1NbuV6qd0xwP0m9wtOtwgdKsrfN7bfnaWDWf9eEDYgbfjRH/wZeWoLNIU0G4hYnUaVrXHbO16M+p0Jjeln3jXXdsK5kmG1plFwvd6bm1/Yhp5h4D5ILyRRkJfbuaaLLkk4kZlZDzq64Zw+rLvz/mH7PjPyECcRj0Z2yidOr23HswniaE7ue8p/vccOLf/CYfq3GQn7cjVFvCWquZalx4DKUHFff72fpSeJ6pWVyRtFUWG9qNBY3/qZQ51cdsFl69UuE6posgKlBCALLXrOq31kuoczNIFNaCNACdLFNCQiSE=
+  app: interview-prepp
+  on:
+    repo: StevenGreenup/Interview-Prep
