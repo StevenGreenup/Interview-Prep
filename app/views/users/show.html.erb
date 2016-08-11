@@ -27,7 +27,7 @@
                 <%= f.label :email %>
                 <%= f.email_field :email, class:"form-control" %>
                 <%= f.label :company %>
-                <%= f.collection_select :descomp_id, Descomp.where(:available => true), :id, :company, {prompt: true}, class:"form-control" %><br>
+                <%= f.collection_select :descomp_id, @current_user.descomps.where(:available => true), :id, :company, {prompt: true}, class:"form-control" %><br>
                 <%= f.submit "Research Hiring Manager", class:"btn btn-primary" %>
                 <% end %>
             </div>
