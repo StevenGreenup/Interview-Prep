@@ -1322,7 +1322,7 @@
                         <% if @resumes.present? %>
                         <% @resumes.each do |resume| %>
                         <%= link_to "#{@current_user.name} Resume.pdf", resume_path(id: resume.id) %><br>
-                        <iframe src=<%= resume_path(id: resume.id) %> width="100%" height="700" style="border: none;"></iframe>
+                        <iframe src=<%= resume_path(id: resume.id) %> width="100%" height="800" style="border: none;"></iframe>
                         <% end %>
                     <% else %>
                         <strong>You currently do not have a resume on record. To create one use the form on the left.</strong>
