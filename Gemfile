@@ -39,6 +39,12 @@ gem 'hashie'
 gem 'github_api'
 gem "chartkick"
 
+gem "minitest-rails"
+
+group :test do
+  gem "minitest-rails-capybara"
+end
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
