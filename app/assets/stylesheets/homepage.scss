@@ -355,7 +355,25 @@ width: 100%;
 }
 .panel-body{
     background-color: white;
+
 }
+
+.video {
+    width: 562px;
+    height: 317px;
+
+}
+
+.cts{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content:center;
+  align-content: flex-start;
+  align-items: flex-start;
+
+}
+
 .res-panel-body{
     background-color: rgba(236, 240, 241, 0.9);
     padding: 10px;
