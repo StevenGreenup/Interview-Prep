@@ -215,8 +215,10 @@
 
                                     <div class="reviewwrap">
                                       <div class="picture">
+                                        <% if @reviews.nil? %>
+                                        <% else %>
                                           <%= image_tag @reviews["squareLogo"] %>
-
+                                          <% end %>
                                       </div>
 
                                         <div class="aboutreview">
