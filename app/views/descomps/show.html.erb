@@ -279,10 +279,10 @@
                                         </div>
 
                                         <div class="aboutreview">
-
+                                          <% unless @reviews.nil? %>
                                           <div class="reviewwrap">
                                               <div class="ceopic">
-                                                 <% unless @reviews.nil? %>
+
                                                   <% if @reviews["ceo"].present? %>
                                                   <% if @reviews["ceo"]["image"].nil? %>
                                                     <% else %>
@@ -292,7 +292,7 @@
                                               </div>
 
                                               <div class="ceoabout">
-                                                
+
                                                 <strong>CEO :
                                                 </strong>
                                                 <%= @reviews["ceo"]["name"] %><br>
@@ -311,8 +311,9 @@
                                               <% else %>
 
                                                   <% end %>
-                                                  <% end %>
+
                                               </div>
+                                              <% end %>
                                           </div>
 
 
