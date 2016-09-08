@@ -215,8 +215,7 @@
 
                                     <div class="reviewwrap">
                                       <div class="picture">
-                                        <% if @reviews.nil? %>
-                                        <% else %>
+                                        <% unless @reviews.nil? %>
                                           <%= image_tag @reviews["squareLogo"] %>
                                           <% end %>
                                       </div>
@@ -224,6 +223,7 @@
                                         <div class="aboutreview">
                                           <br>
                                           <strong>Id :
+                                            <% unless @reviews.nil? %>
                                           </strong>
                                           <%= @reviews["id"] %><br>
                                           <strong>Name :
@@ -275,22 +275,24 @@
                                             <strong>Industry Name :
                                             </strong>
                                             <%= @reviews["industryName"] %><br>
+                                            <% end %>
                                         </div>
 
                                         <div class="aboutreview">
 
                                           <div class="reviewwrap">
                                               <div class="ceopic">
-
+                                                 <% unless @reviews.nil? %>
                                                   <% if @reviews["ceo"].present? %>
                                                   <% if @reviews["ceo"]["image"].nil? %>
                                                     <% else %>
                                                   <%= image_tag @reviews["ceo"]["image"]["src"] %><br>
                                                   <% end %>
-
+                                                  <% end %>
                                               </div>
 
                                               <div class="ceoabout">
+                                                <% unless @reviews.nil? %>
                                                 <strong>CEO :
                                                 </strong>
                                                 <%= @reviews["ceo"]["name"] %><br>
@@ -309,6 +311,7 @@
                                               <% else %>
 
                                                   <% end %>
+                                                  <% end %>
                                               </div>
                                           </div>
 
@@ -326,6 +329,7 @@
                                 </div>
                                 <div class="panel-body">
                                     <div class="featuredReview">
+                                      <% unless @reviews.nil? %>
                                         <strong>Job Title :
                                         </strong>
                                         <%= @reviews["featuredReview"]["jobTitle"] %><br>
@@ -347,6 +351,7 @@
                                         <strong>Featured Review url :
                                         </strong>
                                         <%= link_to @reviews["featuredReview"]["attributionURL"] %><br>
+                                        <% end %>
                                     </div>
                                 </div>
                             </div>
